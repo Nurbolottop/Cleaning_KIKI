@@ -26,7 +26,7 @@
    POSTGRES_DB=cleaning_db
    POSTGRES_USER=cleaning_user
    POSTGRES_PASSWORD=superpassword
-   POSTGRES_HOST=db_raya
+   POSTGRES_HOST=db_kiki
    POSTGRES_PORT=5432
 
    DEBUG=True
@@ -74,7 +74,7 @@
 4. Загрузка данных:
 
    ```sh
-   sudo docker-compose -f docker/docker-compose-prod.yml exec web_raya python manage.py loaddata db.json
+   sudo docker-compose -f docker/docker-compose-prod.yml exec web_kiki python manage.py loaddata db.json
    ```
 
 5. Настройка SSL (если нужно):
@@ -88,7 +88,7 @@
    **Получить сертификат:**
 
    ```sh
-   sudo certbot certonly --standalone -d cleaning.kg -d www.cleaning.kg
+   sudo certbot certonly --standalone -d kiki.kg -d www.kiki.kg
    ```
 
    **Запустить nginx:**
