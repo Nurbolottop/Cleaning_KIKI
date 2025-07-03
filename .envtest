@@ -1,0 +1,19 @@
+# ========== ОБЩЕЕ ==========
+SECRET_KEY=django-insecure-v8idlx6j_bo*k1c)*p+5d1$k2qc0r3f123+im@_a!qkkp&srd@
+DEBUG=True
+ALLOWED_HOSTS=localhost,127.0.0.1,mydomain.com
+LANGUAGE_CODE=ru
+TIME_ZONE=Asia/Bishkek
+
+# === PROJECT NAME ===
+PROJECT_NAME=kiki
+
+# === POSTGRES ===
+POSTGRES_DB=kiki
+POSTGRES_USER=kiki_user
+POSTGRES_PASSWORD=kiki1234
+POSTGRES_HOST=db_kiki
+POSTGRES_PORT=5432
+
+
+
