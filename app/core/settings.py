@@ -19,8 +19,23 @@ from core.project_settings.middleware import *
 
 ROOT_URLCONF = 'core.urls'
 
-from core.project_settings.templates import *
+# from core.project_settings.templates import *
 
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / 'templates'],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
@@ -63,3 +78,5 @@ from core.project_settings.static import *
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+from core.project_settings.ckeditor import *

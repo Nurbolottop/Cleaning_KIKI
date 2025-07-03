@@ -5,5 +5,5 @@ from apps.contacts import views as contacts_views
 from apps.extra import views as extra_views
 
 urlpatterns = [
-
+    path('', cms_views.index, name='index'),
 ]

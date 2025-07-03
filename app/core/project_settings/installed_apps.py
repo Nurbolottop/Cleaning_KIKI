@@ -11,6 +11,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+#ckeditor
+    'ckeditor',
+    'ckeditor_uploader',
+    'django_resized',
 #apps
     'apps.cms',
     'apps.contacts',
