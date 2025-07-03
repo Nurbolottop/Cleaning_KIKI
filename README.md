@@ -18,7 +18,7 @@
    ```sh
    git clone https://github.com/yourusername/cleaning-kiki.git
    cd cleaning-kiki/backend
-````
+
 
 2. Переименуй `.env-test` → `.env` и укажи свои настройки:
 
