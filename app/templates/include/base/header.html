@@ -1,0 +1,121 @@
+{% load static %}
+<header class="main-header-two">
+    <div class="main-header-two__wrap">
+        <div class="main-header-two__logo">
+            <a href="{% url 'index' %}"><img src="{{settings.logo.url}}" style="width: 200px;" alt=""></a>
+        </div>
+        <div class="main-header-two__content">
+            <div class="main-menu-two__top">
+                <div class="main-menu-two__top-inner">
+                    <ul class="list-unstyled main-menu-two__contact-list">
+                        <li>
+                            <div class="icon">
+                                <i class="icon-mail"></i>
+                            </div>
+                            <div class="text">
+                                <p><a href="mailto:{{settings.email}}">{{settings.email}}</a>
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="icon">
+                                <i class="icon-phone-call"></i>
+                            </div>
+                            <div class="text">
+                                <p><a href="tel:{{settings.phone}}">{{settings.phone}}</a></p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="icon">
+                                <i class="icon-pin-1"></i>
+                            </div>
+                            <div class="text">
+                                <p>{{settings.locate}}</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="main-menu-two__top-social-box">
+                        <h4 class="main-menu-two__top-social-title">Бизге кошул</h4>
+                        <div class="main-menu-two__top-social">
+                            {% if settings.facebook %}
+                            <a href="{{settings.facebook}}"><i class="fab fa-facebook-f"></i></a>
+                            {% endif %}
+                            {% if settings.telegram %}
+                            <a href="{{settings.telegram}}"><i class="fab fa-telegram"></i></a>
+                            {% endif %}
+                            {% if settings.whatsapp %}
+                            <a href="{{settings.whatsapp}}"><i class="fab fa-whatsapp"></i></a>
+                            {% endif %}
+                            {% if settings.instagram %}
+                            <a href="{{settings.instagram}}"><i class="fab fa-instagram"></i></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="main-menu main-menu-two">
+                <div class="main-menu-two__wrapper">
+                    <div class="main-menu-two__wrapper-inner">
+                        <div class="main-menu-two__left">
+                            <div class="main-menu-two__logo">
+                                <a href="{% url 'index' %}"><img src="{{settings.logo.url}}" style="width: 200px;" alt=""></a>
+                            </div>
+                            <div class="main-menu-two__call">
+                                <div class="main-menu-two__call-icon">
+                                    <i class="icon-phone-call"></i>
+                                </div>
+                                <div class="main-menu-two__call-content">
+                                    <p class="main-menu-two__call-sub-title">Каалаган убакта байланышсаң болот</p>
+                                    <h5 class="main-menu-two__call-number"><a href="tel:{{settings.phone}}">{{settings.phone}}</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-menu-two__main-menu-box">
+                            <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
+                            <ul class="main-menu__list">
+                                <li >
+                                    <a href="{% url 'index' %}">Башкы бет </a>
+                                </li>
+                                <li >
+                                    <a href="{% url 'about' %}">Биз жонундо </a>
+                                </li>
+                                <li >
+                                    <a href="{% url 'services' %}">Биздин кызматтар </a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#">Кошумча </a>
+                                    <ul class="shadow-box">
+                                        <li><a href="testimonials.html">Прайс</a></li>
+                                        <li><a href="team.html">Биздин команда</a></li>
+                                        <li><a href="projects.html">Биздин проекттер</a></li>
+                                        <li><a href="projects-carousel.html">Жанылыктар</a></li>
+                                        <li><a href="gallery.html">Суроттор</a></li>
+                                        <li><a href="faq.html">FAQs</a></li>
+                                        <li><a href="404.html">404 Error</a></li>
+                                        <li><a href="coming-soon.html">Coming Soon</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="{% url 'contacts' %}">Байланышуу</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="main-menu-two__right">
+                            <div class="main-menu-two__search-box">
+                                <form action="#" class="main-menu-two__search-form">
+                                    <input type="search" placeholder="Search..">
+                                    <button type="submit"><i class="icon-search"></i></button>
+                                </form>
+                            </div>
+                            <div class="main-menu-two__nav-sidebar-icon">
+                                <a class="navSidebar-button" href="#">
+                                    <span class="icon-app"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>

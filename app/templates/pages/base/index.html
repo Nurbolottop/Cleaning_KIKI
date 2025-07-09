@@ -1,0 +1,1489 @@
+{% extends 'include/secondary/homepage.html' %}
+{% block title %}Башкы бет{% endblock %}
+{% load static %}
+{% block content %}
+
+    <div class="custom-cursor__cursor"></div>
+    <div class="custom-cursor__cursor-two"></div>
+
+    <!--Start Preloader-->
+    <div class="loader js-preloader">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <!--End Preloader-->
+
+    <!-- Start sidebar widget content -->
+    <div class="xs-sidebar-group info-group info-sidebar">
+        <div class="xs-overlay xs-bg-black"></div>
+        <div class="xs-sidebar-widget">
+            <div class="sidebar-widget-container">
+                <div class="widget-heading">
+                    <a href="#" class="close-side-widget">X</a>
+                </div>
+                <div class="sidebar-textwidget">
+                    <div class="sidebar-info-contents">
+                        <div class="content-inner">
+                            <div class="logo">
+                                <a href="index.html"><img src="{% static 'assets/images/resources/logo-2.png' %}" alt="" /></a>
+                            </div>
+                            <div class="content-box">
+                                <h4>About Us</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut
+                                    labore et magna aliqua. Ut enim ad minim veniam laboris.</p>
+                            </div>
+                            <div class="form-inner">
+                                <h4>Get a free quote</h4>
+                                <form action="{% static 'assets/inc/sendemail.php' %}" class="contact-form-validated"
+                                    novalidate="novalidate">
+                                    <div class="form-group">
+                                        <input type="text" name="name" placeholder="Name" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" name="email" placeholder="Email" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea name="message" placeholder="Message..."></textarea>
+                                    </div>
+                                    <div class="form-group message-btn">
+                                        <button type="submit" class="thm-btn form-inner__btn">Submit Now</button>
+                                    </div>
+                                </form>
+                                <div class="result"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End sidebar widget content -->
+
+
+
+    <div class="page-wrapper">
+        {% include 'include/base/header.html' %}
+
+        <div class="stricky-header stricked-menu main-menu main-menu-two">
+            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
+        </div><!-- /.stricky-header -->
+
+
+
+        <!-- Main Slider Start -->
+        <section class="main-slider">
+            <div class="main-slider__wrap">
+                <div class="swiper-container main-slider-style1">
+                    <div class="swiper-wrapper">
+                        <!-- Slide Item -->
+                         {% for slide in slides %}
+                        <div class="swiper-slide">
+                            <div class="main-slider__bg"
+                                style="background-image: url({{slide.image.url}});">
+                            </div>
+                            <div class="main-slider__shape-bg float-bob-y"
+                                style="background-image: url({% static 'assets/images/shapes/main-slider-shape-bg.png' %});"></div>
+                            <div class="main-slider__shape-1 float-bob-y">
+                                <img src="{% static 'assets/images/shapes/main-slider-shape-1.png' %}" alt="">
+                            </div>
+                            <div class="main-slider__img-box">
+                                <div class="main-slider__img">
+                                    <img src="{{slide.icon.url}}" alt="">
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class="main-slider__content">
+                                    <h2 class="main-slider__title">{{slide.title}} <span>{{slide.title_2}}</span> <br>
+                                        <span>Trust!</span></h2>
+                                    <p class="main-slider__text">{{slide.description}}</p>
+                                    <div class="main-slider__btn-box">
+                                        <a href="about.html" class="thm-btn">Кеттик!<span><i
+                                                    class="icon-diagonal-arrow"></i></span></a>
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <!-- Slide Item -->
+
+                    </div>
+                    <!-- If we need navigation buttons -->
+                    <div class="main-slider__nav">
+                        <div class="swiper-button-prev" id="main-slider__swiper-button-next">
+                            <i class="icon-diagonal-arrow"></i>
+                        </div>
+                        <div class="swiper-button-next" id="main-slider__swiper-button-prev">
+                            <i class="icon-diagonal-arrow"></i>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </section>
+        <!-- Main Slider End -->
+
+        {% if about %}
+        <!--About Two Start -->
+        {% include 'include/secondary/about.html' %}
+        <!--About Two End -->
+        {% endif %}
+
+        {% if services %}
+        <!--Services Two Start -->
+        {% include 'include/secondary/services.html' %}
+        <!--Services Two End -->
+        {% endif %}
+
+        {% if process %}
+        <!--Project Two Start -->
+        <section class="project-two">
+            <div class="project-two__bg-shape"
+                style="background-image: url({% static 'assets/images/shapes/project-two-bg-shape.png' %});"></div>
+            <div class="project-two__shape-1 float-bob-x">
+                <img src="{% static 'assets/images/shapes/project-two-shape-1.png' %}" alt="">
+            </div>
+            <div class="project-two__shape-2 float-bob-y">
+                <img src="{% static 'assets/images/shapes/project-two-shape-2.png' %}" alt="">
+            </div>
+            <div class="container">
+                <div class="project-two__top">
+                    <div class="section-title text-left sec-title-animation animation-style2">
+                        <div class="section-title__tagline-box">
+                            <div class="section-title__tagline-shape-box">
+                                <div class="section-title__tagline-shape"></div>
+                                <div class="section-title__tagline-shape-2"></div>
+                            </div>
+                            <span class="section-title__tagline">Our Projects</span>
+                        </div>
+                        <h2 class="section-title__title title-animation">A showcase of projects
+                            <span>that</span><br><span>define excellence & innovation.</span>
+                        </h2>
+                    </div>
+                    <div class="project-two__btn-box">
+                        <a href="products.html" class="thm-btn">View All Projects<span><i
+                                    class="icon-diagonal-arrow"></i></span></a>
+                    </div>
+                </div>
+                <div class="row masonary-layout">
+                    <!--Project Two Single Start-->
+                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms"
+                        data-wow-duration="1500ms">
+                        <div class="project-two__single">
+                            <div class="project-two__img-box">
+                                <div class="project-two__img">
+                                    <img src="{% static 'assets/images/project/project-2-1.jpg' %}" alt="">
+                                </div>
+                                <div class="project-two__content-box">
+                                    <ul class="project-two__info-list list-unstyled">
+                                        <li>
+                                            <span>Client:</span>
+                                            <p>Thermal Factory</p>
+                                        </li>
+                                        <li>
+                                            <span>Duration:</span>
+                                            <p>4hrs</p>
+                                        </li>
+                                        <li>
+                                            <span>Budget:</span>
+                                            <p>$240- $350</p>
+                                        </li>
+                                    </ul>
+                                    <div class="project-two__title-box">
+                                        <span class="project-two__sub-title">Office Cleaning</span>
+                                        <h3 class="project-two__title"><a href="project-details.html">Clear View
+                                                Cleaning Solutions</a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Project Two Single End-->
+                    <!--Project Two Single Start-->
+                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms"
+                        data-wow-duration="1500ms">
+                        <div class="project-two__single">
+                            <div class="project-two__img-box">
+                                <div class="project-two__img">
+                                    <img src="{% static 'assets/images/project/project-2-2.jpg' %}" alt="">
+                                </div>
+                                <div class="project-two__content-box">
+                                    <ul class="project-two__info-list list-unstyled">
+                                        <li>
+                                            <span>Client:</span>
+                                            <p>Thermal Factory</p>
+                                        </li>
+                                        <li>
+                                            <span>Duration:</span>
+                                            <p>4hrs</p>
+                                        </li>
+                                        <li>
+                                            <span>Budget:</span>
+                                            <p>$240- $350</p>
+                                        </li>
+                                    </ul>
+                                    <div class="project-two__title-box">
+                                        <span class="project-two__sub-title">Office Cleaning</span>
+                                        <h3 class="project-two__title"><a href="project-details.html">Clear View
+                                                Cleaning Solutions</a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Project Two Single End-->
+                    <!--Project Two Single Start-->
+                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="600ms"
+                        data-wow-duration="1500ms">
+                        <div class="project-two__single">
+                            <div class="project-two__img-box">
+                                <div class="project-two__img">
+                                    <img src="{% static 'assets/images/project/project-2-3.jpg' %}" alt="">
+                                </div>
+                                <div class="project-two__content-box">
+                                    <ul class="project-two__info-list list-unstyled">
+                                        <li>
+                                            <span>Client:</span>
+                                            <p>Thermal Factory</p>
+                                        </li>
+                                        <li>
+                                            <span>Duration:</span>
+                                            <p>4hrs</p>
+                                        </li>
+                                        <li>
+                                            <span>Budget:</span>
+                                            <p>$240- $350</p>
+                                        </li>
+                                    </ul>
+                                    <div class="project-two__title-box">
+                                        <span class="project-two__sub-title">Office Cleaning</span>
+                                        <h3 class="project-two__title"><a href="project-details.html">Clear View
+                                                Cleaning Solutions</a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Project Two Single End-->
+                    <!--Project Two Single Start-->
+                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="700ms"
+                        data-wow-duration="1500ms">
+                        <div class="project-two__single">
+                            <div class="project-two__img-box">
+                                <div class="project-two__img">
+                                    <img src="{% static 'assets/images/project/project-2-5.jpg' %}" alt="">
+                                </div>
+                                <div class="project-two__content-box">
+                                    <ul class="project-two__info-list list-unstyled">
+                                        <li>
+                                            <span>Client:</span>
+                                            <p>Thermal Factory</p>
+                                        </li>
+                                        <li>
+                                            <span>Duration:</span>
+                                            <p>4hrs</p>
+                                        </li>
+                                        <li>
+                                            <span>Budget:</span>
+                                            <p>$240- $350</p>
+                                        </li>
+                                    </ul>
+                                    <div class="project-two__title-box">
+                                        <span class="project-two__sub-title">Office Cleaning</span>
+                                        <h3 class="project-two__title"><a href="project-details.html">Clear View
+                                                Cleaning Solutions</a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Project Two Single End-->
+                    <!--Project Two Single Start-->
+                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="800ms"
+                        data-wow-duration="1500ms">
+                        <div class="project-two__single">
+                            <div class="project-two__img-box">
+                                <div class="project-two__img">
+                                    <img src="{% static 'assets/images/project/project-2-4.jpg' %}" alt="">
+                                </div>
+                                <div class="project-two__content-box">
+                                    <ul class="project-two__info-list list-unstyled">
+                                        <li>
+                                            <span>Client:</span>
+                                            <p>Thermal Factory</p>
+                                        </li>
+                                        <li>
+                                            <span>Duration:</span>
+                                            <p>4hrs</p>
+                                        </li>
+                                        <li>
+                                            <span>Budget:</span>
+                                            <p>$240- $350</p>
+                                        </li>
+                                    </ul>
+                                    <div class="project-two__title-box">
+                                        <span class="project-two__sub-title">Office Cleaning</span>
+                                        <h3 class="project-two__title"><a href="project-details.html">Clear View
+                                                Cleaning Solutions</a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Project Two Single End-->
+                    <!--Project Two Single Start-->
+                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="900ms"
+                        data-wow-duration="1500ms">
+                        <div class="project-two__single">
+                            <div class="project-two__img-box">
+                                <div class="project-two__img">
+                                    <img src="{% static 'assets/images/project/project-2-6.jpg' %}" alt="">
+                                </div>
+                                <div class="project-two__content-box">
+                                    <ul class="project-two__info-list list-unstyled">
+                                        <li>
+                                            <span>Client:</span>
+                                            <p>Thermal Factory</p>
+                                        </li>
+                                        <li>
+                                            <span>Duration:</span>
+                                            <p>4hrs</p>
+                                        </li>
+                                        <li>
+                                            <span>Budget:</span>
+                                            <p>$240- $350</p>
+                                        </li>
+                                    </ul>
+                                    <div class="project-two__title-box">
+                                        <span class="project-two__sub-title">Office Cleaning</span>
+                                        <h3 class="project-two__title"><a href="project-details.html">Clear View
+                                                Cleaning Solutions</a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Project Two Single End-->
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+        {% if service_list %}
+        <!--Project Two End -->
+        {% include 'include/secondary/service_list.html' %}
+        {% endif %}
+
+        {% if process %}
+        <!--Process One Start -->
+        {% include 'include/secondary/process.html' %}
+        <!--Process One End -->
+        {% endif %}
+
+        
+        <!--Before After Two Start -->
+        <section class="before-after-two">
+            <div class="before-after-two__bg-shape"
+                style="background-image: url({% static 'assets/images/shapes/before-after-two-bg-shape.png' %});"></div>
+            <div class="before-after-two__shape-1 float-bob-y">
+                <img src="{% static 'assets/images/shapes/before-after-two-shape-1.png' %}" alt="">
+            </div>
+            <div class="before-after-two__shape-2"></div>
+            <div class="before-after-two__shape-3"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="before-after-two__left">
+                            <div class="before-after-two__img-box">
+                                <div class="before-after">
+                                    <div class="before-after-twentytwenty" id="wrinkle-before-after">
+                                        <img src="{% static 'assets/images/resources/before-after-two-img-1.jpg' %}" alt="">
+                                        <img src="{% static 'assets/images/resources/before-after-two-img-2.jpg' %}" alt="">
+                                    </div>
+                                </div>
+                                <div class="before-after-two__tag"><span>Before</span></div>
+                                <div class="before-after-two__tag before-after-two__tag-2">
+                                    <span>AFTER</span></div>
+                            </div>
+                          
+                        </div>
+                    </div>
+                    
+                    <div class="col-xl-6">
+                        <div class="before-after-two__right">
+                            <div class="section-title text-left sec-title-animation animation-style2">
+                                <div class="section-title__tagline-box">
+                                    <div class="section-title__tagline-shape-box">
+                                        <div class="section-title__tagline-shape"></div>
+                                        <div class="section-title__tagline-shape-2"></div>
+                                    </div>
+                                    <span class="section-title__tagline">Before After</span>
+                                </div>
+                                <h2 class="section-title__title title-animation">Benefited After Clearing <br><span>Your
+                                        Organization</span>
+                                </h2>
+                            </div>
+                            <div class="before-after-two__img-box-2">
+                                <div class="before-after">
+                                    <div class="before-after-twentytwenty" id="wrinkle-before-after-1">
+                                        <img src="{% static 'assets/images/resources/before-after-two-img-3.jpg' %}" alt="">
+                                        <img src="{% static 'assets/images/resources/before-after-two-img-4.jpg' %}" alt="">
+                                    </div>
+                                </div>
+                                <div class="before-after-two__tag"><span>Before</span></div>
+                                <div class="before-after-two__tag before-after-two__tag-2">
+                                    <span>AFTER</span></div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <!--Before After Two End -->
+
+        <!--Testimonial Two Start -->
+        <section class="testimonial-two">
+            <div class="testimonial-two__shape-bg-1"
+                style="background-image: url({% static 'assets/images/shapes/testimonial-two-shape-bg-1.png' %});"></div>
+            <div class="testimonial-two__shape-1">
+                <img src="{% static 'assets/images/shapes/testimonial-two-shape-1.png' %}" alt="">
+            </div>
+            <div class="testimonial-two__shape-2">
+                <img src="{% static 'assets/images/shapes/testimonial-two-shape-2.png' %}" alt="">
+            </div>
+            <div class="container">
+                <div class="section-title text-left sec-title-animation animation-style2">
+                    <div class="section-title__tagline-box">
+                        <div class="section-title__tagline-shape-box">
+                            <div class="section-title__tagline-shape"></div>
+                            <div class="section-title__tagline-shape-2"></div>
+                        </div>
+                        <span class="section-title__tagline">Testimonial</span>
+                    </div>
+                    <h2 class="section-title__title title-animation">Hear from our <span>satisfied</span> <br>
+                        <span>clients who praise</span></h2>
+                </div>
+                <div class="testimonial-two__carousel owl-carousel owl-theme">
+                    <!--Testimonial One Single Start -->
+                    <div class="item">
+                        <div class="testimonial-two__single">
+                            <div class="testimonial-two__top">
+                                <div class="testimonial-two__top-title">
+                                    <h4>Awesome Services</h4>
+                                </div>
+                                <div class="testimonial-two__top-quote">
+                                    <span class="icon-left"></span>
+                                </div>
+                            </div>
+                            <p class="testimonial-two__text">The cleaning team has been an absolute lifesaver! They go
+                                above and beyond to make sure my home looks immaculate. Every surface sparkles, and they
+                                even take care of the small details that most services overlook. I can’t recommend them
+                                enough!</p>
+                            <div class="testimonial-two__bottom">
+                                <div class="testimonial-two__star">
+                                    <span class="icon-star"></span>
+                                    <span class="icon-star"></span>
+                                    <span class="icon-star"></span>
+                                    <span class="icon-favorite"></span>
+                                    <span class="icon-favorite"></span>
+                                </div>
+                                <div class="testimonial-two__client-info">
+                                    <div class="testimonial-two__client-img-box">
+                                        <div class="testimonial-two__client-img">
+                                            <img src="{% static 'assets/images/testimonial/testimonial-client-1-1.jpg' %}" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="testimonial-two__client-content">
+                                        <h3 class="testimonial-two__client-name"><a href="testimonials.html">– David
+                                                R.</a></h3>
+                                        <p class="testimonial-two__client-sub-title">Founder & CEO</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Testimonial One End -->
+
+        <!--Team Two Start -->
+        <section class="team-two">
+            <div class="team-two__shape-1">
+                <img src="{% static 'assets/images/shapes/team-two-shape-1.png' %}" alt="">
+            </div>
+            <div class="team-two__shape-2 img-bounce">
+                <img src="{% static 'assets/images/shapes/team-two-shape-2.png' %}" alt="">
+            </div>
+            <div class="team-two__shape-3"></div>
+            <div class="team-two__shape-4"></div>
+            <div class="container">
+                <div class="section-title text-center sec-title-animation animation-style1">
+                    <div class="section-title__tagline-box">
+                        <div class="section-title__tagline-shape-box">
+                            <div class="section-title__tagline-shape"></div>
+                            <div class="section-title__tagline-shape-2"></div>
+                        </div>
+                        <span class="section-title__tagline">Our Team member</span>
+                    </div>
+                    <h2 class="section-title__title title-animation">Meet Our Professional Team <br> Dedicated
+                        <span>to Excellence</span></h2>
+                </div>
+                <div class="team-two__inner">
+                    <div class="team-two__main-tab-box tabs-box">
+                        <div class="row">
+                            <div class="col-xl-4">
+                                <div class="team-two__tab-buttons-box-one">
+                                    <ul class="tab-buttons list-unstyled">
+                                        <li data-tab="#team-1" class="tab-btn active-btn">
+                                            <div class="team-two__buttons">
+                                                <div class="team-two__buttons-experience-years">
+                                                    <div class="team-two__buttons-experience-years-count">
+                                                        <h3>05</h3>
+                                                    </div>
+                                                    <p class="team-two__buttons-experience-years-text">Years <br>
+                                                        Experience</p>
+                                                </div>
+                                                <div class="team-two__buttons-img-box">
+                                                    <div class="team-two__buttons-img">
+                                                        <img src="{% static 'assets/images/team/team-two-buttons-img-1-1.jpg' %}"
+                                                            alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="team-two__buttons-content">
+                                                    <div class="team-two__buttons-title-box">
+                                                        <h4 class="team-two__buttons-title"><a
+                                                                href="team-details.html">Olivia Grace</a></h4>
+                                                        <p class="team-two__buttons-sub-title">Customer Service
+                                                            Coordinator
+                                                        </p>
+                                                    </div>
+                                                    <div class="team-two__buttons-arrow">
+                                                        <a href="team-details.html"><span
+                                                                class="icon-diagonal-arrow"></span></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li data-tab="#team-2" class="tab-btn">
+                                            <div class="team-two__buttons">
+                                                <div class="team-two__buttons-experience-years">
+                                                    <div class="team-two__buttons-experience-years-count">
+                                                        <h3>02</h3>
+                                                    </div>
+                                                    <p class="team-two__buttons-experience-years-text">Years <br>
+                                                        Experience</p>
+                                                </div>
+                                                <div class="team-two__buttons-img-box">
+                                                    <div class="team-two__buttons-img">
+                                                        <img src="{% static 'assets/images/team/team-two-buttons-img-1-2.jpg' %}"
+                                                            alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="team-two__buttons-content">
+                                                    <div class="team-two__buttons-title-box">
+                                                        <h4 class="team-two__buttons-title"><a
+                                                                href="team-details.html">Sophia Marie</a></h4>
+                                                        <p class="team-two__buttons-sub-title">Operations Manager
+                                                        </p>
+                                                    </div>
+                                                    <div class="team-two__buttons-arrow">
+                                                        <a href="team-details.html"><span
+                                                                class="icon-diagonal-arrow"></span></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li data-tab="#team-3" class="tab-btn">
+                                            <div class="team-two__buttons">
+                                                <div class="team-two__buttons-experience-years">
+                                                    <div class="team-two__buttons-experience-years-count">
+                                                        <h3>12</h3>
+                                                    </div>
+                                                    <p class="team-two__buttons-experience-years-text">Years <br>
+                                                        Experience</p>
+                                                </div>
+                                                <div class="team-two__buttons-img-box">
+                                                    <div class="team-two__buttons-img">
+                                                        <img src="{% static 'assets/images/team/team-two-buttons-img-1-3.jpg' %}"
+                                                            alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="team-two__buttons-content">
+                                                    <div class="team-two__buttons-title-box">
+                                                        <h4 class="team-two__buttons-title"><a
+                                                                href="team-details.html">Jordan Walk</a></h4>
+                                                        <p class="team-two__buttons-sub-title">Cleaning Specialist
+                                                        </p>
+                                                    </div>
+                                                    <div class="team-two__buttons-arrow">
+                                                        <a href="team-details.html"><span
+                                                                class="icon-diagonal-arrow"></span></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-xl-4">
+                                <div class="team-two__tabs-content-outer">
+                                    <div class="tabs-content">
+                                        <div class="tab active-tab" id="team-1">
+                                            <div class="team-two__tabs-content-box">
+                                                <div class="team-two__img-box">
+                                                    <div class="team-two__img">
+                                                        <img src="{% static 'assets/images/team/team-two-1-1.jpg' %}" alt="">
+                                                        <div class="team-two__social">
+                                                            <a href="team-details.html"><span
+                                                                    class="icon-facebook-app-symbol"></span></a>
+                                                            <a href="team-details.html"><span
+                                                                    class="icon-pinterest"></span></a>
+                                                            <a href="team-details.html"><span
+                                                                    class="icon-linkedin-big-logo"></span></a>
+                                                            <a href="team-details.html"><span
+                                                                    class="icon-instagram"></span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab" id="team-2">
+                                            <div class="team-two__tabs-content-box">
+                                                <div class="team-two__img-box">
+                                                    <div class="team-two__img">
+                                                        <img src="{% static 'assets/images/team/team-two-1-2.jpg' %}" alt="">
+                                                        <div class="team-two__social">
+                                                            <a href="team-details.html"><span
+                                                                    class="icon-facebook-app-symbol"></span></a>
+                                                            <a href="team-details.html"><span
+                                                                    class="icon-pinterest"></span></a>
+                                                            <a href="team-details.html"><span
+                                                                    class="icon-linkedin-big-logo"></span></a>
+                                                            <a href="team-details.html"><span
+                                                                    class="icon-instagram"></span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab" id="team-3">
+                                            <div class="team-two__tabs-content-box">
+                                                <div class="team-two__img-box">
+                                                    <div class="team-two__img">
+                                                        <img src="{% static 'assets/images/team/team-two-1-3.jpg' %}" alt="">
+                                                        <div class="team-two__social">
+                                                            <a href="team-details.html"><span
+                                                                    class="icon-facebook-app-symbol"></span></a>
+                                                            <a href="team-details.html"><span
+                                                                    class="icon-pinterest"></span></a>
+                                                            <a href="team-details.html"><span
+                                                                    class="icon-linkedin-big-logo"></span></a>
+                                                            <a href="team-details.html"><span
+                                                                    class="icon-instagram"></span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab" id="team-4">
+                                            <div class="team-two__tabs-content-box">
+                                                <div class="team-two__img-box">
+                                                    <div class="team-two__img">
+                                                        <img src="{% static 'assets/images/team/team-two-1-4.jpg' %}" alt="">
+                                                        <div class="team-two__social">
+                                                            <a href="team-details.html"><span
+                                                                    class="icon-facebook-app-symbol"></span></a>
+                                                            <a href="team-details.html"><span
+                                                                    class="icon-pinterest"></span></a>
+                                                            <a href="team-details.html"><span
+                                                                    class="icon-linkedin-big-logo"></span></a>
+                                                            <a href="team-details.html"><span
+                                                                    class="icon-instagram"></span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab" id="team-5">
+                                            <div class="team-two__tabs-content-box">
+                                                <div class="team-two__img-box">
+                                                    <div class="team-two__img">
+                                                        <img src="{% static 'assets/images/team/team-two-1-5.jpg' %}" alt="">
+                                                        <div class="team-two__social">
+                                                            <a href="team-details.html"><span
+                                                                    class="icon-facebook-app-symbol"></span></a>
+                                                            <a href="team-details.html"><span
+                                                                    class="icon-pinterest"></span></a>
+                                                            <a href="team-details.html"><span
+                                                                    class="icon-linkedin-big-logo"></span></a>
+                                                            <a href="team-details.html"><span
+                                                                    class="icon-instagram"></span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab" id="team-6">
+                                            <div class="team-two__tabs-content-box">
+                                                <div class="team-two__img-box">
+                                                    <div class="team-two__img">
+                                                        <img src="{% static 'assets/images/team/team-two-1-6.jpg' %}" alt="">
+                                                        <div class="team-two__social">
+                                                            <a href="team-details.html"><span
+                                                                    class="icon-facebook-app-symbol"></span></a>
+                                                            <a href="team-details.html"><span
+                                                                    class="icon-pinterest"></span></a>
+                                                            <a href="team-details.html"><span
+                                                                    class="icon-linkedin-big-logo"></span></a>
+                                                            <a href="team-details.html"><span
+                                                                    class="icon-instagram"></span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4">
+                                <div class="team-two__tab-buttons-box-two">
+                                    <ul class="tab-buttons list-unstyled">
+                                        <li data-tab="#team-4" class="tab-btn">
+                                            <div class="team-two__buttons">
+                                                <div class="team-two__buttons-experience-years">
+                                                    <div class="team-two__buttons-experience-years-count">
+                                                        <h3>14</h3>
+                                                    </div>
+                                                    <p class="team-two__buttons-experience-years-text">Years <br>
+                                                        Experience</p>
+                                                </div>
+                                                <div class="team-two__buttons-img-box">
+                                                    <div class="team-two__buttons-img">
+                                                        <img src="{% static 'assets/images/team/team-two-buttons-img-1-4.jpg' %}"
+                                                            alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="team-two__buttons-content">
+                                                    <div class="team-two__buttons-title-box">
+                                                        <h4 class="team-two__buttons-title"><a
+                                                                href="team-details.html">Amelia Brooks</a></h4>
+                                                        <p class="team-two__buttons-sub-title">Quality Assurance
+                                                            Inspector
+                                                        </p>
+                                                    </div>
+                                                    <div class="team-two__buttons-arrow">
+                                                        <a href="team-details.html"><span
+                                                                class="icon-diagonal-arrow"></span></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li data-tab="#team-5" class="tab-btn">
+                                            <div class="team-two__buttons">
+                                                <div class="team-two__buttons-experience-years">
+                                                    <div class="team-two__buttons-experience-years-count">
+                                                        <h3>16</h3>
+                                                    </div>
+                                                    <p class="team-two__buttons-experience-years-text">Years <br>
+                                                        Experience</p>
+                                                </div>
+                                                <div class="team-two__buttons-img-box">
+                                                    <div class="team-two__buttons-img">
+                                                        <img src="{% static 'assets/images/team/team-two-buttons-img-1-5.jpg' %}"
+                                                            alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="team-two__buttons-content">
+                                                    <div class="team-two__buttons-title-box">
+                                                        <h4 class="team-two__buttons-title"><a
+                                                                href="team-details.html">Sophia Anne</a></h4>
+                                                        <p class="team-two__buttons-sub-title">Operations Manager
+                                                        </p>
+                                                    </div>
+                                                    <div class="team-two__buttons-arrow">
+                                                        <a href="team-details.html"><span
+                                                                class="icon-diagonal-arrow"></span></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li data-tab="#team-6" class="tab-btn">
+                                            <div class="team-two__buttons">
+                                                <div class="team-two__buttons-experience-years">
+                                                    <div class="team-two__buttons-experience-years-count">
+                                                        <h3>18</h3>
+                                                    </div>
+                                                    <p class="team-two__buttons-experience-years-text">Years <br>
+                                                        Experience</p>
+                                                </div>
+                                                <div class="team-two__buttons-img-box">
+                                                    <div class="team-two__buttons-img">
+                                                        <img src="{% static 'assets/images/team/team-two-buttons-img-1-6.jpg' %}"
+                                                            alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="team-two__buttons-content">
+                                                    <div class="team-two__buttons-title-box">
+                                                        <h4 class="team-two__buttons-title"><a
+                                                                href="team-details.html">Charlotte Johnson</a></h4>
+                                                        <p class="team-two__buttons-sub-title">Team Manager
+                                                        </p>
+                                                    </div>
+                                                    <div class="team-two__buttons-arrow">
+                                                        <a href="team-details.html"><span
+                                                                class="icon-diagonal-arrow"></span></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Team Two End -->
+
+        <!--Pricing Two Start -->
+        <section class="pricing-two">
+            <div class="pricing-two__shape-bg"
+                style="background-image: url({% static 'assets/images/shapes/pricing-two-shape-bg.png' %});"></div>
+            <div class="pricing-two__shape-2 img-bounce">
+                <img src="{% static 'assets/images/shapes/pricing-two-shape-2.png' %}" alt="">
+            </div>
+            <div class="pricing-two__shape-3 float-bob-y">
+                <img src="{% static 'assets/images/shapes/pricing-two-shape-3.png' %}" alt="">
+            </div>
+            <div class="container">
+                <div class="section-title text-center sec-title-animation animation-style1">
+                    <div class="section-title__tagline-box">
+                        <div class="section-title__tagline-shape-box">
+                            <div class="section-title__tagline-shape"></div>
+                            <div class="section-title__tagline-shape-2"></div>
+                        </div>
+                        <span class="section-title__tagline">Plans & Pricing</span>
+                    </div>
+                    <h2 class="section-title__title title-animation">Explore Our Affordable and Flexible <br> Pricing
+                        <span>Options Tailored for You </span></h2>
+                </div>
+                <div class="pricing-two__inner">
+                    <div class="pricing-two__main-tab-box tabs-box">
+                        <div class="pricing-two__tab-buttons-box">
+                            <div class="pricing-two__discount-box">
+                                <p>-10% Off</p>
+                            </div>
+                            <div class="pricing-two__discount-shape-1">
+                                <img src="{% static 'assets/images/shapes/pricing-two-discount--shape-1.png' %}" alt="">
+                            </div>
+                            <ul class="tab-buttons list-unstyled">
+                                <li data-tab="#monthly" class="tab-btn active-btn"><span>Monthly</span></li>
+                                <li data-tab="#yearly" class="tab-btn"><span>Yearly</span></li>
+                            </ul>
+                        </div>
+                        <div class="tabs-content">
+                            <div class="tab active-tab" id="monthly">
+                                <div class="pricing-two__tab-content-box">
+                                    <div class="row">
+                                        <!--Pricing Two Single Start -->
+                                        <div class="col-xl-4 col-lg-6">
+                                            <div class="pricing-two__single">
+                                                <div class="pricing-two__shape-1">
+                                                    <img src="{% static 'assets/images/shapes/pricing-two-shape-1.png' %}" alt="">
+                                                </div>
+                                                <div class="pricing-two__pack-name">
+                                                    <p>Standard</p>
+                                                </div>
+                                                <h3 class="pricing-two__price-box"> <span class="dolar">$</span> 220.00
+                                                    <span class="validity">/Monthly</span> </h3>
+                                                <p class="pricing-two__text">Achieve a Pristine Office <br> Environment
+                                                    in Just 4 Hours!</p>
+                                                <div class="pricing-two__btn-box">
+                                                    <a href="pricing.html" class="thm-btn">Choose Plan<span><i
+                                                                class="icon-plus"></i></span></a>
+                                                </div>
+                                                <div class="pricing-two__points-box">
+                                                    <ul class="list-unstyled pricing-two__points">
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Eco-Friendly Cleaning Products</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Flexible Scheduling</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Highly Trained Professionals</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Customized Cleaning Plans</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Flexible Scheduling</p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Pricing Two Single End -->
+                                        <!--Pricing Two Single Start -->
+                                        <div class="col-xl-4 col-lg-6">
+                                            <div class="pricing-two__single pricing-two__single--two active">
+                                                <div class="pricing-two__shape-1">
+                                                    <img src="{% static 'assets/images/shapes/pricing-two-shape-1.png' %}" alt="">
+                                                </div>
+                                                <div class="pricing-two__badge">
+                                                    <p>Recommended</p>
+                                                </div>
+                                                <div class="pricing-two__pack-name">
+                                                    <p>PREMIMUM</p>
+                                                </div>
+                                                <h3 class="pricing-two__price-box"> <span class="dolar">$</span> 240.00
+                                                    <span class="validity">/Yearly</span> </h3>
+                                                <p class="pricing-two__text">Transform Your Home Into a Fresh <br> Haven
+                                                    in Just 2 Hours!</p>
+                                                <div class="pricing-two__btn-box">
+                                                    <a href="pricing.html" class="thm-btn">Choose Plan<span><i
+                                                                class="icon-plus"></i></span></a>
+                                                </div>
+                                                <div class="pricing-two__points-box">
+                                                    <ul class="list-unstyled pricing-two__points">
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Advanced Cleaning Equipment</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Affordable Service Packages</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Satisfaction Guaranteed Results</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Quick Response Team</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Trusted Local Professionals</p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Pricing Two Single End -->
+                                        <!--Pricing Two Single Start -->
+                                        <div class="col-xl-4 col-lg-6">
+                                            <div class="pricing-two__single">
+                                                <div class="pricing-two__shape-1">
+                                                    <img src="{% static 'assets/images/shapes/pricing-two-shape-1.png' %}" alt="">
+                                                </div>
+                                                <div class="pricing-two__pack-name">
+                                                    <p>BUSINESS</p>
+                                                </div>
+                                                <h3 class="pricing-two__price-box"> <span class="dolar">$</span> 350.00
+                                                    <span class="validity">Weekly</span> </h3>
+                                                <p class="pricing-two__text">Get Spotless Interiors and a Perfect <br>
+                                                    Shine in Only 3 Hours!</p>
+                                                <div class="pricing-two__btn-box">
+                                                    <a href="pricing.html" class="thm-btn">Choose Plan<span><i
+                                                                class="icon-plus"></i></span></a>
+                                                </div>
+                                                <div class="pricing-two__points-box">
+                                                    <ul class="list-unstyled pricing-two__points">
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Pet-Friendly Cleaning Solutions</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Non-Toxic Cleaning Supplies</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Experienced Cleaning Experts</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>24/7 Customer Support</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Flexible Scheduling </p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Pricing Two Single End -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab" id="yearly">
+                                <div class="pricing-two__tab-content-box">
+                                    <div class="row">
+                                        <!--Pricing Two Single Start -->
+                                        <div class="col-xl-4 col-lg-6">
+                                            <div class="pricing-two__single">
+                                                <div class="pricing-two__shape-1">
+                                                    <img src="{% static 'assets/images/shapes/pricing-two-shape-1.png' %}" alt="">
+                                                </div>
+                                                <div class="pricing-two__pack-name">
+                                                    <p>Standard</p>
+                                                </div>
+                                                <h3 class="pricing-two__price-box"> <span class="dolar">$</span> 220.00
+                                                    <span class="validity">/Monthly</span> </h3>
+                                                <p class="pricing-two__text">Achieve a Pristine Office <br> Environment
+                                                    in Just 4 Hours!</p>
+                                                <div class="pricing-two__btn-box">
+                                                    <a href="pricing.html" class="thm-btn">Choose Plan<span><i
+                                                                class="icon-plus"></i></span></a>
+                                                </div>
+                                                <div class="pricing-two__points-box">
+                                                    <ul class="list-unstyled pricing-two__points">
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Eco-Friendly Cleaning Products</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Flexible Scheduling</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Highly Trained Professionals</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Customized Cleaning Plans</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Flexible Scheduling</p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Pricing Two Single End -->
+                                        <!--Pricing Two Single Start -->
+                                        <div class="col-xl-4 col-lg-6">
+                                            <div class="pricing-two__single pricing-two__single--two active">
+                                                <div class="pricing-two__shape-1">
+                                                    <img src="{% static 'assets/images/shapes/pricing-two-shape-1.png' %}" alt="">
+                                                </div>
+                                                <div class="pricing-two__badge">
+                                                    <p>Recommended</p>
+                                                </div>
+                                                <div class="pricing-two__pack-name">
+                                                    <p>PREMIMUM</p>
+                                                </div>
+                                                <h3 class="pricing-two__price-box"> <span class="dolar">$</span> 240.00
+                                                    <span class="validity">/Yearly</span> </h3>
+                                                <p class="pricing-two__text">Transform Your Home Into a Fresh <br> Haven
+                                                    in Just 2 Hours!</p>
+                                                <div class="pricing-two__btn-box">
+                                                    <a href="pricing.html" class="thm-btn">Choose Plan<span><i
+                                                                class="icon-plus"></i></span></a>
+                                                </div>
+                                                <div class="pricing-two__points-box">
+                                                    <ul class="list-unstyled pricing-two__points">
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Advanced Cleaning Equipment</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Affordable Service Packages</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Satisfaction Guaranteed Results</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Quick Response Team</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Trusted Local Professionals</p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Pricing Two Single End -->
+                                        <!--Pricing Two Single Start -->
+                                        <div class="col-xl-4 col-lg-6">
+                                            <div class="pricing-two__single">
+                                                <div class="pricing-two__shape-1">
+                                                    <img src="{% static 'assets/images/shapes/pricing-two-shape-1.png' %}" alt="">
+                                                </div>
+                                                <div class="pricing-two__pack-name">
+                                                    <p>BUSINESS</p>
+                                                </div>
+                                                <h3 class="pricing-two__price-box"> <span class="dolar">$</span> 350.00
+                                                    <span class="validity">Weekly</span> </h3>
+                                                <p class="pricing-two__text">Get Spotless Interiors and a Perfect <br>
+                                                    Shine in Only 3 Hours!</p>
+                                                <div class="pricing-two__btn-box">
+                                                    <a href="pricing.html" class="thm-btn">Choose Plan<span><i
+                                                                class="icon-plus"></i></span></a>
+                                                </div>
+                                                <div class="pricing-two__points-box">
+                                                    <ul class="list-unstyled pricing-two__points">
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Pet-Friendly Cleaning Solutions</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Non-Toxic Cleaning Supplies</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Experienced Cleaning Experts</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>24/7 Customer Support</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="icon">
+                                                                <span class="icon-check-1"></span>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p>Flexible Scheduling </p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Pricing Two Single End -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Pricing Two End -->
+
+        <!--Blog Two Start-->
+        <section class="blog-two">
+            <div class="blog-two__shape-bg" style="background-image: url({% static 'assets/images/shapes/blog-two-shape-bg.png' %});">
+            </div>
+            <div class="blog-two__shape-bg-2"
+                style="background-image: url({% static 'assets/images/shapes/blog-two-shape-bg-2.png' %});">
+            </div>
+            <div class="container">
+                <div class="section-title text-center sec-title-animation animation-style1">
+                    <div class="section-title__tagline-box">
+                        <div class="section-title__tagline-shape-box">
+                            <div class="section-title__tagline-shape"></div>
+                            <div class="section-title__tagline-shape-2"></div>
+                        </div>
+                        <span class="section-title__tagline">Our Blogs</span>
+                    </div>
+                    <h2 class="section-title__title title-animation">Destination for Inspiration,<br>
+                        <span>Tips, Plan and Stories</span></h2>
+                </div>
+                <div class="row">
+                    <!--Blog Two Single Start-->
+                    <div class="col-xl-6 wow fadeInLeft" data-wow-delay="100ms" data-wow-duration="1500ms">
+                        <div class="blog-two__single">
+                            <div class="blog-two__img">
+                                <img src="{% static 'assets/images/blog/blog-2-1.jpg' %}" alt="">
+                            </div>
+                            <div class="blog-two__content">
+                                <ul class="list-unstyled blog-two__tags">
+                                    <li><a href="blog-details.html">#EcoClean</a></li>
+                                    <li><a href="blog-details.html">#DeepClean</a></li>
+                                </ul>
+                                <h3 class="blog-two__title"><a href="blog-details.html">10 Tips to Keep Your Home
+                                        Sparkling & Cleanings</a></h3>
+                                <ul class="blog-two__meta list-unstyled">
+                                    <li>
+                                        <a href="blog-details.html"><span class="icon-calendar"></span>March 23,
+                                            2024</a>
+                                    </li>
+                                    <li>
+                                        <a href="blog-details.html"><span class="icon-bubble-chat"></span>12
+                                            Comments</a>
+                                    </li>
+                                </ul>
+                                <div class="blog-two__btn-and-user">
+                                    <div class="blog-two__btn">
+                                        <a href="blog-details.html" class="thm-btn">View Details<span><i
+                                                    class="icon-diagonal-arrow"></i></span></a>
+                                    </div>
+                                    <div class="blog-two__user">
+                                        <div class="blog-two__user-name-box">
+                                            <div class="blog-two__user-name-dot"></div>
+                                            <h4 class="blog-two__user-name">Michael B</h4>
+                                        </div>
+                                        <p class="blog-two__user-sub-title">Financial Analyst</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Blog Two Single End-->
+                    <!--Blog Two Single Start-->
+                    <div class="col-xl-6 wow fadeInRight" data-wow-delay="200ms" data-wow-duration="1500ms">
+                        <div class="blog-two__single">
+                            <div class="blog-two__img">
+                                <img src="{% static 'assets/images/blog/blog-2-2.jpg' %}" alt="">
+                            </div>
+                            <div class="blog-two__content">
+                                <ul class="list-unstyled blog-two__tags">
+                                    <li><a href="blog-details.html">#Sanitize</a></li>
+                                    <li><a href="blog-details.html">#DeepClean</a></li>
+                                </ul>
+                                <h3 class="blog-two__title"><a href="blog-details.html">How to Get Your Deposit Back
+                                        Easily</a></h3>
+                                <ul class="blog-two__meta list-unstyled">
+                                    <li>
+                                        <a href="blog-details.html"><span class="icon-calendar"></span>March 23,
+                                            2024</a>
+                                    </li>
+                                    <li>
+                                        <a href="blog-details.html"><span class="icon-bubble-chat"></span>12
+                                            Comments</a>
+                                    </li>
+                                </ul>
+                                <div class="blog-two__btn-and-user">
+                                    <div class="blog-two__btn">
+                                        <a href="blog-details.html" class="thm-btn">View Details<span><i
+                                                    class="icon-diagonal-arrow"></i></span></a>
+                                    </div>
+                                    <div class="blog-two__user">
+                                        <div class="blog-two__user-name-box">
+                                            <div class="blog-two__user-name-dot"></div>
+                                            <h4 class="blog-two__user-name">Michael B</h4>
+                                        </div>
+                                        <p class="blog-two__user-sub-title">Financial Analyst</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Blog Two Single End-->
+                    <!--Blog Two Single Start-->
+                    <div class="col-xl-6 wow fadeInLeft" data-wow-delay="300ms" data-wow-duration="1500ms">
+                        <div class="blog-two__single">
+                            <div class="blog-two__img">
+                                <img src="{% static 'assets/images/blog/blog-2-3.jpg' %}" alt="">
+                            </div>
+                            <div class="blog-two__content">
+                                <ul class="list-unstyled blog-two__tags">
+                                    <li><a href="blog-details.html">#MOPPING</a></li>
+                                    <li><a href="blog-details.html">#Sparkle</a></li>
+                                </ul>
+                                <h3 class="blog-two__title"><a href="blog-details.html">Why Eco-Friendly Cleaning
+                                        Products Are Better.</a></h3>
+                                <ul class="blog-two__meta list-unstyled">
+                                    <li>
+                                        <a href="blog-details.html"><span class="icon-calendar"></span>March 23,
+                                            2024</a>
+                                    </li>
+                                    <li>
+                                        <a href="blog-details.html"><span class="icon-bubble-chat"></span>12
+                                            Comments</a>
+                                    </li>
+                                </ul>
+                                <div class="blog-two__btn-and-user">
+                                    <div class="blog-two__btn">
+                                        <a href="blog-details.html" class="thm-btn">View Details<span><i
+                                                    class="icon-diagonal-arrow"></i></span></a>
+                                    </div>
+                                    <div class="blog-two__user">
+                                        <div class="blog-two__user-name-box">
+                                            <div class="blog-two__user-name-dot"></div>
+                                            <h4 class="blog-two__user-name">Michael B</h4>
+                                        </div>
+                                        <p class="blog-two__user-sub-title">Financial Analyst</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Blog Two Single End-->
+                    <!--Blog Two Single Start-->
+                    <div class="col-xl-6 wow fadeInRight" data-wow-delay="400ms" data-wow-duration="1500ms">
+                        <div class="blog-two__single">
+                            <div class="blog-two__img">
+                                <img src="{% static 'assets/images/blog/blog-2-4.jpg' %}" alt="">
+                            </div>
+                            <div class="blog-two__content">
+                                <ul class="list-unstyled blog-two__tags">
+                                    <li><a href="blog-details.html">#MOPPING</a></li>
+                                    <li><a href="blog-details.html">#EcoClean</a></li>
+                                </ul>
+                                <h3 class="blog-two__title"><a href="blog-details.html">The Ultimate Guide to Deep
+                                        Cleaning Your Home</a></h3>
+                                <ul class="blog-two__meta list-unstyled">
+                                    <li>
+                                        <a href="blog-details.html"><span class="icon-calendar"></span>March 23,
+                                            2024</a>
+                                    </li>
+                                    <li>
+                                        <a href="blog-details.html"><span class="icon-bubble-chat"></span>12
+                                            Comments</a>
+                                    </li>
+                                </ul>
+                                <div class="blog-two__btn-and-user">
+                                    <div class="blog-two__btn">
+                                        <a href="blog-details.html" class="thm-btn">View Details<span><i
+                                                    class="icon-diagonal-arrow"></i></span></a>
+                                    </div>
+                                    <div class="blog-two__user">
+                                        <div class="blog-two__user-name-box">
+                                            <div class="blog-two__user-name-dot"></div>
+                                            <h4 class="blog-two__user-name">Michael B</h4>
+                                        </div>
+                                        <p class="blog-two__user-sub-title">Financial Analyst</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Blog Two Single End-->
+                </div>
+            </div>
+        </section>
+        <!--Blog Two End-->
+        
+    </div><!-- /.page-wrapper -->
+
+    {% include 'include/base/footer.html' %}
+
+{% endblock %}

@@ -1,0 +1,437 @@
+{% extends 'include/secondary/homepage.html' %}
+{% block title %}Биз жонундо{% endblock %}
+{% load static %}
+{% block content %}
+
+    <div class="custom-cursor__cursor"></div>
+    <div class="custom-cursor__cursor-two"></div>
+
+    <!--Start Preloader-->
+    <div class="loader js-preloader">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <!--End Preloader-->
+
+
+
+
+
+
+    <!-- Start sidebar widget content -->
+    <div class="xs-sidebar-group info-group info-sidebar">
+        <div class="xs-overlay xs-bg-black"></div>
+        <div class="xs-sidebar-widget">
+            <div class="sidebar-widget-container">
+                <div class="widget-heading">
+                    <a href="#" class="close-side-widget">X</a>
+                </div>
+                <div class="sidebar-textwidget">
+                    <div class="sidebar-info-contents">
+                        <div class="content-inner">
+                            <div class="logo">
+                                <a href="index.html"><img src="{% static 'assets/images/resources/logo-2.png' %}" alt="" /></a>
+                            </div>
+                            <div class="content-box">
+                                <h4>Биз жонундо</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut
+                                    labore et magna aliqua. Ut enim ad minim veniam laboris.</p>
+                            </div>
+                            <div class="form-inner">
+                                <h4>Get a free quote</h4>
+                                <form action="{% static 'assets/inc/sendemail.php' %}" class="contact-form-validated"
+                                    novalidate="novalidate">
+                                    <div class="form-group">
+                                        <input type="text" name="name" placeholder="Name" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" name="email" placeholder="Email" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea name="message" placeholder="Message..."></textarea>
+                                    </div>
+                                    <div class="form-group message-btn">
+                                        <button type="submit" class="thm-btn form-inner__btn">Submit Now</button>
+                                    </div>
+                                </form>
+                                <div class="result"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End sidebar widget content -->
+
+
+
+
+
+
+
+
+    <div class="page-wrapper">
+        {% include 'include/base/header.html' %}
+
+        <div class="stricky-header stricked-menu main-menu main-menu-three">
+            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
+        </div><!-- /.stricky-header -->
+
+
+        <!--Page Header Start-->
+        <section class="page-header">
+            <div class="page-header__bg" style="background-image: url({% static 'assets/images/backgrounds/page-header-bg.jpg' %});">
+            </div>
+            {% include 'include/secondary/social.html' %}
+            <div class="container">
+                <div class="page-header__inner">
+                    <div class="page-header__img-1">
+                        <img src="{% static 'assets/images/resources/page-header-img-1.jpg' %}" alt="">
+                    </div>
+                    <h2>Биз жонундо</h2>
+                    <div class="thm-breadcrumb__box">
+                        <ul class="thm-breadcrumb list-unstyled">
+                            <li><a href="{% url 'index' %}">Башкы бет</a></li>
+                            <li><span class="icon-arrow-right"></span></li>
+                            <li>Биз жонундо</li>
+                        </ul>
+                    </div>
+                </div>  
+            </div>
+        </section>
+        <!--Page Header End-->
+
+        <!--About Two Start -->
+        {% include 'include/secondary/about.html' %}
+        <!--About Two End -->
+
+        {% include 'include/secondary/service_list.html' %}
+
+        <!--Process One Start -->
+        {% include 'include/secondary/process.html' %}
+        <!--Process One End -->
+
+        <!-- Counter Two Start -->
+        <section class="counter-two">
+            <div class="container">
+                <ul class="row list-unstyled">
+                    <li class="col-xl-3 col-lg-6 col-md-6">
+                        <div class="counter-two__single">
+                            <div class="counter-two__bg"
+                                style="background-image: url({% static 'assets/images/backgrounds/counter-two-bg-1.jpg' %});"></div>
+                            <div class="counter-two__icon">
+                                <span class="icon-cleaning-cart"></span>
+                            </div>
+                            <div class="counter-two__content">
+                                <div class="counter-two__count-box">
+                                    <p class="odometer" data-count="{{ metric.projects_per_month }}">00</p>
+                                    <span>+</span>
+                                </div>
+                                <p class="counter-two__count-text">Ай сайын ийгиликтүү бүткөн иштер </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col-xl-3 col-lg-6 col-md-6">
+                        <div class="counter-two__single">
+                            <div class="counter-two__bg"
+                                style="background-image: url({% static 'assets/images/backgrounds/counter-two-bg-1.jpg' %});"></div>
+                            <div class="counter-two__icon">
+                                <span class="icon-costumer"></span>
+                            </div>
+                            <div class="counter-two__content">
+                                <div class="counter-two__count-box">
+                                    <p class="odometer" data-count="{{ metric.happy_customers }}">00</p>
+                                    <span>%</span>
+                                </div>
+                                <p class="counter-two__count-text">Кардарларыбыздын ишенимине ээ болдук!</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col-xl-3 col-lg-6 col-md-6">
+                        <div class="counter-two__single">
+                            <div class="counter-two__bg"
+                                style="background-image: url({% static 'assets/images/backgrounds/counter-two-bg-1.jpg' %});"></div>
+                            <div class="counter-two__icon">
+                                <span class="icon-review"></span>
+                            </div>
+                            <div class="counter-two__content">
+                                <div class="counter-two__count-box">
+                                    <p class="odometer" data-count="{{ metric.positive_reviews }}">00</p>
+                                    <span>m <sup>2</sup>+</span>
+                                </div>
+                                <p class="counter-two__count-text">Кызмат көрсөткөн чарчы метр</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col-xl-3 col-lg-6 col-md-6">
+                        <div class="counter-two__single">
+                            <div class="counter-two__bg"
+                                style="background-image: url({% static 'assets/images/backgrounds/counter-two-bg-1.jpg' %});"></div>
+                            <div class="counter-two__icon">
+                                <span class="icon-work-schedule"></span>
+                            </div>
+                            <div class="counter-two__content">
+                                <div class="counter-two__count-box">
+                                    <p class="odometer" data-count="{{ metric.cleaned_area_m2 }}">00</p>
+                                    <span>+</span>
+                                </div>
+                                <p class="counter-two__count-text">Көрсөтүлгөн кызматтар</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!-- Counter Two End -->
+
+        <!--Team One Start-->
+        <section class="team-one">
+            <div class="team-one__shape-1 float-bob-y">
+                <img src="{% static 'assets/images/shapes/team-one-shape-1.png' %}" alt="">
+            </div>
+            <div class="team-one__shape-2 float-bob-x">
+                <img src="{% static 'assets/images/shapes/team-one-shape-2.png' %}" alt="">
+            </div>
+            <div class="team-one__shape-3"></div>
+            <div class="team-one__shape-4"></div>
+            <div class="container">
+                <div class="section-title text-left sec-title-animation animation-style2">
+                    <div class="section-title__tagline-box">
+                        <div class="section-title__tagline-shape-box">
+                            <div class="section-title__tagline-shape"></div>
+                            <div class="section-title__tagline-shape-2"></div>
+                        </div>
+                        <span class="section-title__tagline">Командабыздын мүчөлөрү</span>
+                    </div>
+                    <h2 class="section-title__title title-animation">Ийгилигибиздин сыры — биздин  <br>
+                        адистер. <span>Сиз үчүн дайым </span><br><span>даяр команда.
+                        </span>
+                    </h2>
+                </div>
+                <div class="team-one__carousel owl-theme owl-carousel">
+                    <!--Team One Single Start-->
+                    {% for team in team %}
+                    <div class="item">
+                        <div class="team-one__single">
+                            <div class="team-one__img-box">
+                                <div class="team-one__img">
+                                    <img src="{{ team.image.url }}" alt="">
+                                </div>
+                                <div class="team-one__share-and-social">
+                                    <div class="team-one__share">
+                                        <span class="icon-star"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="team-one__content">
+                                <div class="team-one__title-box">
+                                    <h3 class="team-one__title"><a href="team-details.html">{{ team.name }}</a></h3>
+                                    <p class="team-one__sub-title">{{ team.position }}</p>
+                                </div>
+                                <div class="team-one__arrow">
+                                    <a href="team-details.html"><span class="icon-diagonal-arrow"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <!--Team One End-->
+
+        <!--Testimonial Two Start -->
+        <section class="testimonial-two">
+            <div class="testimonial-two__shape-bg-1"
+                style="background-image: url({% static 'assets/images/shapes/testimonial-two-shape-bg-1.png' %});"></div>
+            <div class="testimonial-two__shape-1">
+                <img src="{% static 'assets/images/shapes/testimonial-two-shape-1.png' %}" alt="">
+            </div>
+            <div class="testimonial-two__shape-2">
+                <img src="{% static 'assets/images/shapes/testimonial-two-shape-2.png' %}" alt="">
+            </div>
+            <div class="container">
+                <div class="section-title text-left sec-title-animation animation-style2">
+                    <div class="section-title__tagline-box">
+                        <div class="section-title__tagline-shape-box">
+                            <div class="section-title__tagline-shape"></div>
+                            <div class="section-title__tagline-shape-2"></div>
+                        </div>
+                        <span class="section-title__tagline">Кардарлардын пикирлери</span>
+                    </div>
+                    <div class="section-title__content">
+                        <h2 class="section-title__title title-animation">Ыраазы болгон <span>кардарларыбыздын </span> <br>
+                            <span>пикирлерин окуңуз</span></h2>
+                        <a href="{% url 'index' %}" class="thm-btn" style="text-align: center; padding: 12px 24px;">Кайрылуу</a>
+                    </div>
+                </div>
+                <div class="testimonial-two__carousel owl-carousel owl-theme">
+                    <!--Testimonial One Single Start -->
+                    <!--Testimonial One Single Start -->
+                    <div class="item">
+                        <div class="testimonial-two__single">
+                            <div class="testimonial-two__top">
+                                <div class="testimonial-two__top-title">
+                                    <h4>Awesome Services</h4>
+                                </div>
+                                <div class="testimonial-two__top-quote">
+                                    <span class="icon-left"></span>
+                                </div>
+                            </div>
+                            <p class="testimonial-two__text">The cleaning team has been an absolute lifesaver! They go
+                                above and beyond to make sure my home looks immaculate. Every surface sparkles, and they
+                                even take care of the small details that most services overlook. I can’t recommend them
+                                enough!</p>
+                            <div class="testimonial-two__bottom">
+                                <div class="testimonial-two__star">
+                                    <span class="icon-star"></span>
+                                    <span class="icon-star"></span>
+                                    <span class="icon-star"></span>
+                                    <span class="icon-favorite"></span>
+                                    <span class="icon-favorite"></span>
+                                </div>
+                                <div class="testimonial-two__client-info">
+                                    <div class="testimonial-two__client-img-box">
+                                        <div class="testimonial-two__client-img">
+                                            <img src="{% static 'assets/images/testimonial/testimonial-client-1-1.jpg' %}" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="testimonial-two__client-content">
+                                        <h3 class="testimonial-two__client-name"><a href="testimonials.html">– David
+                                                R.</a></h3>
+                                        <p class="testimonial-two__client-sub-title">Founder & CEO</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Testimonial One Single End -->
+                    <!--Testimonial One Single Start -->
+                    <div class="item">
+                        <div class="testimonial-two__single">
+                            <div class="testimonial-two__top">
+                                <div class="testimonial-two__top-title">
+                                    <h4>Excellent Convesation</h4>
+                                </div>
+                                <div class="testimonial-two__top-quote">
+                                    <span class="icon-left"></span>
+                                </div>
+                            </div>
+                            <p class="testimonial-two__text">I’ve been using their services for over a year, and they’ve
+                                never let me down. The cleaners are punctual, friendly, and incredibly professional.
+                                It’s such a relief knowing I can rely on them to take care of my home while I focus on
+                                my busy schedule.</p>
+                            <div class="testimonial-two__bottom">
+                                <div class="testimonial-two__star">
+                                    <span class="icon-star"></span>
+                                    <span class="icon-star"></span>
+                                    <span class="icon-star"></span>
+                                    <span class="icon-favorite"></span>
+                                    <span class="icon-favorite"></span>
+                                </div>
+                                <div class="testimonial-two__client-info">
+                                    <div class="testimonial-two__client-img-box">
+                                        <div class="testimonial-two__client-img">
+                                            <img src="{% static 'assets/images/testimonial/testimonial-client-1-2.jpg' %}" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="testimonial-two__client-content">
+                                        <h3 class="testimonial-two__client-name"><a href="testimonials.html"> – James
+                                                T.</a></h3>
+                                        <p class="testimonial-two__client-sub-title">Ui/Ux Designer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Testimonial One Single End -->
+                    <!--Testimonial One Single Start -->
+                    <div class="item">
+                        <div class="testimonial-two__single">
+                            <div class="testimonial-two__top">
+                                <div class="testimonial-two__top-title">
+                                    <h4>Awesome Services</h4>
+                                </div>
+                                <div class="testimonial-two__top-quote">
+                                    <span class="icon-left"></span>
+                                </div>
+                            </div>
+                            <p class="testimonial-two__text">I needed a deep cleaning before hosting a big family event,
+                                and they delivered beyond my expectations! The team asked about my specific needs and
+                                ensured every corner of my home was spotless. They truly care about their customers and
+                                it shows in their work!</p>
+                            <div class="testimonial-two__bottom">
+                                <div class="testimonial-two__star">
+                                    <span class="icon-star"></span>
+                                    <span class="icon-star"></span>
+                                    <span class="icon-star"></span>
+                                    <span class="icon-favorite"></span>
+                                    <span class="icon-favorite"></span>
+                                </div>
+                                <div class="testimonial-two__client-info">
+                                    <div class="testimonial-two__client-img-box">
+                                        <div class="testimonial-two__client-img">
+                                            <img src="{% static 'assets/images/testimonial/testimonial-client-1-3.jpg' %}" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="testimonial-two__client-content">
+                                        <h3 class="testimonial-two__client-name"><a href="testimonials.html">- Sophia
+                                                L.</a></h3>
+                                        <p class="testimonial-two__client-sub-title">Web Developer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Testimonial One Single End -->
+                    <!--Testimonial One Single Start -->
+                    <div class="item">
+                        <div class="testimonial-two__single">
+                            <div class="testimonial-two__top">
+                                <div class="testimonial-two__top-title">
+                                    <h4>Awesome Services</h4>
+                                </div>
+                                <div class="testimonial-two__top-quote">
+                                    <span class="icon-left"></span>
+                                </div>
+                            </div>
+                            <p class="testimonial-two__text">I needed a deep cleaning before hosting a big family event,
+                                and they delivered beyond my expectations! The team asked about my specific needs and
+                                ensured every corner of my home was spotless. They truly care about their customers and
+                                it shows in their work!</p>
+                            <div class="testimonial-two__bottom">
+                                <div class="testimonial-two__star">
+                                    <span class="icon-star"></span>
+                                    <span class="icon-star"></span>
+                                    <span class="icon-star"></span>
+                                    <span class="icon-favorite"></span>
+                                    <span class="icon-favorite"></span>
+                                </div>
+                                <div class="testimonial-two__client-info">
+                                    <div class="testimonial-two__client-img-box">
+                                        <div class="testimonial-two__client-img">
+                                            <img src="{% static 'assets/images/testimonial/testimonial-client-1-3.jpg' %}" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="testimonial-two__client-content">
+                                        <h3 class="testimonial-two__client-name"><a href="testimonials.html">- Sophia
+                                                L.</a></h3>
+                                        <p class="testimonial-two__client-sub-title">Web Developer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Testimonial Two Single End -->
+                </div>
+            </div>
+        </section>
+        <!--Testimonial One End -->
+
+    </div><!-- /.page-wrapper -->
+
+    {% include 'include/base/footer.html' %}
+
+{% endblock %}  
