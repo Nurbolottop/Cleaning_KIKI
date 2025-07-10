@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 version: '3.8'
 
 services:
@@ -58,4 +59,66 @@ networks:
     driver: bridge
 
 volumes:
+=======
+version: '3.8'
+
+services:
+  db_kiki:
+    image: postgres:14
+    container_name: postgres_db_kiki
+    env_file:
+      - ../.env
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data_kiki:/var/lib/postgresql/data
+    networks:
+      - portfolio_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis_kiki:
+    image: redis:6
+    container_name: redis_kiki
+    ports:
+      - "6389:6379"
+    networks:
+      - portfolio_network
+
+  web_kiki:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: django_web_kiki
+    # Используйте daphne, если нужен ASGI сервер
+    # command: sh -c "/entrypoint.sh && daphne -b 0.0.0.0 -p 8300 core.asgi:application"
+    command: sh -c "/entrypoint.sh && python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8082"
+
+    volumes:
+      - ../app:/app
+      - ../app/static:/app/static
+      - ../app/media:/app/media  # Монтируем напрямую из хост-системы
+    env_file:
+      - ../.env
+    environment:
+      - DJANGO_SETTINGS_MODULE=core.settings
+    depends_on:
+      db_kiki:
+        condition: service_healthy
+      redis_kiki:
+        condition: service_started
+    ports:
+      - "127.0.0.1:8084:8082"
+    networks:
+      - portfolio_network
+
+networks:
+  portfolio_network:
+    driver: bridge
+
+volumes:
+>>>>>>> 3da9a24fed32cd4ff816f1cc31908e8e39f2cc4a
   postgres_data_kiki:

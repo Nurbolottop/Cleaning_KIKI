@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from apps.cms import models as cms_models
+<<<<<<< HEAD
 from apps.extra import models as extra_models
 # Create your views here.
 
@@ -38,3 +39,9 @@ def services_details(request,id):
     settings = cms_models.Settings.objects.first()
     services = extra_models.OurServices.objects.get(id=id)
     return render(request, 'pages/details/service_detail.html', locals())
+=======
+# Create your views here.
+def index(request):
+    settings = cms_models.Settings.objects.first()
+    return render(request, 'pages/base/index.html', locals())
+>>>>>>> 3da9a24fed32cd4ff816f1cc31908e8e39f2cc4a

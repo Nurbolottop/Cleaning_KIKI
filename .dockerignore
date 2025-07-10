@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 venv
 __pycache__
 *.pyc
@@ -11,3 +12,18 @@ docker-compose*.yml
 node_modules
 .git
 .gitignore
+=======
+venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+.env
+Dockerfile
+docker-compose*.yml
+node_modules
+.git
+.gitignore
+>>>>>>> 3da9a24fed32cd4ff816f1cc31908e8e39f2cc4a

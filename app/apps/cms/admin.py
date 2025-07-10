@@ -12,7 +12,11 @@ class SettingsAdmin(admin.ModelAdmin):
     
     fieldsets = (
         ('Основная информация', {
+<<<<<<< HEAD
             'fields': ('title', 'description', 'logo','icon')
+=======
+            'fields': ('title', 'description', 'logo')
+>>>>>>> 3da9a24fed32cd4ff816f1cc31908e8e39f2cc4a
         }),
         ('Контактная информация', {
             'fields': ('email', 'phone', 'work_schedule','locate')
@@ -22,6 +26,7 @@ class SettingsAdmin(admin.ModelAdmin):
             'classes': ('collapse',)
         }),
     )
+<<<<<<< HEAD
 
 @admin.register(cms_models.Slide)
 class SlideAdmin(admin.ModelAdmin):
@@ -60,3 +65,13 @@ class SlideAdmin(admin.ModelAdmin):
         if cms_models.Slide.objects.count() >= 3:
             return False
         return True
+=======
+    
+    def has_add_permission(self, request):
+        # Запрещаем создание новых объектов Settings если уже есть хотя бы один
+        return not cms_models.Settings.objects.exists()
+    
+    def has_delete_permission(self, request, obj=None):
+        # Запрещаем удаление объекта Settings
+        return False
+>>>>>>> 3da9a24fed32cd4ff816f1cc31908e8e39f2cc4a

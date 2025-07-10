@@ -1,4 +1,5 @@
 from django.contrib import admin
+<<<<<<< HEAD
 from django.utils.html import format_html
 from apps.extra import models as extra_models
 
@@ -151,3 +152,7 @@ class MetricAdmin(admin.ModelAdmin):
     list_display = ('projects_per_month', 'happy_customers', 'positive_reviews', 'cleaned_area_m2')
     list_display_links = ('projects_per_month',)
     list_editable = ('happy_customers', 'positive_reviews', 'cleaned_area_m2')
+=======
+
+# Register your models here.
+>>>>>>> 3da9a24fed32cd4ff816f1cc31908e8e39f2cc4a

@@ -114,4 +114,8 @@
 
 * Телефон: +996 XXX XX XX XX
 * Email: [cleaning.kiki@example.com](mailto:cleaning.kiki@example.com)
+<<<<<<< HEAD
 * Адрес: г. Ош, Кыргызстан
+=======
+* Адрес: г. Ош, Кыргызстан
+>>>>>>> 3da9a24fed32cd4ff816f1cc31908e8e39f2cc4a
