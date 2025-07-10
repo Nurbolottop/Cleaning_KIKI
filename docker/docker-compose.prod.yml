@@ -35,7 +35,7 @@ services:
       - ./app/static:/app/static
       - ./app/media:/app/media
     env_file:
-      - .env
+      - ../.env
     environment:
       - DJANGO_SETTINGS_MODULE=core.settings
     depends_on:
