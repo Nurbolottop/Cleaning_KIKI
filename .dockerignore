@@ -10,8 +10,4 @@ Dockerfile
 docker-compose*.yml
 node_modules
 .git
-<<<<<<< HEAD
 .gitignore
-=======
-.gitignore
->>>>>>> 7ed52b75dea8e2205bbf736f51e6901b311a8ada

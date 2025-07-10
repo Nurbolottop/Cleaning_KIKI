@@ -106,25 +106,29 @@ class About(models.Model):
         force_format="WEBP", 
         quality=100, 
         upload_to='about/', 
-        verbose_name="Изображение 1"
+        verbose_name="Изображение 1",
+        null=True, blank=True
     )
     image_2 = ResizedImageField(
         force_format="WEBP", 
         quality=100, 
         upload_to='about/', 
-        verbose_name="Изображение 2"
+        verbose_name="Изображение 2",
+        null=True, blank=True
     )
     image_3 = ResizedImageField(
         force_format="WEBP", 
         quality=100, 
         upload_to='about/', 
-        verbose_name="Изображение 3"
+        verbose_name="Изображение 3",
+        null=True, blank=True
     )
     image_4 = ResizedImageField(
         force_format="WEBP", 
         quality=100, 
         upload_to='about/', 
-        verbose_name="Изображение 4"
+        verbose_name="Изображение 4",
+        null=True, blank=True
     )
     title_1 = models.CharField(
         max_length=100,
@@ -161,7 +165,7 @@ class About(models.Model):
         verbose_name = '1) О нас'
         verbose_name_plural = '1) О нас'
     def __str__(self):
-        return self.title_1
+        return self.title
 
 class Mission(models.Model):
     about = models.ForeignKey(About, on_delete=models.CASCADE, related_name='missions')
@@ -223,13 +227,15 @@ class OurServices(models.Model):
         force_format="WEBP", 
         quality=100, 
         upload_to='services/', 
-        verbose_name="Изображение Услуги"
+        verbose_name="Изображение Услуги",
+        null=True, blank=True
     )
     banner_image = ResizedImageField(
         force_format="WEBP", 
         quality=100, 
         upload_to='services/', 
-        verbose_name="Баннер Услуги"
+        verbose_name="Баннер Услуги",
+        null=True, blank=True
     )
     class Meta:
         verbose_name = '2) Услуги'
@@ -314,7 +320,8 @@ class Team(models.Model):
         force_format="WEBP", 
         quality=100, 
         upload_to='team/', 
-        verbose_name="Изображение"
+        verbose_name="Изображение",
+        null=True, blank=True
     )   
     class Meta:
         verbose_name = '5) Команда'
@@ -344,13 +351,15 @@ class BeforeAfter(models.Model):
         force_format="WEBP", 
         quality=100, 
         upload_to='before_after/', 
-        verbose_name="Изображение до"
+        verbose_name="Изображение до",
+        null=True, blank=True
     )
     after_image = ResizedImageField(
         force_format="WEBP", 
         quality=100, 
         upload_to='before_after/', 
-        verbose_name="Изображение после"
+        verbose_name="Изображение после",
+        null=True, blank=True
     )
     description = models.TextField(
         verbose_name='Описание'

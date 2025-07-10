@@ -14,13 +14,15 @@ class Settings(models.Model):
         force_format="WEBP", 
         quality=100, 
         upload_to='logo/', 
-        verbose_name="Логотип"
+        verbose_name="Логотип",
+        null=True, blank=True
     )
     icon = ResizedImageField(
         force_format="WEBP", 
         quality=100, 
         upload_to='icon/', 
-        verbose_name="Иконка"
+        verbose_name="Иконка",
+        null=True, blank=True
     )
     locate = models.CharField(
         max_length=100,
@@ -71,13 +73,15 @@ class Slide(models.Model):
         force_format="WEBP", 
         quality=100, 
         upload_to='slides/', 
-        verbose_name="Изображение"
+        verbose_name="Изображение",
+        null=True, blank=True
     )
     icon = ResizedImageField(
         force_format="WEBP", 
         quality=100, 
         upload_to='slides/', 
-        verbose_name="Иконка"
+        verbose_name="Иконка",
+        null=True, blank=True
     )
     class Meta:
         verbose_name = '2) Слайды'
