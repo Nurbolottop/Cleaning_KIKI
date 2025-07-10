@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:14
+    container_name: postgres_kiki_prod
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - kiki_network
+
+  redis:
+    image: redis:6
+    container_name: redis_kiki_prod
+    ports:
+      - "6389:6379"
+    networks:
+      - kiki_network
+
+  web:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: django_web_kiki_prod
+    command: sh -c "/entrypoint.sh && gunicorn core.wsgi:application --bind 0.0.0.0:8000"
+    volumes:
+      - ./app:/app
+      - ./app/static:/app/static
+      - ./app/media:/app/media
+    env_file:
+      - .env
+    environment:
+      - DJANGO_SETTINGS_MODULE=core.settings
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    ports:
+      - "8000:8000"
+    networks:
+      - kiki_network
+
+networks:
+  kiki_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
