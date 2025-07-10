@@ -14,7 +14,6 @@ class Settings(models.Model):
         force_format="WEBP", 
         quality=100, 
         upload_to='logo/', 
-<<<<<<< HEAD
         verbose_name="Логотип",
         null=True, blank=True
     )
@@ -24,9 +23,6 @@ class Settings(models.Model):
         upload_to='icon/', 
         verbose_name="Иконка",
         null=True, blank=True
-=======
-        verbose_name="Логотип"
->>>>>>> 3da9a24fed32cd4ff816f1cc31908e8e39f2cc4a
     )
     locate = models.CharField(
         max_length=100,
@@ -60,7 +56,6 @@ class Settings(models.Model):
         verbose_name_plural = '1) Настройки'
     def __str__(self):
         return self.title
-<<<<<<< HEAD
 
 class Slide(models.Model):
     title = models.CharField(
@@ -96,5 +91,3 @@ class Slide(models.Model):
         return self.title
 
     
-=======
->>>>>>> 3da9a24fed32cd4ff816f1cc31908e8e39f2cc4a

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import sys
 from PIL import Image
 from io import BytesIO
@@ -377,8 +376,3 @@ class BeforeAfter(models.Model):
     
     def __str__(self):
         return self.title
-=======
-from django.db import models
-
-# Create your models here.
->>>>>>> 3da9a24fed32cd4ff816f1cc31908e8e39f2cc4a
