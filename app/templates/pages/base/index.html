@@ -446,74 +446,13 @@
         <!--Before After Two End -->
 
         <!--Testimonial Two Start -->
-        <section class="testimonial-two">
-            <div class="testimonial-two__shape-bg-1"
-                style="background-image: url({% static 'assets/images/shapes/testimonial-two-shape-bg-1.png' %});"></div>
-            <div class="testimonial-two__shape-1">
-                <img src="{% static 'assets/images/shapes/testimonial-two-shape-1.png' %}" alt="">
-            </div>
-            <div class="testimonial-two__shape-2">
-                <img src="{% static 'assets/images/shapes/testimonial-two-shape-2.png' %}" alt="">
-            </div>
-            <div class="container">
-                <div class="section-title text-left sec-title-animation animation-style2">
-                    <div class="section-title__tagline-box">
-                        <div class="section-title__tagline-shape-box">
-                            <div class="section-title__tagline-shape"></div>
-                            <div class="section-title__tagline-shape-2"></div>
-                        </div>
-                        <span class="section-title__tagline">Testimonial</span>
-                    </div>
-                    <h2 class="section-title__title title-animation">Hear from our <span>satisfied</span> <br>
-                        <span>clients who praise</span></h2>
-                </div>
-                <div class="testimonial-two__carousel owl-carousel owl-theme">
-                    <!--Testimonial One Single Start -->
-                    <div class="item">
-                        <div class="testimonial-two__single">
-                            <div class="testimonial-two__top">
-                                <div class="testimonial-two__top-title">
-                                    <h4>Awesome Services</h4>
-                                </div>
-                                <div class="testimonial-two__top-quote">
-                                    <span class="icon-left"></span>
-                                </div>
-                            </div>
-                            <p class="testimonial-two__text">The cleaning team has been an absolute lifesaver! They go
-                                above and beyond to make sure my home looks immaculate. Every surface sparkles, and they
-                                even take care of the small details that most services overlook. I can’t recommend them
-                                enough!</p>
-                            <div class="testimonial-two__bottom">
-                                <div class="testimonial-two__star">
-                                    <span class="icon-star"></span>
-                                    <span class="icon-star"></span>
-                                    <span class="icon-star"></span>
-                                    <span class="icon-favorite"></span>
-                                    <span class="icon-favorite"></span>
-                                </div>
-                                <div class="testimonial-two__client-info">
-                                    <div class="testimonial-two__client-img-box">
-                                        <div class="testimonial-two__client-img">
-                                            <img src="{% static 'assets/images/testimonial/testimonial-client-1-1.jpg' %}" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-two__client-content">
-                                        <h3 class="testimonial-two__client-name"><a href="testimonials.html">– David
-                                                R.</a></h3>
-                                        <p class="testimonial-two__client-sub-title">Founder & CEO</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        {% include 'include/secondary/testimonial.html' %}
+
         <!--Testimonial One End -->
 
         <!--Team Two Start -->
         <section class="team-two">
-            <div class="team-two__shape-1">
+            <div class="team-two__shape-1"> 
                 <img src="{% static 'assets/images/shapes/team-two-shape-1.png' %}" alt="">
             </div>
             <div class="team-two__shape-2 img-bounce">

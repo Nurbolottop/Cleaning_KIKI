@@ -165,7 +165,7 @@ class About(models.Model):
         verbose_name = '1) О нас'
         verbose_name_plural = '1) О нас'
     def __str__(self):
-        return self.title
+        return self.title_1
 
 class Mission(models.Model):
     about = models.ForeignKey(About, on_delete=models.CASCADE, related_name='missions')

@@ -20,6 +20,16 @@ ROOT_URLCONF = 'core.urls'
 
 # from core.project_settings.templates import *
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://cleaningkiki.kg',
+    'http://localhost:8000',
+]
+
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+
 
 TEMPLATES = [
     {
