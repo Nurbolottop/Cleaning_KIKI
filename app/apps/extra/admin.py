@@ -89,9 +89,6 @@ class ProccessAdmin(admin.ModelAdmin):
         return '-'
     preview_icon.short_description = 'Icon Preview'
     
-    def has_add_permission(self, request):
-        return False
-    
     def get_form(self, request, obj=None, **kwargs):
         form = super().get_form(request, obj, **kwargs)
         form.base_fields['icon'].choices = [(k, v) for k, v in form.base_fields['icon'].choices if k != '']
