@@ -398,14 +398,16 @@
                         <div class="before-after-two__left">
                             <div class="before-after-two__img-box">
                                 <div class="before-after">
-                                    <div class="before-after-twentytwenty" id="wrinkle-before-after">
-                                        <img src="{% static 'assets/images/resources/before-after-two-img-1.jpg' %}" alt="">
-                                        <img src="{% static 'assets/images/resources/before-after-two-img-2.jpg' %}" alt="">
-                                    </div>
+                                    {% if before_after.0 %}
+                                        <div class="before-after-twentytwenty" id="wrinkle-before-after-1">
+                                            <img src="{{ before_after.0.before_image.url }}" alt="{{ before_after.0.title }} до">
+                                            <img src="{{ before_after.0.after_image.url }}" alt="{{ before_after.0.title }} после">
+                                        </div>
+                                    {% endif %}
                                 </div>
-                                <div class="before-after-two__tag"><span>Before</span></div>
+                                <div class="before-after-two__tag"><span>Тазалоого чейин</span></div>
                                 <div class="before-after-two__tag before-after-two__tag-2">
-                                    <span>AFTER</span></div>
+                                    <span>Тазалоодон кийин</span></div>
                             </div>
                           
                         </div>
@@ -419,22 +421,23 @@
                                         <div class="section-title__tagline-shape"></div>
                                         <div class="section-title__tagline-shape-2"></div>
                                     </div>
-                                    <span class="section-title__tagline">Before After</span>
+                                    <span class="section-title__tagline">Тазалоого чейин / Тазалоодон кийин</span>
                                 </div>
-                                <h2 class="section-title__title title-animation">Benefited After Clearing <br><span>Your
-                                        Organization</span>
+                                <h2 class="section-title__title title-animation">Тазалык — бул жөн гана кызмат эмес, <br><span>бул жашоого болгон мамиле.</span>
                                 </h2>
                             </div>
                             <div class="before-after-two__img-box-2">
                                 <div class="before-after">
-                                    <div class="before-after-twentytwenty" id="wrinkle-before-after-1">
-                                        <img src="{% static 'assets/images/resources/before-after-two-img-3.jpg' %}" alt="">
-                                        <img src="{% static 'assets/images/resources/before-after-two-img-4.jpg' %}" alt="">
-                                    </div>
+                                    {% if before_after.1 %}
+                                        <div class="before-after-twentytwenty" id="wrinkle-before-after-2">
+                                            <img src="{{ before_after.1.before_image.url }}" alt="{{ before_after.1.title }} до">
+                                            <img src="{{ before_after.1.after_image.url }}" alt="{{ before_after.1.title }} после">
+                                        </div>
+                                    {% endif %}
                                 </div>
-                                <div class="before-after-two__tag"><span>Before</span></div>
+                                <div class="before-after-two__tag"><span>Тазалоого чейин</span></div>
                                 <div class="before-after-two__tag before-after-two__tag-2">
-                                    <span>AFTER</span></div>
+                                    <span>Тазалоодон кийин </span></div>
                             </div>
                         </div>
                         

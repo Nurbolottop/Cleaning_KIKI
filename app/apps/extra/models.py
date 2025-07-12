@@ -316,6 +316,9 @@ class Team(models.Model):
         max_length=100,
         verbose_name='Должность'
     )
+    experience = models.IntegerField(
+        verbose_name='Опыт'
+    )
     image = ResizedImageField(
         force_format="WEBP", 
         quality=100, 
@@ -323,6 +326,10 @@ class Team(models.Model):
         verbose_name="Изображение",
         null=True, blank=True
     )   
+    status = models.BooleanField(
+        default=True,
+        verbose_name='Статус'
+    )
     class Meta:
         verbose_name = '5) Команда'
         verbose_name_plural = '5) Команда'

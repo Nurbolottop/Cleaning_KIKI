@@ -101,14 +101,27 @@ class SeriviceListAdmin(admin.ModelAdmin):
 
 @admin.register(extra_models.Team)
 class TeamAdmin(admin.ModelAdmin):
-    list_display = ('name', 'position', 'preview_image')
+    list_display = ('name', 'position', 'experience', 'preview_image', 'status')
     list_display_links = ('name',)
+    list_editable = ('status',)
+    list_filter = ('position', 'status')
+    search_fields = ('name', 'position')
+    ordering = ('name',)
     
     def preview_image(self, obj):
         if obj.image:
-            return format_html('<img src="{}" width="50" height="50" />', obj.image.url)
+            return format_html('<img src="{}" width="100" height="100" style="object-fit: cover; border-radius: 50%;" />', obj.image.url)
         return '-'
     preview_image.short_description = 'Изображение'
+    
+    fieldsets = (
+        ('Основная информация', {
+            'fields': ('name', 'position', 'experience', 'status')
+        }),
+        ('Изображение', {
+            'fields': ('image',)
+        }),
+    )
 
 @admin.register(extra_models.BeforeAfter)
 class BeforeAfterAdmin(admin.ModelAdmin):

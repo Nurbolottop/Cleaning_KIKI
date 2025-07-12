@@ -10,7 +10,7 @@ def index(request):
     services = extra_models.OurServices.objects.all()
     process = extra_models.Proccess.objects.all()
     service_list = extra_models.SeriviceList.objects.all()
-    before_after = extra_models.BeforeAfter.objects.all()
+    before_after = extra_models.BeforeAfter.objects.all()[:2]
     team = extra_models.Team.objects.all()
     return render(request, 'pages/base/index.html', locals())
 
