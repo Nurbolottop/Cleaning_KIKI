@@ -22,13 +22,13 @@ ROOT_URLCONF = 'core.urls'
 
 CSRF_TRUSTED_ORIGINS = [
     'https://cleaningkiki.kg',
-    'http://localhost:8000',
 ]
-
 
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
+# Если используешь админку на нестандартном поддомене:
+# CSRF_COOKIE_DOMAIN = ".cleaningkiki.kg"
 
 
 TEMPLATES = [
