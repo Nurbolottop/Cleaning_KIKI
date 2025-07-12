@@ -11,7 +11,7 @@ def index(request):
     process = extra_models.Proccess.objects.all()
     service_list = extra_models.SeriviceList.objects.all()
     before_after = extra_models.BeforeAfter.objects.all()[:2]
-    team = extra_models.Team.objects.all()
+    team_members = extra_models.Team.objects.filter(status=True)
     return render(request, 'pages/base/index.html', locals())
 
 def about(request):

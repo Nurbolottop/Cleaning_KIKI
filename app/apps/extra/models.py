@@ -327,7 +327,7 @@ class Team(models.Model):
         null=True, blank=True
     )   
     status = models.BooleanField(
-        default=True,
+        default=False,
         verbose_name='Статус'
     )
     class Meta:
