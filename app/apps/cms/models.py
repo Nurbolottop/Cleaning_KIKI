@@ -1,5 +1,6 @@
 from django.db import models
 from django_resized.forms import ResizedImageField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 class Settings(models.Model):
@@ -84,10 +85,34 @@ class Slide(models.Model):
         null=True, blank=True
     )
     class Meta:
-        verbose_name = '2) Слайды'
-        verbose_name_plural = '2) Слайды'
+        verbose_name = '3) Слайды'
+        verbose_name_plural = '3) Слайды'
 
     def __str__(self):
         return self.title
 
     
+class Blog(models.Model):
+    title = models.CharField(
+        max_length=100,
+        verbose_name='Название статьи'
+    )
+    description = RichTextUploadingField(
+        verbose_name='Описание статьи'
+    )
+    image = ResizedImageField(
+        force_format="WEBP", 
+        quality=100, 
+        upload_to='blog/', 
+        verbose_name="Изображение",
+        null=True, blank=True
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name='Дата создания'
+    )
+    class Meta:
+        verbose_name = '2) Статьи'
+        verbose_name_plural = '2) Статьи'
+    def __str__(self):
+        return self.title

@@ -5,5 +5,5 @@ from apps.contacts import views as contacts_views
 from apps.extra import views as extra_views
 
 urlpatterns = [
-
+    path('testimonial-form/', contacts_views.testimonial_form, name='testimonial_form'),
 ]

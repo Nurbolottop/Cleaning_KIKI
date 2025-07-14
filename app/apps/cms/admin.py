@@ -60,3 +60,34 @@ class SlideAdmin(admin.ModelAdmin):
         if cms_models.Slide.objects.count() >= 3:
             return False
         return True
+
+# Blog Admin
+@admin.register(cms_models.Blog)
+class BlogAdmin(admin.ModelAdmin):
+    list_display = ('title', 'created_at', 'image_preview', 'description_preview')
+    list_filter = ('created_at',)
+    search_fields = ('title', 'description')
+    ordering = ('-created_at',)
+    
+    fieldsets = (
+        ('Основная информация', {
+            'fields': ('title', 'description', 'image')
+        }),
+        ('Дополнительная информация', {
+            'fields': ('created_at',)
+        }),
+    )
+    
+    readonly_fields = ('created_at',)
+    
+    def image_preview(self, obj):
+        if obj.image:
+            return format_html('<img src="{}" width="100" height="100" />', obj.image.url)
+        return 'No Image'
+    image_preview.short_description = 'Превью изображения'
+    
+    def description_preview(self, obj):
+        if obj.description:
+            return format_html(obj.description[:150] + '...')
+        return 'No Description'
+    description_preview.short_description = 'Превью описания'
