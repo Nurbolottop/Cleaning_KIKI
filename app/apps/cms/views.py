@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from apps.cms import models as cms_models
 from apps.extra import models as extra_models
+from apps.contacts import models as contacts_models
 # Create your views here.
 
 def index(request):
@@ -11,6 +12,7 @@ def index(request):
     process = extra_models.Proccess.objects.all()
     service_list = extra_models.SeriviceList.objects.all()
     before_after = extra_models.BeforeAfter.objects.all()[:2]
+    testimonials = contacts_models.Testimonial.objects.all()
     
     # Get all active team members
     all_members = list(extra_models.Team.objects.filter(status=True))

@@ -68,7 +68,7 @@ class ServicePointInline(admin.StackedInline):
 
 @admin.register(extra_models.OurServices)
 class OurServicesAdmin(admin.ModelAdmin):
-    list_display = ('title', 'subtitle', 'preview_image', 'icon', 'order')
+    list_display = ('title', 'subtitle', 'category', 'price', 'preview_image', 'icon', 'order')
     list_display_links = ('title',)
     inlines = [ServicePointInline]
     
@@ -77,6 +77,15 @@ class OurServicesAdmin(admin.ModelAdmin):
             return format_html('<img src="{}" width="50" height="50" />', obj.image.url)
         return '-'
     preview_image.short_description = 'Изображение'
+
+    fieldsets = (
+        ('Основная информация', {
+            'fields': ('title', 'subtitle', 'category', 'description', 'price', 'order')
+        }),
+        ('Иконка и изображения', {
+            'fields': ('icon', 'image', 'banner_image')
+        }),
+    )
 
 @admin.register(extra_models.Proccess)
 class ProccessAdmin(admin.ModelAdmin):

@@ -185,11 +185,21 @@ class OurServices(models.Model):
         max_length=100,
         verbose_name='Название Услуги'
     )
-    subtitle = models.TextField(
-        verbose_name='Подзаголовок Услуги'
+    subtitle = models.CharField(
+        verbose_name='Подзаголовок Услуги',
+        max_length=100,
+    )
+    category = models.CharField(
+        verbose_name='Категория Услуги',
+        max_length=100,
     )
     description = RichTextUploadingField(
         verbose_name='Описание Услуги'
+    )
+    price = models.CharField(
+        max_length=50,
+        verbose_name='Цена',
+        help_text='Например: 5000'
     )
     order = models.PositiveIntegerField(
         default=0,

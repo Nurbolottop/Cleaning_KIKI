@@ -50,6 +50,7 @@
                                         <button type="submit" class="thm-btn form-inner__btn">Submit Now</button>
                                     </div>
                                 </form>
+                                
                                 <div class="result"></div>
                             </div>
                         </div>
@@ -62,7 +63,21 @@
 
 
 
-    <div class="page-wrapper">
+    {% if messages %}
+  {% for message in messages %}
+    {% if 'reviewed' in message.tags %}
+      <div id="reviewModal">
+  <div class="modal-box">
+    <div class="checkmark"></div>
+    <h3 style="margin-bottom:20px;">{{ message }}</h3>
+    <button id="closeReviewModal" class="thm-btn">OK</button>
+  </div>
+</div>
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<div class="page-wrapper">
         {% include 'include/base/header.html' %}
 
         <div class="stricky-header stricked-menu main-menu main-menu-two">
@@ -125,6 +140,27 @@
         </section>
         <!-- Main Slider End -->
 
+        <style>
+          .scroll-row{flex-wrap:nowrap;overflow-x:auto;scroll-behavior:smooth;gap:24px;}
+          .scroll-row::-webkit-scrollbar{height:8px;}
+          .scroll-row::-webkit-scrollbar-track{background:#e0e0e0;border-radius:4px;}
+          .scroll-row::-webkit-scrollbar-thumb{background:#4caf50;border-radius:4px;}
+          /* animation indicator (optional)*/
+        </style>
+        <script>
+          document.addEventListener('DOMContentLoaded',()=>{
+            const row=document.querySelector('.pricing-two__tab-content-box .row');
+            if(row){row.classList.add('scroll-row');
+              let dir=1;
+              setInterval(()=>{
+                row.scrollBy({left:dir*2,behavior:'smooth'});
+                if(row.scrollLeft+row.clientWidth>=row.scrollWidth-2) dir=-1;
+                if(row.scrollLeft<=2) dir=1;
+              },20);
+            }
+          });
+        </script>
+
         {% if about %}
         <!--About Two Start -->
         {% include 'include/secondary/about.html' %}
@@ -165,10 +201,9 @@
                             <div class="section-title__tagline-shape"></div>
                             <div class="section-title__tagline-shape-2"></div>
                         </div>
-                        <span class="section-title__tagline">Plans & Pricing</span>
+                        <span class="section-title__tagline">Кызматтардын түрлөрү</span>
                     </div>
-                    <h2 class="section-title__title title-animation">Explore Our Affordable and Flexible <br> Pricing
-                        <span>Options Tailored for You </span></h2>
+                    <h2 class="section-title__title title-animation">Жаккан ишиңизди кылып жүрүңүз, <br> <span> ал эми тазалоону кесипкөйлөргө тапшырыңыз</span></h2>
                 </div>
                 <div class="pricing-two__inner">
                     <div class="pricing-two__main-tab-box tabs-box">
@@ -179,411 +214,51 @@
                             <div class="pricing-two__discount-shape-1">
                                 <img src="{% static 'assets/images/shapes/pricing-two-discount--shape-1.png' %}" alt="">
                             </div>
-                            <ul class="tab-buttons list-unstyled">
-                                <li data-tab="#monthly" class="tab-btn active-btn"><span>Monthly</span></li>
-                                <li data-tab="#yearly" class="tab-btn"><span>Yearly</span></li>
-                            </ul>
+                          
                         </div>
                         <div class="tabs-content">
                             <div class="tab active-tab" id="monthly">
                                 <div class="pricing-two__tab-content-box">
                                     <div class="row">
                                         <!--Pricing Two Single Start -->
+                                        {% for service in services %}
                                         <div class="col-xl-4 col-lg-6">
-                                            <div class="pricing-two__single">
+                                            <div class="pricing-two__single pricing-card">
                                                 <div class="pricing-two__shape-1">
                                                     <img src="{% static 'assets/images/shapes/pricing-two-shape-1.png' %}" alt="">
                                                 </div>
                                                 <div class="pricing-two__pack-name">
                                                     <p>Standard</p>
                                                 </div>
-                                                <h3 class="pricing-two__price-box"> <span class="dolar">$</span> 220.00
-                                                    <span class="validity">/Monthly</span> </h3>
-                                                <p class="pricing-two__text">Achieve a Pristine Office <br> Environment
-                                                    in Just 4 Hours!</p>
+                                                <h3 class="pricing-two__price-box"> <span class="dolar">{{service.price}}</span> </h3>
+                                                    <!-- <span class="validity">/Monthly</span>  -->
+                                                <p class="pricing-two__text">{{service.title}}</p>
+                                                <p class="pricing-two__subtitle">{{ service.subtitle }}</p>
+                                                
                                                 <div class="pricing-two__btn-box">
-                                                    <a href="pricing.html" class="thm-btn">Choose Plan<span><i
+                                                    <a href="pricing.html" class="thm-btn">Кызматты тандоо<span><i
                                                                 class="icon-plus"></i></span></a>
                                                 </div>
                                                 <div class="pricing-two__points-box">
                                                     <ul class="list-unstyled pricing-two__points">
+                                                        {% for service in service.points.all %}
                                                         <li>
                                                             <div class="icon">
                                                                 <span class="icon-check-1"></span>
                                                             </div>
                                                             <div class="text">
-                                                                <p>Eco-Friendly Cleaning Products</p>
+                                                                <p>{{service.title}}</p>
                                                             </div>
                                                         </li>
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Flexible Scheduling</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Highly Trained Professionals</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Customized Cleaning Plans</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Flexible Scheduling</p>
-                                                            </div>
-                                                        </li>
+                                                        {% endfor %}
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
+                                        {% endfor %}
                                         <!--Pricing Two Single End -->
-                                        <!--Pricing Two Single Start -->
-                                        <div class="col-xl-4 col-lg-6">
-                                            <div class="pricing-two__single pricing-two__single--two active">
-                                                <div class="pricing-two__shape-1">
-                                                    <img src="{% static 'assets/images/shapes/pricing-two-shape-1.png' %}" alt="">
-                                                </div>
-                                                <div class="pricing-two__badge">
-                                                    <p>Recommended</p>
-                                                </div>
-                                                <div class="pricing-two__pack-name">
-                                                    <p>PREMIMUM</p>
-                                                </div>
-                                                <h3 class="pricing-two__price-box"> <span class="dolar">$</span> 240.00
-                                                    <span class="validity">/Yearly</span> </h3>
-                                                <p class="pricing-two__text">Transform Your Home Into a Fresh <br> Haven
-                                                    in Just 2 Hours!</p>
-                                                <div class="pricing-two__btn-box">
-                                                    <a href="pricing.html" class="thm-btn">Choose Plan<span><i
-                                                                class="icon-plus"></i></span></a>
-                                                </div>
-                                                <div class="pricing-two__points-box">
-                                                    <ul class="list-unstyled pricing-two__points">
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Advanced Cleaning Equipment</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Affordable Service Packages</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Satisfaction Guaranteed Results</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Quick Response Team</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Trusted Local Professionals</p>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--Pricing Two Single End -->
-                                        <!--Pricing Two Single Start -->
-                                        <div class="col-xl-4 col-lg-6">
-                                            <div class="pricing-two__single">
-                                                <div class="pricing-two__shape-1">
-                                                    <img src="{% static 'assets/images/shapes/pricing-two-shape-1.png' %}" alt="">
-                                                </div>
-                                                <div class="pricing-two__pack-name">
-                                                    <p>BUSINESS</p>
-                                                </div>
-                                                <h3 class="pricing-two__price-box"> <span class="dolar">$</span> 350.00
-                                                    <span class="validity">Weekly</span> </h3>
-                                                <p class="pricing-two__text">Get Spotless Interiors and a Perfect <br>
-                                                    Shine in Only 3 Hours!</p>
-                                                <div class="pricing-two__btn-box">
-                                                    <a href="pricing.html" class="thm-btn">Choose Plan<span><i
-                                                                class="icon-plus"></i></span></a>
-                                                </div>
-                                                <div class="pricing-two__points-box">
-                                                    <ul class="list-unstyled pricing-two__points">
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Pet-Friendly Cleaning Solutions</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Non-Toxic Cleaning Supplies</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Experienced Cleaning Experts</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>24/7 Customer Support</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Flexible Scheduling </p>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--Pricing Two Single End -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab" id="yearly">
-                                <div class="pricing-two__tab-content-box">
-                                    <div class="row">
-                                        <!--Pricing Two Single Start -->
-                                        <div class="col-xl-4 col-lg-6">
-                                            <div class="pricing-two__single">
-                                                <div class="pricing-two__shape-1">
-                                                    <img src="{% static 'assets/images/shapes/pricing-two-shape-1.png' %}" alt="">
-                                                </div>
-                                                <div class="pricing-two__pack-name">
-                                                    <p>Standard</p>
-                                                </div>
-                                                <h3 class="pricing-two__price-box"> <span class="dolar">$</span> 220.00
-                                                    <span class="validity">/Monthly</span> </h3>
-                                                <p class="pricing-two__text">Achieve a Pristine Office <br> Environment
-                                                    in Just 4 Hours!</p>
-                                                <div class="pricing-two__btn-box">
-                                                    <a href="pricing.html" class="thm-btn">Choose Plan<span><i
-                                                                class="icon-plus"></i></span></a>
-                                                </div>
-                                                <div class="pricing-two__points-box">
-                                                    <ul class="list-unstyled pricing-two__points">
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Eco-Friendly Cleaning Products</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Flexible Scheduling</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Highly Trained Professionals</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Customized Cleaning Plans</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Flexible Scheduling</p>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--Pricing Two Single End -->
-                                        <!--Pricing Two Single Start -->
-                                        <div class="col-xl-4 col-lg-6">
-                                            <div class="pricing-two__single pricing-two__single--two active">
-                                                <div class="pricing-two__shape-1">
-                                                    <img src="{% static 'assets/images/shapes/pricing-two-shape-1.png' %}" alt="">
-                                                </div>
-                                                <div class="pricing-two__badge">
-                                                    <p>Recommended</p>
-                                                </div>
-                                                <div class="pricing-two__pack-name">
-                                                    <p>PREMIMUM</p>
-                                                </div>
-                                                <h3 class="pricing-two__price-box"> <span class="dolar">$</span> 240.00
-                                                    <span class="validity">/Yearly</span> </h3>
-                                                <p class="pricing-two__text">Transform Your Home Into a Fresh <br> Haven
-                                                    in Just 2 Hours!</p>
-                                                <div class="pricing-two__btn-box">
-                                                    <a href="pricing.html" class="thm-btn">Choose Plan<span><i
-                                                                class="icon-plus"></i></span></a>
-                                                </div>
-                                                <div class="pricing-two__points-box">
-                                                    <ul class="list-unstyled pricing-two__points">
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Advanced Cleaning Equipment</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Affordable Service Packages</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Satisfaction Guaranteed Results</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Quick Response Team</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Trusted Local Professionals</p>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--Pricing Two Single End -->
-                                        <!--Pricing Two Single Start -->
-                                        <div class="col-xl-4 col-lg-6">
-                                            <div class="pricing-two__single">
-                                                <div class="pricing-two__shape-1">
-                                                    <img src="{% static 'assets/images/shapes/pricing-two-shape-1.png' %}" alt="">
-                                                </div>
-                                                <div class="pricing-two__pack-name">
-                                                    <p>BUSINESS</p>
-                                                </div>
-                                                <h3 class="pricing-two__price-box"> <span class="dolar">$</span> 350.00
-                                                    <span class="validity">Weekly</span> </h3>
-                                                <p class="pricing-two__text">Get Spotless Interiors and a Perfect <br>
-                                                    Shine in Only 3 Hours!</p>
-                                                <div class="pricing-two__btn-box">
-                                                    <a href="pricing.html" class="thm-btn">Choose Plan<span><i
-                                                                class="icon-plus"></i></span></a>
-                                                </div>
-                                                <div class="pricing-two__points-box">
-                                                    <ul class="list-unstyled pricing-two__points">
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Pet-Friendly Cleaning Solutions</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Non-Toxic Cleaning Supplies</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Experienced Cleaning Experts</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>24/7 Customer Support</p>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>Flexible Scheduling </p>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--Pricing Two Single End -->
+                                        
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -861,8 +536,8 @@
                         </div>
                         <span class="section-title__tagline">Тажрыйбалуу кызматкерлерибиз</span>
                     </div>
-                    <h2 class="section-title__title title-animation">Биздин мыкты команда менен таанышыңыз <br>  
-                        <span>Биз тазалыкты жүрөктөн жасайбыз</span></h2>
+                    <h2 class="section-title__title title-animation">Жаккан ишиңизди кылып жүрүңүз, <br>  
+                        <span> ал эми тазалоону кесипкөйлөргө тапшырыңыз</span></h2>
                 </div>
                 <div class="team-two__inner">
                     <div class="team-two__main-tab-box tabs-box">

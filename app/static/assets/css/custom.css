@@ -1,0 +1,43 @@
+/* Custom styles for modal success message and pricing scroll */
+
+/* Modal Success */
+#reviewModal{position:fixed;z-index:9999;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;padding:1rem;}
+#reviewModal .modal-box{background:#ffffff;border-radius:12px;width:100%;max-width:420px;text-align:center;padding:35px 25px;box-shadow:0 10px 30px rgba(0,0,0,0.15);} 
+.checkmark{width:90px;height:90px;margin:0 auto 18px;background:#4caf50;border-radius:50%;position:relative;animation:pop 0.5s ease-out forwards;}
+.checkmark:after{content:"\2713";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:56px;line-height:1;}
+@keyframes pop{0%{transform:scale(0);opacity:0;}80%{transform:scale(1.1);opacity:1;}100%{transform:scale(1);}}
+@keyframes fadeOut{to{opacity:0;visibility:hidden;}}
+#reviewModal.fadeOut{animation:fadeOut 0.6s forwards;}
+
+/* Pricing Card Modern Style */
+.pricing-card{position:relative;padding:40px 28px;border-radius:18px;background:#fff;box-shadow:0 8px 20px rgba(0,0,0,0.06);transition:transform .35s,box-shadow .35s;overflow:hidden;}
+.pricing-card:before{content:"";position:absolute;inset:-2px;-webkit-mask:linear-gradient(45deg,#000 60%,transparent 0);background:linear-gradient(135deg,#4caf50 0%,#009688 100%);} 
+.pricing-card:hover{transform:translateY(-6px);box-shadow:0 12px 28px rgba(0,0,0,0.12);} 
+.pricing-card h3{font-size:36px;margin-bottom:8px;}
+.pricing-card .pricing-two__pack-name p{letter-spacing:1px;color:#009688;font-weight:600;font-size:15px;margin-bottom:12px;}
+.pricing-card .pricing-two__btn-box .thm-btn{margin-top:18px;padding:10px 30px;border-radius:30px;background:#009688;border:none;}
+.pricing-card .pricing-two__btn-box .thm-btn:hover{background:#4caf50;}
+.pricing-card .pricing-two__points{margin-top:14px;}
+.pricing-card .pricing-two__points .icon span{color:#009688;}
+
+/* Pricing subtitle */
+.pricing-two__subtitle{font-size:17px;color:#6c757d;margin:2px 0 6px;font-weight:500;line-height:1.35;transition:color .3s;}
+.pricing-two__single:hover .pricing-two__subtitle,
+.pricing-two__single--two .pricing-two__subtitle,
+.pricing-two__single.active .pricing-two__subtitle{color:#ffffff!important;}
+
+/* Scroll Row */
+.scroll-row{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:1.5rem;scroll-behavior:smooth;padding-bottom:0.5rem;cursor:grab;}
+.scroll-row.dragging{cursor:grabbing;}
+.scroll-row::-webkit-scrollbar{height:8px;}
+.scroll-row::-webkit-scrollbar-track{background:#e0e0e0;border-radius:4px;}
+.scroll-row::-webkit-scrollbar-thumb{background:#4caf50;border-radius:4px;}
+/* Firefox */
+.scroll-row{scrollbar-width:thin;scrollbar-color:#4caf50 #e0e0e0;}
+
+/* Responsive tweaks */
+@media (max-width:767px){
+  #reviewModal .modal-box{max-width:90%;padding:25px 20px;}
+  .checkmark{width:70px;height:70px;font-size:40px;}
+  .scroll-row{gap:1rem;}
+}
