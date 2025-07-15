@@ -10,7 +10,6 @@ def index(request):
     about = extra_models.About.objects.first()
     services = extra_models.OurServices.objects.all()
     process = extra_models.Proccess.objects.all()
-    service_list = extra_models.SeriviceList.objects.all()
     before_after = extra_models.BeforeAfter.objects.all()[:2]
     testimonials = contacts_models.Testimonial.objects.all()
     
@@ -36,7 +35,6 @@ def about(request):
     about = extra_models.About.objects.first()
     services = extra_models.OurServices.objects.all()
     process = extra_models.Proccess.objects.all()
-    service_list = extra_models.SeriviceList.objects.all()
     metric = extra_models.Metric.objects.first()
     team = extra_models.Team.objects.all()
     return render(request, 'pages/base/about.html', locals())

@@ -37,7 +37,7 @@
                         </div>
                         <div class="services-two__title-box">
                             <div class="services-two__count"></div>
-                            <h3 class="services-two__title"><a href="{{ service.get_absolute_url }}">{{ service.title }}</a></h3>
+                            <h3 class="services-two__title"><a href="{% url 'services_details' service.id %}">{{ service.title }}</a></h3>
                         </div>
                     </div>
                     <div class="services-two__text-and-btn-box">

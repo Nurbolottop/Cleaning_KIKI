@@ -346,19 +346,6 @@ class Team(models.Model):
     def __str__(self):
         return self.name
 
-class SeriviceList(models.Model):
-    title = models.CharField(
-        max_length=100,
-        verbose_name='Название Услуги'
-    )
-    
-    class Meta:
-        verbose_name = 'Список услуг'
-        verbose_name_plural = 'Список услуг'
-    
-    def __str__(self):
-        return self.title
-
 class BeforeAfter(models.Model):
     title = models.CharField(
         max_length=100,

@@ -103,11 +103,6 @@ class ProccessAdmin(admin.ModelAdmin):
         form.base_fields['icon'].choices = [(k, v) for k, v in form.base_fields['icon'].choices if k != '']
         return form
 
-@admin.register(extra_models.SeriviceList)
-class SeriviceListAdmin(admin.ModelAdmin):
-    list_display = ('title',)
-    list_display_links = ('title',)
-
 @admin.register(extra_models.Team)
 class TeamAdmin(admin.ModelAdmin):
     list_display = ('name', 'position', 'experience', 'preview_image', 'status')

@@ -166,7 +166,7 @@
         {% include 'include/secondary/about.html' %}
         <!--About Two End -->
         {% endif %}
-
+        
         {% if services %}
         <!--Services Two Start -->
         {% include 'include/secondary/services.html' %}
@@ -185,88 +185,11 @@
         <!--Process One End -->
         {% endif %}
 
-        <section class="pricing-two">
-            <div class="pricing-two__shape-bg"
-                style="background-image: url({% static 'assets/images/shapes/pricing-two-shape-bg.png' %});"></div>
-            <div class="pricing-two__shape-2 img-bounce">
-                <img src="{% static 'assets/images/shapes/pricing-two-shape-2.png' %}" alt="">
-            </div>
-            <div class="pricing-two__shape-3 float-bob-y">
-                <img src="{% static 'assets/images/shapes/pricing-two-shape-3.png' %}" alt="">
-            </div>
-            <div class="container">
-                <div class="section-title text-center sec-title-animation animation-style1">
-                    <div class="section-title__tagline-box">
-                        <div class="section-title__tagline-shape-box">
-                            <div class="section-title__tagline-shape"></div>
-                            <div class="section-title__tagline-shape-2"></div>
-                        </div>
-                        <span class="section-title__tagline">Кызматтардын түрлөрү</span>
-                    </div>
-                    <h2 class="section-title__title title-animation">Жаккан ишиңизди кылып жүрүңүз, <br> <span> ал эми тазалоону кесипкөйлөргө тапшырыңыз</span></h2>
-                </div>
-                <div class="pricing-two__inner">
-                    <div class="pricing-two__main-tab-box tabs-box">
-                        <div class="pricing-two__tab-buttons-box">
-                            <div class="pricing-two__discount-box">
-                                <p>-10% Off</p>
-                            </div>
-                            <div class="pricing-two__discount-shape-1">
-                                <img src="{% static 'assets/images/shapes/pricing-two-discount--shape-1.png' %}" alt="">
-                            </div>
-                          
-                        </div>
-                        <div class="tabs-content">
-                            <div class="tab active-tab" id="monthly">
-                                <div class="pricing-two__tab-content-box">
-                                    <div class="row">
-                                        <!--Pricing Two Single Start -->
-                                        {% for service in services %}
-                                        <div class="col-xl-4 col-lg-6">
-                                            <div class="pricing-two__single pricing-card">
-                                                <div class="pricing-two__shape-1">
-                                                    <img src="{% static 'assets/images/shapes/pricing-two-shape-1.png' %}" alt="">
-                                                </div>
-                                                <div class="pricing-two__pack-name">
-                                                    <p>Standard</p>
-                                                </div>
-                                                <h3 class="pricing-two__price-box"> <span class="dolar">{{service.price}}</span> </h3>
-                                                    <!-- <span class="validity">/Monthly</span>  -->
-                                                <p class="pricing-two__text">{{service.title}}</p>
-                                                <p class="pricing-two__subtitle">{{ service.subtitle }}</p>
-                                                
-                                                <div class="pricing-two__btn-box">
-                                                    <a href="pricing.html" class="thm-btn">Кызматты тандоо<span><i
-                                                                class="icon-plus"></i></span></a>
-                                                </div>
-                                                <div class="pricing-two__points-box">
-                                                    <ul class="list-unstyled pricing-two__points">
-                                                        {% for service in service.points.all %}
-                                                        <li>
-                                                            <div class="icon">
-                                                                <span class="icon-check-1"></span>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p>{{service.title}}</p>
-                                                            </div>
-                                                        </li>
-                                                        {% endfor %}
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {% endfor %}
-                                        <!--Pricing Two Single End -->
-                                        
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        {% if services %}
+        <!--Services Two Start -->
+        {% include 'include/secondary/services_catolog.html' %}
+        <!--Services Two End -->
+        {% endif %}
         
         {% if process %}
         <!--Project Two Start -->
@@ -502,19 +425,8 @@
         </section>
         {% endif %}
 
-        {% if service_list %}
-        <!--Project Two End -->
-        {% include 'include/secondary/service_list.html' %}
-        {% endif %}
-
-        
-        
-        <!--Before After Two Start -->
-        <!--Before After Two End -->
-
         <!--Testimonial Two Start -->
         {% include 'include/secondary/testimonial.html' %}
-
         <!--Testimonial One End -->
 
         <!--Team Two Start -->

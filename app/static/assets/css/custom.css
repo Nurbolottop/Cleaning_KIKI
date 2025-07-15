@@ -9,22 +9,11 @@
 @keyframes fadeOut{to{opacity:0;visibility:hidden;}}
 #reviewModal.fadeOut{animation:fadeOut 0.6s forwards;}
 
-/* Pricing Card Modern Style */
-.pricing-card{position:relative;padding:40px 28px;border-radius:18px;background:#fff;box-shadow:0 8px 20px rgba(0,0,0,0.06);transition:transform .35s,box-shadow .35s;overflow:hidden;}
-.pricing-card:before{content:"";position:absolute;inset:-2px;-webkit-mask:linear-gradient(45deg,#000 60%,transparent 0);background:linear-gradient(135deg,#4caf50 0%,#009688 100%);} 
-.pricing-card:hover{transform:translateY(-6px);box-shadow:0 12px 28px rgba(0,0,0,0.12);} 
-.pricing-card h3{font-size:36px;margin-bottom:8px;}
-.pricing-card .pricing-two__pack-name p{letter-spacing:1px;color:#009688;font-weight:600;font-size:15px;margin-bottom:12px;}
-.pricing-card .pricing-two__btn-box .thm-btn{margin-top:18px;padding:10px 30px;border-radius:30px;background:#009688;border:none;}
-.pricing-card .pricing-two__btn-box .thm-btn:hover{background:#4caf50;}
-.pricing-card .pricing-two__points{margin-top:14px;}
-.pricing-card .pricing-two__points .icon span{color:#009688;}
-
 /* Pricing subtitle */
-.pricing-two__subtitle{font-size:17px;color:#6c757d;margin:2px 0 6px;font-weight:500;line-height:1.35;transition:color .3s;}
+.pricing-two__subtitle{font-size:18px;color:#6c757d;margin-top:-6px;margin-bottom:4px;font-weight:500;transition:color .3s;}
 .pricing-two__single:hover .pricing-two__subtitle,
-.pricing-two__single--two .pricing-two__subtitle,
-.pricing-two__single.active .pricing-two__subtitle{color:#ffffff!important;}
+.pricing-two__single.pricing-two__single--two .pricing-two__subtitle,
+.pricing-two__single.active .pricing-two__subtitle{color:#fff;}
 
 /* Scroll Row */
 .scroll-row{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:1.5rem;scroll-behavior:smooth;padding-bottom:0.5rem;cursor:grab;}
