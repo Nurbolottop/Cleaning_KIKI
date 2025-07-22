@@ -60,7 +60,8 @@ def process_booking(request, redirect_url=None):
     if request.headers.get("x-requested-with") == "XMLHttpRequest" or request.META.get("HTTP_X_REQUESTED_WITH") == "XMLHttpRequest":
         return JsonResponse({"success": True})
 
-    return HttpResponseRedirect(request.path)
+    # Перенаправляем на главную страницу после успешной отправки
+    return HttpResponseRedirect("/")
 
 def testimonial_form(request):
     settings = cms_models.Settings.objects.first()

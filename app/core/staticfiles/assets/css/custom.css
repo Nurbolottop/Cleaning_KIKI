@@ -132,7 +132,7 @@
     border-radius:6px;
     font-size:15px;
     transition:border .2s,box-shadow .2s;
-    background:#fff;
+    background:#0a1f47;
 }
 .booking-card select:focus,
 .booking-card input:focus{
