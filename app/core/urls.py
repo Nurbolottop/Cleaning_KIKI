@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('apps.cms.urls')),
     path('', include('apps.contacts.urls')),
     path('', include('apps.extra.urls')),
+    path('', include('apps.telegram_bot.urls')),
 ]
 
 if settings.DEBUG:

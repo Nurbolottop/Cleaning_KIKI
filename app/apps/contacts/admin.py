@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import Testimonial
+from .models import Testimonial, ContactMessage, Booking
 
 @admin.register(Testimonial)
 class TestimonialAdmin(admin.ModelAdmin):
@@ -21,6 +21,23 @@ class TestimonialAdmin(admin.ModelAdmin):
             return format_html('<img src="{}" width="80" style="object-fit:cover; border-radius:8px;"/>', obj.image.url)
         return '-'
     image_tag.short_description = 'Фото'
+
+
+@admin.register(ContactMessage)
+class ContactMessageAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone', 'subject', 'created_at')
+    search_fields = ('name', 'phone', 'subject')
+    list_filter = ('created_at',)
+    readonly_fields = ('name', 'phone', 'subject', 'message', 'created_at')
+
+
+@admin.register(Booking)
+class BookingAdmin(admin.ModelAdmin):
+    fields = ('service', 'name', 'phone', 'rooms', 'more', 'created_at')
+    list_display = ('service', 'name', 'phone', 'rooms', 'more', 'created_at')
+    search_fields = ('name', 'phone', 'service__title')
+    list_filter = ('service', 'rooms', 'created_at')
+    readonly_fields = ('service', 'name', 'phone', 'rooms', 'more', 'created_at')
 
     def has_add_permission(self, request):
         return False

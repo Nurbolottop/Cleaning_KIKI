@@ -27,6 +27,7 @@
 
             <!--Testimonial One Single Start -->
             {% for testimonial in testimonials %}
+            {% if testimonial.show %}
             <div class="item">
                 <div class="testimonial-two__single">
                     <div class="testimonial-two__top">
@@ -53,6 +54,7 @@
                     </div>
                 </div>
             </div>  
+            {% endif %}
             {% endfor %}
             <!--Testimonial One Single End -->
           

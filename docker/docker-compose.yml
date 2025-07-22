@@ -31,14 +31,11 @@ services:
       context: ..
       dockerfile: docker/Dockerfile
     container_name: django_web_kiki
-    # Используйте daphne, если нужен ASGI сервер
-    # command: sh -c "/entrypoint.sh && daphne -b 0.0.0.0 -p 8300 core.asgi:application"
     command: sh -c "/entrypoint.sh && python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8082"
-
     volumes:
       - ../app:/app
       - ../app/static:/app/static
-      - ../app/media:/app/media  # Монтируем напрямую из хост-системы
+      - ../app/media:/app/media
     env_file:
       - ../.env
     environment:
@@ -50,6 +47,22 @@ services:
         condition: service_started
     ports:
       - "127.0.0.1:8084:8082"
+    networks:
+      - portfolio_network
+
+  telegram_bot:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: telegram_bot_kiki
+    command: python manage.py bot
+    volumes:
+      - ../app:/app       # исправлено
+    env_file:
+      - ../.env
+    depends_on:
+      - db_kiki
+      - web_kiki
     networks:
       - portfolio_network
 

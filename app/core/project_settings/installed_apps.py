@@ -19,4 +19,5 @@ INSTALLED_APPS = [
     'apps.cms',
     'apps.contacts',
     'apps.extra',
+    'apps.telegram_bot',
 ]

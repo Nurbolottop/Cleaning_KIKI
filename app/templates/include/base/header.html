@@ -90,9 +90,6 @@
                                         <li><a href="#">Биздин проекттер</a></li>
                                         <li><a href="{% url 'blog' %}">Жанылыктар</a></li>
                                         <li><a href="#">Суроттор</a></li>
-                                        <li><a href="#">FAQs</a></li>
-                                        <li><a href="#">404 Error</a></li>
-                                        <li><a href="#">Coming Soon</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -102,11 +99,11 @@
                         </div>
                         <div class="main-menu-three__right">
                             <div class="main-menu-three__btn-box">
-                                <a href="contact.html" class="thm-btn">Get Started<span><i
+                                <a href="{% url 'booking_form' %}" class="thm-btn">Ыңгайлуу байланышуу<span><i
                                             class="icon-diagonal-arrow"></i></span></a>
                             </div>
                             <div class="main-menu-three__nav-sidebar-icon">
-                                <a class="navSidebar-button" href="#">
+                                <a class="navSidebar-button" href="{% url 'contacts' %}">
                                     <span class="icon-app"></span>
                                 </a>
                             </div>
