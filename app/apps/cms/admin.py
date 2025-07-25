@@ -91,3 +91,31 @@ class BlogAdmin(admin.ModelAdmin):
             return format_html(obj.description[:150] + '...')
         return 'No Description'
     description_preview.short_description = 'Превью описания'
+
+# Projects Admin
+@admin.register(cms_models.Projects)
+class ProjectsAdmin(admin.ModelAdmin):
+    list_display = ('title', 'service', 'duration', 'price', 'created_at', 'image_preview')
+    list_filter = ('service', 'created_at')
+    search_fields = ('title', 'duration', 'price')
+    ordering = ('-created_at',)
+    
+    fieldsets = (
+        ('Основная информация', {
+            'fields': ('title', 'service', 'duration', 'price')
+        }),
+        ('Изображение', {
+            'fields': ('image',)
+        }),
+        ('Дополнительная информация', {
+            'fields': ('created_at',)
+        }),
+    )
+    
+    readonly_fields = ('created_at',)
+    
+    def image_preview(self, obj):
+        if obj.image:
+            return format_html('<img src="{}" width="100" height="100" />', obj.image.url)
+        return 'No Image'
+    image_preview.short_description = 'Превью изображения'

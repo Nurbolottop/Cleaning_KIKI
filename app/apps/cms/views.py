@@ -14,6 +14,7 @@ def index(request):
     process = extra_models.Proccess.objects.all()
     before_after = extra_models.BeforeAfter.objects.all()[:2]
     testimonials = contacts_models.Testimonial.objects.all()
+    projects = cms_models.Projects.objects.all()[:9]  # Показываем первые 9 проектов (3 ряда по 3)
     
     # Get all active team members
     all_members = list(extra_models.Team.objects.filter(status=True))

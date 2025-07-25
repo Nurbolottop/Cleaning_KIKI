@@ -116,3 +116,38 @@ class Blog(models.Model):
         verbose_name_plural = '2) Статьи'
     def __str__(self):
         return self.title
+
+class Projects(models.Model):
+    title = models.CharField(
+        max_length=100,
+        verbose_name='Название Организации'
+    )
+    duration = models.CharField(
+        max_length=100,
+        verbose_name='Длительность'
+    )
+    price = models.CharField(
+        max_length=100,
+        verbose_name='Стоимость'
+    )
+    image = ResizedImageField(
+        force_format="WEBP", 
+        quality=100, 
+        upload_to='process/', 
+        verbose_name="Изображение",
+        null=True, blank=True
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name='Дата создания'
+    )
+    service = models.ForeignKey(
+        'extra.OurServices',
+        on_delete=models.CASCADE,
+        verbose_name='Категория'
+    )
+    class Meta:
+        verbose_name = '4) Проекты'
+        verbose_name_plural = '4) Проекты'
+    def __str__(self):
+        return self.title
