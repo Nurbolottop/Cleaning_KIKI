@@ -1,5 +1,5 @@
 {% extends 'include/secondary/homepage.html' %}
-{% block title %}{{ services.title }}{% endblock %}
+{% block title %}{{ service.title }}{% endblock %}
 {% load static %}
 {% block content %}
 
@@ -42,14 +42,14 @@
                     <div class="page-header__img-1">
                         <img src="{% static 'assets/images/resources/page-header-img-1.jpg' %}" alt="">
                     </div>
-                    <h2>{{services.title}}</h2>
+                    <h2>{{service.title}}</h2>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li><a href="index.html">Home</a></li>
                             <li><span class="icon-arrow-right"></span></li>
-                            <li><a href="services.html">Services</a></li>
+                            <li><a href="service.html">Services</a></li>
                             <li><span class="icon-arrow-right"></span></li>
-                            <li>{{services.title}}</li>
+                            <li>{{service.title}}</li>
                         </ul>
                     </div>
                 </div>
@@ -63,17 +63,17 @@
                 <div class="row">
                     <div class="col-xl-8 col-lg-7">
                         <div class="services-details__left">
-                            <h3 class="services-details__title-1">{{services.title}}</h3>
-                            <p class="services-details__text-1">{{services.subtitle}}</p>
+                            <h3 class="services-details__title-1">{{service.title}}</h3>
+                            <p class="services-details__text-1">{{service.subtitle}}</p>
                             <div class="services-details__img-box">
                                 <div class="services-details__img">
-                                    <img src="{{services.banner_image.url}}" alt="">
+                                    <img src="{{service.banner_image.url}}" alt="">
                                 </div>
                             </div>
-                            <h3 class="services-details__title-2">{{services.title}}</h3>
-                            <p class="services-details__text-2">{{services.description|safe}}</p>
+                            <h3 class="services-details__title-2">{{service.title}}</h3>
+                            <p class="services-details__text-2">{{service.description|safe}}</p>
                             <div class="services-details__points-box">
-                                {% for point in services.points.all %}
+                                {% for point in service.points.all %}
                                     {% if forloop.counter0|divisibleby:2 %}
                                         <ul class="services-details__points list-unstyled">
                                             <li>

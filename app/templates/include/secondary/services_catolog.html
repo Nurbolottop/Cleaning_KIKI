@@ -30,14 +30,13 @@
                                 <div class="col-xl-4 col-lg-6">
                                     <div class="pricing-two__single pricing-card">
                                         <div class="pricing-two__shape-1">
-                                            <img src="{% static 'assets/images/shapes/pricing-two-shape-1.png' %}" alt="">
+                                            <img src="{{service.image.url}}" alt="">
                                         </div>
                                         <div class="pricing-two__pack-name">
-                                            <p>Standard</p>
+                                            <p>🫧{{service.title}}</p>
                                         </div>
                                         <h3 class="pricing-two__price-box"> <span class="dolar">{{service.price}}</span> </h3>
                                             <!-- <span class="validity">/Monthly</span>  -->
-                                        <p class="pricing-two__text">🫧{{service.title}}</p>
                                         <p class="pricing-two__text">{{service.subtitle}}</p>
                                         
                                         <div class="pricing-two__btn-box">

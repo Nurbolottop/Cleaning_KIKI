@@ -101,7 +101,8 @@ def services(request):
 
 def services_details(request,id):
     settings = cms_models.Settings.objects.first()
-    services = extra_models.OurServices.objects.get(id=id)
+    services = extra_models.OurServices.objects.all()
+    service = extra_models.OurServices.objects.get(id=id)
 
     # обработка формы бронирования, если она отправлена с главной страницы
     resp = contacts_views.process_booking(request, redirect_url="index")
