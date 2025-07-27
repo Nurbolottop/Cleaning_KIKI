@@ -45,9 +45,9 @@
                     <h2>{{service.title}}</h2>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="{% url 'index' %}">Башкы бет</a></li>
                             <li><span class="icon-arrow-right"></span></li>
-                            <li><a href="service.html">Services</a></li>
+                            <li><a href="{% url 'services' %}">Кызматтар</a></li>
                             <li><span class="icon-arrow-right"></span></li>
                             <li>{{service.title}}</li>
                         </ul>
