@@ -304,9 +304,23 @@
                                                 <div class="team-two__img-box">
                                                     <div class="team-two__img">
                                                         <img src="{{ member.image.url }}" alt="{{ member.name }}">
-                                                        <div class="team-two__member-name" style="text-align:center; font-weight:bold; font-size:18px; margin-top:10px;">
-    {{ member.name }}
-</div>
+                                                        <div class="team-two__member-name" style="
+                                                            margin: 18px auto 0 auto;
+                                                            padding: 10px 24px;
+                                                            display: inline-block;
+                                                            background: linear-gradient(90deg, #f8fafc 0%, #e0e4ea 100%);
+                                                            border-radius: 30px;
+                                                            box-shadow: 0 4px 16px rgba(60,91,111,0.08);
+                                                            font-size: 22px;
+                                                            font-weight: 700;
+                                                            color: #25435a;
+                                                            letter-spacing: 0.5px;
+                                                            text-shadow: 0 2px 8px rgba(60,91,111,0.12);
+                                                            transition: transform 0.2s, box-shadow 0.2s;
+                                                            cursor: pointer;
+                                                        " onmouseover="this.style.transform='scale(1.06)';this.style.boxShadow='0 8px 24px rgba(60,91,111,0.18)';" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 16px rgba(60,91,111,0.08)';">
+                                                            {{ member.name }}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
