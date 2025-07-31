@@ -36,7 +36,6 @@
                                             <p>🫧{{service.title}}</p>
                                         </div>
                                         <h3 class="pricing-two__price-box"> <span class="dolar">{{service.price}}</span> </h3>
-                                            <!-- <span class="validity">/Monthly</span>  -->
                                         <p class="pricing-two__text">{{service.subtitle}}</p>
                                         
                                         <div class="pricing-two__btn-box">
@@ -45,13 +44,13 @@
                                         </div>
                                         <div class="pricing-two__points-box">
                                             <ul class="list-unstyled pricing-two__points">
-                                                {% for service in service.points.all %}
+                                                {% for point in service.points.all %}
                                                 <li>
                                                     <div class="icon">
                                                         <span class="icon-check-1"></span>
                                                     </div>
                                                     <div class="text">
-                                                        <p>{{service.title}}</p>
+                                                        <p>{{point.title}}</p>
                                                     </div>
                                                 </li>
                                                 {% endfor %}

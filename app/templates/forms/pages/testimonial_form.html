@@ -1,4 +1,61 @@
-{% extends 'forms/include/homepage.html' %} {% block title %}Пикир калтыруу{% endblock %} {% load static %} {% block content %} <div class="custom-cursor__cursor"></div>
+{% extends 'forms/include/homepage.html' %} {% block title %}Пикир калтыруу{% endblock %} {% load static %} {% block content %}
+<style>
+  /* Custom styling for service dropdown to limit height and enable scrolling */
+  #service {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23666" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px;
+    cursor: pointer;
+  }
+  
+  /* Limit the dropdown height using size attribute and CSS */
+  #service[size] {
+    height: auto;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #e0e4ea;
+    border-radius: 8px;
+  }
+  
+  #service option {
+    padding: 8px 12px;
+    line-height: 1.4;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  #service option:hover {
+    background-color: #f8fafc;
+  }
+  
+  #service option:checked {
+    background-color: #3c5b6f;
+    color: white;
+  }
+  
+  /* Custom scrollbar for the dropdown */
+  #service::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  #service::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+  
+  #service::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+  }
+  
+  #service::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+  }
+</style>
+<div class="custom-cursor__cursor"></div>
 <div class="custom-cursor__cursor-two"></div>
 <!--Start Preloader-->
 <div class="loader js-preloader">
@@ -75,18 +132,6 @@
             </div>
             <div class="col-xl-12">
               <div class="form-group">
-                <div class="input-box">
-                  <div class="input-box" style="position:relative;">
-                    <span class="icon-title" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#3c5b6f;font-size:18px;">
-                      <i class="icon-edit"></i>
-                    </span>
-                    <input type="text" name="title" id="title" placeholder="Пикириңиздин кыскача аталышы..." required style="padding-left:40px;border-radius:8px;background:#f8fafc;border:1px solid #e0e4ea;height:48px;">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-12">
-              <div class="form-group">
                 <div class="input-box" style="position:relative;">
                   <span class="icon-desc" style="position:absolute;left:14px;top:18px;color:#3c5b6f;font-size:18px;">
                     <i class="icon-message"></i>
@@ -110,4 +155,55 @@
   </section>
   <!--End Testimonial Form--> {% include 'include/base/footer.html' %}
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const serviceSelect = document.getElementById('service');
+    
+    if (serviceSelect) {
+        // Count the number of options
+        const optionCount = serviceSelect.options.length;
+        
+        // If there are more than 8 options, limit the dropdown height
+        if (optionCount > 8) {
+            // Add custom styling for better dropdown control
+            serviceSelect.style.cssText += `
+                max-height: 200px;
+                overflow-y: auto;
+            `;
+            
+            // Add event listener to handle dropdown opening
+            serviceSelect.addEventListener('focus', function() {
+                // Calculate available space below the select element
+                const rect = this.getBoundingClientRect();
+                const viewportHeight = window.innerHeight;
+                const spaceBelow = viewportHeight - rect.bottom;
+                
+                // If there's not enough space below, adjust the dropdown
+                if (spaceBelow < 200) {
+                    this.style.maxHeight = Math.max(150, spaceBelow - 20) + 'px';
+                } else {
+                    this.style.maxHeight = '200px';
+                }
+            });
+            
+            // Smooth scrolling for better UX
+            serviceSelect.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+                    setTimeout(() => {
+                        const selectedOption = this.options[this.selectedIndex];
+                        if (selectedOption) {
+                            selectedOption.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'nearest'
+                            });
+                        }
+                    }, 0);
+                }
+            });
+        }
+    }
+});
+</script>
+
 {% endblock %}
