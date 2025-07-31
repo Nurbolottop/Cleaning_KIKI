@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const dropdownOptions = document.getElementById('dropdown-options');
     const dropdownArrow = dropdownSelected.querySelector('.dropdown-arrow');
     const selectedText = dropdownSelected.querySelector('.selected-text');
-    const hiddenSelect = document.getElementById('service');
+    const hiddenInput = document.getElementById('service');
     const optionElements = dropdownOptions.querySelectorAll('.dropdown-option');
     
     // Toggle dropdown visibility
@@ -204,8 +204,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const value = this.getAttribute('data-value');
             const text = this.textContent.trim();
             
-            // Update hidden select
-            hiddenSelect.value = value;
+            // Update hidden input
+            hiddenInput.value = value;
             
             // Update displayed text
             selectedText.textContent = text;
