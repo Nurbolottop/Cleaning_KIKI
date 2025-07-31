@@ -124,7 +124,10 @@
                     <input type="hidden" name="service" id="service" required>
                     <!-- Custom dropdown -->
                     <div class="custom-dropdown" id="custom-dropdown">
-                      
+                      <div class="dropdown-selected" id="dropdown-selected" style="padding-left:40px;border-radius:8px;background:#f8fafc;border:1px solid #e0e4ea;height:48px;display:flex;align-items:center;cursor:pointer;">
+                        <span class="selected-text">🛎️ Кызматты тандаңыз</span>
+                        <span class="dropdown-arrow" style="position:absolute;right:12px;transition:transform 0.3s;">▼</span>
+                      </div>
                       <div class="dropdown-options" id="dropdown-options" style="position:absolute;top:100%;left:0;right:0;background:white;border:1px solid #e0e4ea;border-radius:8px;max-height:200px;overflow-y:auto;z-index:1000;display:none;box-shadow:0 4px 6px rgba(0,0,0,0.1);">
                         {% for s in services %}
                           <div class="dropdown-option" data-value="{{ s.id }}" style="padding:12px 16px;cursor:pointer;border-bottom:1px solid #f0f0f0;">
