@@ -1,8 +1,18 @@
 {% load static %}
 <header class="main-header-two">
+    <style>
+        .ny-logo { position: relative; display: inline-block; }
+        .ny-logo .ny-hat { position: absolute; top: -14px; left: -10px; width: 46px; height: 34px; transform: rotate(-18deg); pointer-events: none; z-index: 2; }
+        .ny-logo .ny-hat::before { content: ""; position: absolute; left: 8px; top: 6px; width: 30px; height: 22px; background: linear-gradient(180deg, #ef4444 0%, #b91c1c 100%); border-radius: 14px 14px 8px 8px; box-shadow: 0 6px 14px rgba(0,0,0,0.18); }
+        .ny-logo .ny-hat::after { content: ""; position: absolute; left: 2px; top: 22px; width: 40px; height: 10px; background: linear-gradient(180deg, #ffffff 0%, #e5e7eb 100%); border-radius: 999px; box-shadow: 0 4px 10px rgba(0,0,0,0.12); }
+        .ny-logo .ny-hat i { position: absolute; right: 0; top: 0; width: 12px; height: 12px; background: radial-gradient(circle at 35% 35%, #ffffff 0%, #e5e7eb 70%); border-radius: 999px; box-shadow: 0 6px 12px rgba(0,0,0,0.12); }
+        @media (max-width: 768px) {
+            .ny-logo .ny-hat { top: -12px; left: -8px; width: 40px; height: 30px; }
+        }
+    </style>
     <div class="main-header-two__wrap">
         <div class="main-header-two__logo">
-            <a href="{% url 'index' %}"><img src="{{settings.logo.url}}" style="width: 100px;" alt=""></a>
+            <a href="{% url 'index' %}" class="ny-logo"><span class="ny-hat"><i></i></span><img src="{{settings.logo.url}}" style="width: 100px;" alt=""></a>
         </div>
         <div class="main-header-two__content">
             <div class="main-menu-two__top">
@@ -58,7 +68,7 @@
                     <div class="main-menu-two__wrapper-inner">
                         <div class="main-menu-two__left">
                             <div class="main-menu-two__logo">
-                                <a href="{% url 'index' %}"><img src="{{settings.logo.url}}" style="width: 100px;" alt=""></a>
+                                <a href="{% url 'index' %}" class="ny-logo"><span class="ny-hat"><i></i></span><img src="{{settings.logo.url}}" style="width: 100px;" alt=""></a>
                             </div>
                             <div class="main-menu-two__call">
                                 <div class="main-menu-two__call-icon">
