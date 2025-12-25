@@ -1,18 +1,73 @@
 {% load static %}
+<style>
+    .christmas-contact-icon {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .christmas-contact-icon__img {
+        position: absolute;
+        right: -12px;
+        top: -10px;
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.15));
+        pointer-events: none;
+    }
+    .christmas-garland {
+        position: relative;
+        width: 100%;
+        height: 44px;
+        overflow: hidden;
+        z-index: 2;
+        background: transparent;
+    }
+    .christmas-garland__wire {
+        position: absolute;
+        left: -2%;
+        right: -2%;
+        top: 12px;
+        height: 40px;
+        border-top: 3px solid rgba(20, 40, 30, 0.75);
+        border-radius: 0 0 100% 100% / 0 0 120% 120%;
+        transform: rotate(-1deg);
+    }
+    .christmas-garland__bulbs {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 44px;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 18px;
+        align-items: flex-start;
+    }
+    .christmas-garland__bulb {
+        width: 14px;
+        height: 14px;
+        border-radius: 999px;
+        margin-top: 18px;
+        box-shadow:
+            0 6px 10px rgba(0, 0, 0, 0.12),
+            0 0 18px currentColor;
+        animation: christmasTwinkle 2.2s ease-in-out infinite;
+        opacity: 0.95;
+    }
+    .christmas-garland__bulb:nth-child(2n) { animation-duration: 2.8s; }
+    .christmas-garland__bulb:nth-child(3n) { animation-duration: 3.3s; }
+    .christmas-garland__bulb:nth-child(4n) { animation-duration: 2.0s; }
+    @keyframes christmasTwinkle {
+        0%, 100% { transform: translateY(0) scale(1); filter: brightness(1); }
+        50% { transform: translateY(-2px) scale(1.05); filter: brightness(1.35); }
+    }
+</style>
 <header class="main-header-two">
-    <style>
-        .ny-logo { position: relative; display: inline-block; }
-        .ny-logo .ny-hat { position: absolute; top: -14px; left: -10px; width: 46px; height: 34px; transform: rotate(-18deg); pointer-events: none; z-index: 2; }
-        .ny-logo .ny-hat::before { content: ""; position: absolute; left: 8px; top: 6px; width: 30px; height: 22px; background: linear-gradient(180deg, #ef4444 0%, #b91c1c 100%); border-radius: 14px 14px 8px 8px; box-shadow: 0 6px 14px rgba(0,0,0,0.18); }
-        .ny-logo .ny-hat::after { content: ""; position: absolute; left: 2px; top: 22px; width: 40px; height: 10px; background: linear-gradient(180deg, #ffffff 0%, #e5e7eb 100%); border-radius: 999px; box-shadow: 0 4px 10px rgba(0,0,0,0.12); }
-        .ny-logo .ny-hat i { position: absolute; right: 0; top: 0; width: 12px; height: 12px; background: radial-gradient(circle at 35% 35%, #ffffff 0%, #e5e7eb 70%); border-radius: 999px; box-shadow: 0 6px 12px rgba(0,0,0,0.12); }
-        @media (max-width: 768px) {
-            .ny-logo .ny-hat { top: -12px; left: -8px; width: 40px; height: 30px; }
-        }
-    </style>
     <div class="main-header-two__wrap">
         <div class="main-header-two__logo">
-            <a href="{% url 'index' %}" class="ny-logo"><span class="ny-hat"><i></i></span><img src="{{settings.logo.url}}" style="width: 100px;" alt=""></a>
+            <a href="{% url 'index' %}"><img src="{{settings.logo.url}}" style="width: 100px;" alt=""></a>
         </div>
         <div class="main-header-two__content">
             <div class="main-menu-two__top">
@@ -20,7 +75,10 @@
                     <ul class="list-unstyled main-menu-two__contact-list">
                         <li>
                             <div class="icon">
-                                <i class="icon-mail"></i>
+                                <span class="christmas-contact-icon">
+                                    <i class="icon-mail"></i>
+                                    <img class="christmas-contact-icon__img" src="{% static 'christmas_images/bow.png' %}" alt="">
+                                </span>
                             </div>
                             <div class="text">
                                 <p><a href="mailto:{{settings.email}}">{{settings.email}}</a>
@@ -29,7 +87,10 @@
                         </li>
                         <li>
                             <div class="icon">
-                                <i class="icon-phone-call"></i>
+                                <span class="christmas-contact-icon">
+                                    <i class="icon-phone-call"></i>
+                                    <img class="christmas-contact-icon__img" src="{% static 'christmas_images/winter-hat.png' %}" alt="">
+                                </span>
                             </div>
                             <div class="text">
                                 <p><a href="tel:{{settings.phone}}">{{settings.phone}}</a></p>
@@ -37,7 +98,10 @@
                         </li>
                         <li>
                             <div class="icon">
-                                <i class="icon-pin-1"></i>
+                                <span class="christmas-contact-icon">
+                                    <i class="icon-pin-1"></i>
+                                    <img class="christmas-contact-icon__img" src="{% static 'christmas_images/pine-tree.png' %}" alt="">
+                                </span>
                             </div>
                             <div class="text">
                                 <p>{{settings.locate}}</p>
@@ -68,7 +132,7 @@
                     <div class="main-menu-two__wrapper-inner">
                         <div class="main-menu-two__left">
                             <div class="main-menu-two__logo">
-                                <a href="{% url 'index' %}" class="ny-logo"><span class="ny-hat"><i></i></span><img src="{{settings.logo.url}}" style="width: 100px;" alt=""></a>
+                                <a href="{% url 'index' %}"><img src="{{settings.logo.url}}" style="width: 100px;" alt=""></a>
                             </div>
                             <div class="main-menu-two__call">
                                 <div class="main-menu-two__call-icon">
@@ -122,3 +186,20 @@
         </div>
     </div>
 </header>
+<div class="christmas-garland" aria-hidden="true">
+    <div class="christmas-garland__wire"></div>
+    <div class="christmas-garland__bulbs">
+        <span class="christmas-garland__bulb" style="color:#ff3b30"></span>
+        <span class="christmas-garland__bulb" style="color:#34c759"></span>
+        <span class="christmas-garland__bulb" style="color:#ffd60a"></span>
+        <span class="christmas-garland__bulb" style="color:#5ac8fa"></span>
+        <span class="christmas-garland__bulb" style="color:#ff2d55"></span>
+        <span class="christmas-garland__bulb" style="color:#30d158"></span>
+        <span class="christmas-garland__bulb" style="color:#bf5af2"></span>
+        <span class="christmas-garland__bulb" style="color:#ffd60a"></span>
+        <span class="christmas-garland__bulb" style="color:#0a84ff"></span>
+        <span class="christmas-garland__bulb" style="color:#ff453a"></span>
+        <span class="christmas-garland__bulb" style="color:#34c759"></span>
+        <span class="christmas-garland__bulb" style="color:#ffd60a"></span>
+    </div>
+</div>

@@ -14,59 +14,6 @@
 <!-- Start sidebar widget content -->
 {% include 'include/base/head.html' %}
 <!-- End sidebar widget content -->
-<style>
-  .booking-page {
-    position: relative;
-    padding: 80px 0;
-    background:
-      radial-gradient(900px 420px at 10% 10%, rgba(59,130,246,0.10), transparent 60%),
-      radial-gradient(700px 360px at 90% 20%, rgba(34,197,94,0.10), transparent 55%),
-      linear-gradient(180deg, rgba(15,23,42,0.03) 0%, rgba(15,23,42,0.00) 45%);
-  }
-  .booking-card-shell {
-    max-width: 760px;
-    margin: 0 auto;
-    background: rgba(255,255,255,0.92);
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    border-radius: 18px;
-    box-shadow: 0 20px 50px rgba(15,23,42,0.12);
-    overflow: hidden;
-  }
-  .booking-card-head {
-    padding: 26px 26px 18px;
-    background:
-      radial-gradient(420px 220px at 15% 15%, rgba(34,197,94,0.18), transparent 60%),
-      radial-gradient(420px 220px at 85% 20%, rgba(59,130,246,0.18), transparent 60%),
-      linear-gradient(135deg, rgba(60,91,111,0.92), rgba(43,138,226,0.72));
-    color: #fff;
-  }
-  .booking-card-head h2 { margin: 0; font-weight: 800; letter-spacing: 0.3px; }
-  .booking-card-head p { margin: 8px 0 0; opacity: 0.9; }
-  .booking-card-body { padding: 22px 26px 28px; }
-  .booking-card-body .form-group { margin-bottom: 14px; }
-  .booking-card-body .thm-btn { width: 100%; justify-content: center; border-radius: 12px; }
-  .booking-card-body .alert-box { margin-bottom: 16px; }
-  .booking-card-body .alert {
-    padding: 12px 14px;
-    border-radius: 12px;
-    background: rgba(239,68,68,0.08);
-    border: 1px solid rgba(239,68,68,0.18);
-    color: #7f1d1d;
-    font-weight: 600;
-  }
-  .booking-card-body .alert.success,
-  .booking-card-body .alert.success-message,
-  .booking-card-body .alert.successful {
-    background: rgba(34,197,94,0.10);
-    border-color: rgba(34,197,94,0.22);
-    color: #14532d;
-  }
-  @media (max-width: 768px) {
-    .booking-page { padding: 56px 0; }
-    .booking-card-head { padding: 22px 16px 14px; }
-    .booking-card-body { padding: 18px 16px 22px; }
-  }
-</style>
 <div class="page-wrapper"> 
   {% include 'include/base/header.html' %} 
   <div class="stricky-header stricked-menu main-menu main-menu-three">
@@ -75,14 +22,12 @@
   </div>
   <!-- /.stricky-header -->
   <!--Start Testimonial Form-->
-  <section class="login-one booking-page">
+  <section class="login-one">
     <div class="container">
-      <div class="booking-card-shell">
-        <div class="booking-card-head">
+      <div class="login-one__form">
+        <div class="inner-title text-center">
           <h2>Бронь / Заказ</h2>
-          <p>Бир нече маалыматты толтуруңуз, биз тез арада байланышабыз.</p>
         </div>
-        <div class="booking-card-body">
         <form name="booking_form" method="post">
             {% csrf_token %}
             {% if messages %}
@@ -266,7 +211,6 @@
             }
           });
         </script>
-        </div>
       </div>
     </div>
   </section>
