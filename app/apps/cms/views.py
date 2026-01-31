@@ -1,3 +1,5 @@
+import random
+
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from apps.cms import models as cms_models
@@ -10,11 +12,11 @@ def index(request):
     settings = cms_models.Settings.objects.first()
     slides = cms_models.Slide.objects.all()
     about = extra_models.About.objects.first()
-    services = extra_models.OurServices.objects.all()
+    services = extra_models.OurServices.objects.prefetch_related('points').all()
     process = extra_models.Proccess.objects.all()
     before_after = extra_models.BeforeAfter.objects.all()[:2]
     testimonials = contacts_models.Testimonial.objects.all()
-    projects = cms_models.Projects.objects.all()[:9]  # Показываем первые 9 проектов (3 ряда по 3)
+    projects = cms_models.Projects.objects.select_related('service').all()[:9]  # Показываем первые 9 проектов (3 ряда по 3)
     
     # Get all active team members
     all_members = list(extra_models.Team.objects.filter(status=True))
@@ -24,7 +26,6 @@ def index(request):
     odd_members = [m for i, m in enumerate(all_members) if (i + 1) % 2 != 0]
     
     # Randomly select 3 from each group
-    import random
     random.shuffle(even_members)
     random.shuffle(odd_members)
     
