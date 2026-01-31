@@ -13,6 +13,8 @@
     <link rel="manifest" href="{{settings.icon.url}}" />
     <meta name="description" content="{{settings.description}}" />
 
+    {% block extra_head %}{% endblock %}
+
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,24 +31,15 @@
     <link rel="stylesheet" href="{% static 'assets/css/swiper.min.css' %}" />
     <link rel="stylesheet" href="{% static 'assets/css/font-awesome-all.css' %}" />
     <link rel="stylesheet" href="{% static 'assets/css/jarallax.css' %}" />
-    <link rel="preload" as="style" href="{% static 'assets/css/jquery.magnific-popup.css' %}" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{% static 'assets/css/jquery.magnific-popup.css' %}" /></noscript>
-    <link rel="preload" as="style" href="{% static 'assets/css/odometer.min.css' %}" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{% static 'assets/css/odometer.min.css' %}" /></noscript>
-    <link rel="preload" as="style" href="{% static 'assets/css/flaticon.css' %}" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}" /></noscript>
-    <link rel="preload" as="style" href="{% static 'assets/css/owl.carousel.min.css' %}" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}" /></noscript>
-    <link rel="preload" as="style" href="{% static 'assets/css/owl.theme.default.min.css' %}" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}" /></noscript>
-    <link rel="preload" as="style" href="{% static 'assets/css/nice-select.css' %}" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}" /></noscript>
-    <link rel="preload" as="style" href="{% static 'assets/css/jquery-ui.css' %}" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{% static 'assets/css/jquery-ui.css' %}" /></noscript>
-    <link rel="preload" as="style" href="{% static 'assets/css/aos.css' %}" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{% static 'assets/css/aos.css' %}" /></noscript>
-    <link rel="preload" as="style" href="{% static 'assets/css/twentytwenty.css' %}" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{% static 'assets/css/twentytwenty.css' %}" /></noscript>
+    <link rel="stylesheet" href="{% static 'assets/css/jquery.magnific-popup.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/odometer.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/jquery-ui.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/aos.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/twentytwenty.css' %}" />
 
     <link rel="stylesheet" href="{% static 'assets/css/module-css/banner.css' %}" />
     <link rel="stylesheet" href="{% static 'assets/css/module-css/slider.css' %}" />
@@ -75,8 +68,6 @@
     <!-- custom overrides -->
     <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}" />
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
-
-    {% block extra_head %}{% endblock %}
 </head>
 
 <body class="custom-cursor">

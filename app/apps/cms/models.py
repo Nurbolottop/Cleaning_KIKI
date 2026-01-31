@@ -72,14 +72,14 @@ class Slide(models.Model):
     )
     image = ResizedImageField(
         force_format="WEBP", 
-        quality=100, 
+        quality=85, 
         upload_to='slides/', 
         verbose_name="Изображение",
         null=True, blank=True
     )
     icon = ResizedImageField(
         force_format="WEBP", 
-        quality=100, 
+        quality=85, 
         upload_to='slides/', 
         verbose_name="Иконка",
         null=True, blank=True
