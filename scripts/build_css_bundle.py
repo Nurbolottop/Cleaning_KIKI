@@ -4,8 +4,8 @@
 Запускать из корня проекта после изменения любого из файлов темы:
     python3 scripts/build_css_bundle.py
 
-custom.css и responsive.css в бандл не входят (грузятся отдельно после него,
-порядок каскада: bundle -> custom -> responsive).
+В бандл входит всё, включая custom.css и responsive.css (в конце каскада).
+Если установлен пакет csscompressor, бандл дополнительно минифицируется.
 """
 import pathlib
 import re
@@ -24,7 +24,7 @@ ORDER = [
     'module-css/faq.css', 'module-css/team.css', 'module-css/testimonial.css',
     'module-css/why-choose.css', 'module-css/process.css', 'module-css/project.css',
     'module-css/contact.css', 'module-css/page-header.css', 'module-css/google-map.css',
-    'style.css',
+    'style.css', 'custom.css', 'responsive.css',
 ]
 
 
@@ -43,6 +43,12 @@ def main():
         parts.append(f'/* ===== {name} ===== */\n' + text)
 
     bundle = '\n'.join(parts).replace('font-display: auto', 'font-display: swap')
+    try:
+        from csscompressor import compress
+        bundle = compress(bundle)
+        print('minified with csscompressor')
+    except ImportError:
+        print('csscompressor не установлен — бандл без минификации')
     (CSS_DIR / 'bundle.css').write_text(bundle)
     print(f'bundle.css: {len(bundle) / 1024:.0f} KB from {len(ORDER)} files')
 

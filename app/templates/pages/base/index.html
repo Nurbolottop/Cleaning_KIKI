@@ -30,14 +30,6 @@
     <div class="custom-cursor__cursor"></div>
     <div class="custom-cursor__cursor-two"></div>
 
-    <!--Start Preloader-->
-    <div class="loader js-preloader">
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-    <!--End Preloader-->
-
     <!-- Start sidebar widget content -->
     {% include 'include/base/head.html' %}
     <!-- End sidebar widget content -->
@@ -90,7 +82,7 @@
                             </div>
                             <div class="container">
                                 <div class="main-slider__content">
-                                    <h2 class="main-slider__title">{{slide.title}} <span>{{slide.title_2}}</span> <br></h2>
+                                    {% if forloop.first %}<h1 class="main-slider__title">{{slide.title}} <span>{{slide.title_2}}</span></h1>{% else %}<h2 class="main-slider__title">{{slide.title}} <span>{{slide.title_2}}</span></h2>{% endif %}
                                     <p class="main-slider__text">{{slide.description}}</p>
                                     <div class="main-slider__btn-box">
                                         <a href="{% url 'about' %}" class="thm-btn">Кеттик!<span><i
@@ -190,7 +182,7 @@
                         </h2>
                     </div>
                     <div class="project-two__btn-box">
-                        <a href="products.html" class="thm-btn">View All Projects<span><i
+                        <a href="{% url 'services' %}" class="thm-btn">Бардык кызматтар<span><i
                                     class="icon-diagonal-arrow"></i></span></a>
                     </div>
                 </div>
@@ -297,11 +289,11 @@
                                                     <div class="team-two__buttons-content">
                                                         <div class="team-two__buttons-title-box">
                                                             <h4 class="team-two__buttons-title"><a
-                                                                    href="team-details.html">{{ member.name }}</a></h4>
+                                                                    href="{% url 'team' %}">{{ member.name }}</a></h4>
                                                             <p class="team-two__buttons-sub-title">{{ member.position }}</p>
                                                         </div>
                                                         <div class="team-two__buttons-arrow">
-                                                            <a href="team-details.html"><span
+                                                            <a href="{% url 'team' %}" aria-label="Команда жөнүндө толугураак"><span
                                                                     class="icon-diagonal-arrow"></span></a>
                                                         </div>
                                                     </div>
@@ -366,11 +358,11 @@
                                                     <div class="team-two__buttons-content">
                                                         <div class="team-two__buttons-title-box">
                                                             <h4 class="team-two__buttons-title"><a
-                                                                    href="team-details.html">{{ member.name }}</a></h4>
+                                                                    href="{% url 'team' %}">{{ member.name }}</a></h4>
                                                             <p class="team-two__buttons-sub-title">{{ member.position }}</p>
                                                         </div>
                                                         <div class="team-two__buttons-arrow">
-                                                            <a href="team-details.html"><span
+                                                            <a href="{% url 'team' %}" aria-label="Команда жөнүндө толугураак"><span
                                                                     class="icon-diagonal-arrow"></span></a>
                                                         </div>
                                                     </div>

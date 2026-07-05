@@ -63,16 +63,15 @@
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"></noscript>
 
-    <!-- Все стили темы собраны в один бандл (см. scripts/build_css_bundle.py) -->
+    <!-- Все стили темы (включая custom и responsive) в одном бандле — scripts/build_css_bundle.py -->
     <link rel="stylesheet" href="{% static 'assets/css/bundle.css' %}" />
-    <!-- custom overrides -->
-    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}" />
-    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
 </head>
 
 <body class="custom-cursor">
+    <main>
     {% block content %}
     {% endblock %}
+    </main>
     <script src="{% static 'assets/js/jquery-latest.js' %}"></script>
     <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'assets/js/jquery.appear.min.js' %}"></script>

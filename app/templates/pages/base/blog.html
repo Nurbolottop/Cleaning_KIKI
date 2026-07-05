@@ -8,14 +8,6 @@
     <div class="custom-cursor__cursor"></div>
     <div class="custom-cursor__cursor-two"></div>
 
-    <!--Start Preloader-->
-    <div class="loader js-preloader">
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-    <!--End Preloader-->
-
     {% include 'include/base/head.html' %}
 
     <div class="page-wrapper">
@@ -59,7 +51,7 @@
                             <div class="blog-one__single">
                                 {% if forloop.counter|divisibleby:2 %}
                                 <div class="blog-one__content blog-one__content--two">
-                                    <h3 class="blog-one__title"><a href="blog-details.html">{{ blog.title }}</a></h3>
+                                    <h3 class="blog-one__title"><a href="{% url 'blog_details' blog.id %}">{{ blog.title }}</a></h3>
                                     <div class="blog-one__text">{{ blog.description|safe|truncatewords_html:15 }}</div>
                                 </div>
                                 {% endif %}
