@@ -16,7 +16,7 @@ module.exports = {
       /^swiper/, /^owl/, /^mfp/, /^nice-select/, /^odometer/, /^aos/, /^animated/,
       /^fade/, /^slideIn/, /^slideOut/, /^zoomIn/, /^bounce/, /^wow/, /^twentytwenty/,
       /^marquee/, /^float-bob/, /^img-bounce/, /^tabs?-/, /^dropdown/, /^mobile-nav/,
-      /^xs-/, /^js-/, /^icon-/, /^fa/, /^flaticon/, /^sub-menu/, /^menu-/, /^list-/,
+      /^xs-/, /^js-/, /^sub-menu/, /^menu-/, /^list-/,
       /^close-/, /^section-title/, /^custom-cursor/, /^loader/, /^slider/, /^select2/,
       /^ui-/, /^tns-/, /^lg-/, /^error/, /^alert/, /^was-validated/, /^invalid/, /^valid/,
     ],
