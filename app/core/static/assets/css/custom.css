@@ -186,3 +186,9 @@
     .main-slider__title { min-height: 135px; }
     .main-slider__text { min-height: 52px; }
 }
+
+/* Мобильным — уменьшенный фон слайда (см. mobile_image_url) */
+.main-slider__bg { background-image: var(--slide-bg); }
+@media (max-width: 767px) {
+    .main-slider__bg { background-image: var(--slide-bg-m, var(--slide-bg)); }
+}

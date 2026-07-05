@@ -88,6 +88,23 @@ class Slide(models.Model):
         verbose_name = '3) Слайды'
         verbose_name_plural = '3) Слайды'
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        # Мобильная версия фона (<name>_m.webp): телефоны получают ~3x меньший файл.
+        # Используется через фильтр mobile_image_url в шаблоне слайдера.
+        if self.image:
+            try:
+                import os
+                from PIL import Image as PILImage
+                path = self.image.path
+                base, ext = os.path.splitext(path)
+                img = PILImage.open(path)
+                if img.width > 828:
+                    img = img.resize((828, int(img.height * 828 / img.width)), PILImage.LANCZOS)
+                img.save(base + '_m' + ext, 'WEBP', quality=70, method=6)
+            except Exception:
+                pass
+
     def __str__(self):
         return self.title
 

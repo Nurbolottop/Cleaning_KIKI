@@ -2,9 +2,11 @@
 {% block title %}Клининг Ош — кесипкөй тазалоо кызматы (уборка квартир, домов, офисов){% endblock %}
 {% block meta_description %}Клининг кызматы Ош шаарында: квартираларды, үйлөрдү жана офистерди кесипкөй тазалоо. Профессиональная уборка в Оше — быстро, качественно, с гарантией. Заказ онлайн же телефон аркылуу.{% endblock %}
 {% load static %}
+{% load media_extras %}
 {% block extra_head %}
 {% if slides %}
-<link rel="preload" as="image" href="{{ slides.0.image.url }}" fetchpriority="high">
+<link rel="preload" as="image" href="{{ slides.0.image|mobile_image_url }}" media="(max-width: 767px)" fetchpriority="high">
+<link rel="preload" as="image" href="{{ slides.0.image.url }}" media="(min-width: 768px)" fetchpriority="high">
 {% endif %}
 {% endblock %}
 <style>
@@ -68,7 +70,7 @@
                          {% for slide in slides %}
                         <div class="swiper-slide">
                             <div class="main-slider__bg"
-                                style="background-image: url({{slide.image.url}});">
+                                style="--slide-bg: url({{slide.image.url}}); --slide-bg-m: url({{ slide.image|mobile_image_url }});">
                             </div>
                             <div class="main-slider__shape-bg float-bob-y"
                                 style="background-image: url({% static 'assets/images/shapes/main-slider-shape-bg.png' %});"></div>
