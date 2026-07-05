@@ -12,7 +12,7 @@
                             <div class="site-footer-two__logo-box">
                                 <div class="site-footer-two__logo">
                                     <a href="{% url 'index' %}"><img
-                                            src="{{ settings.logo.url }}" style="width: 300px;" alt="{{ settings.title }}"></a>
+                                            src="{{ settings.logo.url }}" width="{{ settings.logo.width }}" height="{{ settings.logo.height }}" style="width: 300px; height: auto;" alt="{{ settings.title }}"></a>
                                 </div>
                                 <p class="site-footer-two__text-1">{{ settings.description }}</p>
                             </div>
@@ -187,7 +187,7 @@
         <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
 
         <div class="logo-box">
-            <a href="{% url 'index' %}" aria-label="logo image"><img src="{{ settings.logo.url }}" width="150"
+            <a href="{% url 'index' %}" aria-label="logo image"><img src="{{ settings.logo.url }}" width="150" height="150" style="height:auto;"
                     alt="{{ settings.title }}" /></a>
         </div>
         <!-- /.logo-box -->

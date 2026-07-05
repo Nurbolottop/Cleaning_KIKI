@@ -2,7 +2,7 @@
 <header class="main-header-two">
     <div class="main-header-two__wrap">
         <div class="main-header-two__logo">
-            <a href="{% url 'index' %}"><img src="{{settings.logo.url}}" style="width: 100px;" alt="{{ settings.title }}"></a>
+            <a href="{% url 'index' %}"><img src="{{settings.logo.url}}" width="{{ settings.logo.width }}" height="{{ settings.logo.height }}" style="width: 100px; height: auto;" alt="{{ settings.title }}"></a>
         </div>
         <div class="main-header-two__content">
             <div class="main-menu-two__top">
@@ -58,7 +58,7 @@
                     <div class="main-menu-two__wrapper-inner">
                         <div class="main-menu-two__left">
                             <div class="main-menu-two__logo">
-                                <a href="{% url 'index' %}"><img src="{{settings.logo.url}}" style="width: 100px;" alt="{{ settings.title }}"></a>
+                                <a href="{% url 'index' %}"><img src="{{settings.logo.url}}" width="{{ settings.logo.width }}" height="{{ settings.logo.height }}" style="width: 100px; height: auto;" alt="{{ settings.title }}"></a>
                             </div>
                             <div class="main-menu-two__call">
                                 <div class="main-menu-two__call-icon">
