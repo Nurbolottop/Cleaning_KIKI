@@ -180,3 +180,9 @@
     color:#05173D;
 }
 
+
+/* Анти-CLS: резервируем высоту текста слайдера на мобильных, чтобы swap шрифта не двигал секцию */
+@media (max-width: 767px) {
+    .main-slider__title { min-height: 135px; }
+    .main-slider__text { min-height: 52px; }
+}

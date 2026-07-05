@@ -63,6 +63,9 @@
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"></noscript>
 
+    <!-- Иконочный шрифт нужен сразу (кнопки слайдера) — грузим заранее -->
+    <link rel="preload" as="font" type="font/ttf" href="{% static 'assets/fonts/icomoon.ttf' %}" crossorigin>
+
     <!-- Все стили темы (включая custom и responsive) в одном бандле — scripts/build_css_bundle.py -->
     <link rel="stylesheet" href="{% static 'assets/css/bundle.css' %}" />
 </head>
