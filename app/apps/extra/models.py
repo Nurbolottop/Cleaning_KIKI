@@ -1,8 +1,4 @@
-import sys
-from PIL import Image
-from io import BytesIO
 from django.db import models
-from django.core.files.uploadedfile import InMemoryUploadedFile
 from django_resized.forms import ResizedImageField
 from ckeditor_uploader.fields import RichTextUploadingField
 
@@ -31,76 +27,8 @@ ICON_CHOICES = [
 ]
 
 class About(models.Model):
-    def resize_image_1(self, image_field):
-        img = Image.open(image_field)
-        img = img.resize((280, 250))
-        output = BytesIO()
-        img.save(output, format='JPEG', quality=95)
-        output.seek(0)
-        return InMemoryUploadedFile(
-            output,
-            'ImageField',
-            f"{image_field.name.split('.')[0]}.jpg",
-            'image/jpeg',
-            sys.getsizeof(output),
-            None
-        )
-
-    def resize_image_2(self, image_field):
-        img = Image.open(image_field)
-        img = img.resize((297, 313))
-        output = BytesIO()
-        img.save(output, format='JPEG', quality=95)
-        output.seek(0)
-        return InMemoryUploadedFile(
-            output,
-            'ImageField',
-            f"{image_field.name.split('.')[0]}.jpg",
-            'image/jpeg',
-            sys.getsizeof(output),
-            None
-        )
-
-    def resize_image_3(self, image_field):
-        img = Image.open(image_field)
-        img = img.resize((280, 313))
-        output = BytesIO()
-        img.save(output, format='JPEG', quality=95)
-        output.seek(0)
-        return InMemoryUploadedFile(
-            output,
-            'ImageField',
-            f"{image_field.name.split('.')[0]}.jpg",
-            'image/jpeg',
-            sys.getsizeof(output),
-            None
-        )
-
-    def resize_image_4(self, image_field):
-        img = Image.open(image_field)
-        img = img.resize((297, 313))
-        output = BytesIO()
-        img.save(output, format='JPEG', quality=95)
-        output.seek(0)
-        return InMemoryUploadedFile(
-            output,
-            'ImageField',
-            f"{image_field.name.split('.')[0]}.jpg",
-            'image/jpeg',
-            sys.getsizeof(output),
-            None
-        )
-
-    def save(self, *args, **kwargs):
-        if self.image_1:
-            self.image_1 = self.resize_image_1(self.image_1)
-        if self.image_2:
-            self.image_2 = self.resize_image_2(self.image_2)
-        if self.image_3:
-            self.image_3 = self.resize_image_3(self.image_3)
-        if self.image_4:
-            self.image_4 = self.resize_image_4(self.image_4)
-        super().save(*args, **kwargs)
+    # Раньше save() принудительно ужимал фото до 280x250 — на retina-экранах
+    # они выходили мыльными. Теперь размером/форматом занимается ResizedImageField.
 
     image_1 = ResizedImageField(
         force_format="WEBP", 
