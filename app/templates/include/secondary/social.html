@@ -1,15 +1,15 @@
 {% load static %}
 <div class="page-header__social">
     {% if settings.facebook %}
-    <a href="{{settings.facebook}}">Facebook</a>
+    <a href="{{settings.facebook}}" aria-label="Facebook">Facebook</a>
     {% endif %}
     {% if settings.telegram %}
-    <a href="{{settings.telegram}}">Telegram</a>
+    <a href="{{settings.telegram}}" aria-label="Telegram">Telegram</a>
     {% endif %}
     {% if settings.whatsapp %}
-    <a href="{{settings.whatsapp}}">Whatsapp</a>
+    <a href="{{settings.whatsapp}}" aria-label="WhatsApp">Whatsapp</a>
     {% endif %}
     {% if settings.instagram %}
-    <a href="{{settings.instagram}}">Instagram</a>
+    <a href="{{settings.instagram}}" aria-label="Instagram">Instagram</a>
     {% endif %}
 </div>

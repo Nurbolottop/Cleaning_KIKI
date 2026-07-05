@@ -20,16 +20,16 @@
                                 <h4 class="site-footer-two__social-title">Соцтармактарда биз менен болуңуз</h4>
                                 <div class="site-footer-two__social">
                                     {% if settings.facebook %}
-                                    <a href="{{ settings.facebook }}"><span class="icon-facebook-app-symbol"></span></a>
+                                    <a href="{{ settings.facebook }}" aria-label="Facebook"><span class="icon-facebook-app-symbol"></span></a>
                                     {% endif %}
                                     {% if settings.instagram %}
-                                    <a href="{{ settings.instagram }}"><span class="icon-instagram"></span></a>
+                                    <a href="{{ settings.instagram }}" aria-label="Instagram"><span class="icon-instagram"></span></a>
                                     {% endif %}
                                     {% if settings.whatsapp %}
-                                    <a href="{{ settings.whatsapp }}"><span class="fab fa-whatsapp"></span></a>
+                                    <a href="{{ settings.whatsapp }}" aria-label="WhatsApp"><span class="fab fa-whatsapp"></span></a>
                                     {% endif %}
                                     {% if settings.telegram %}
-                                    <a href="{{ settings.telegram }}"><span class="fab fa-telegram"></span></a>
+                                    <a href="{{ settings.telegram }}" aria-label="Telegram"><span class="fab fa-telegram"></span></a>
                                     {% endif %}
                                 </div>
                             </div>
@@ -207,16 +207,16 @@
         <div class="mobile-nav__top">
             <div class="mobile-nav__social">
                 {% if settings.facebook %}
-                <a href="{{ settings.facebook }}" class="fab fa-facebook"></a>
+                <a href="{{ settings.facebook }}" class="fab fa-facebook" aria-label="Facebook"></a>
                 {% endif %}
                 {% if settings.instagram %}
-                <a href="{{ settings.instagram }}" class="fab fa-instagram"></a>
+                <a href="{{ settings.instagram }}" class="fab fa-instagram" aria-label="Instagram"></a>
                 {% endif %}
                 {% if settings.whatsapp %}
-                <a href="{{ settings.whatsapp }}" class="fab fa-whatsapp"></a>
+                <a href="{{ settings.whatsapp }}" class="fab fa-whatsapp" aria-label="WhatsApp"></a>
                 {% endif %}
                 {% if settings.telegram %}
-                <a href="{{ settings.telegram }}" class="fab fa-telegram"></a>
+                <a href="{{ settings.telegram }}" class="fab fa-telegram" aria-label="Telegram"></a>
                 {% endif %}
             </div><!-- /.mobile-nav__social -->
         </div><!-- /.mobile-nav__top -->
