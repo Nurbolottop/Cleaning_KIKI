@@ -29,11 +29,9 @@ services:
       context: ..
       dockerfile: docker/Dockerfile
     container_name: django_web_kiki
-    command: sh -c "/entrypoint.sh && python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8082"
+    command: /entrypoint.sh python manage.py runserver 0.0.0.0:8082
     volumes:
       - ../app:/app
-      - ../app/static:/app/static
-      - ../app/media:/app/media
     env_file:
       - ../.env
     environment:

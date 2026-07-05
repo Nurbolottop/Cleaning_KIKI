@@ -1,7 +1,10 @@
-{% extends 'forms/include/homepage.html' %} 
-{% block title %}Пикир калтыруу{% endblock %} 
-{% load static %} 
-{% block content %} 
+{% extends 'include/secondary/homepage.html' %}
+{% block title %}Заказ берүү{% endblock %}
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'assets/css/module-css/shop.css' %}" />
+{% endblock %}
+{% block content %}
 <div class="custom-cursor__cursor"></div>
 <div class="custom-cursor__cursor-two"></div>
 <!--Start Preloader-->

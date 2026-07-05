@@ -1,4 +1,10 @@
-{% extends 'forms/include/homepage.html' %} {% block title %}Пикир калтыруу{% endblock %} {% load static %} {% block content %}
+{% extends 'include/secondary/homepage.html' %}
+{% block title %}Пикир калтыруу{% endblock %}
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'assets/css/module-css/shop.css' %}" />
+{% endblock %}
+{% block content %}
 <style>
   /* Custom styling for service dropdown to limit height and enable scrolling */
   #service {

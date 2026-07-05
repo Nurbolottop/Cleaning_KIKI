@@ -3,7 +3,7 @@
     <div class="container">
         <div class="site-footer-two__inner">
             <div class="site-footer-two__shape-1 img-bounce">
-                <img src="{% static 'assets/images/shapes/site-footer-two-shape-1.png' %}" alt="">
+                <img src="{% static 'assets/images/shapes/site-footer-two-shape-1.png' %}" alt="{{ settings.title }}">
             </div>
             <div class="site-footer-two__top">
                 <div class="row">
@@ -12,7 +12,7 @@
                             <div class="site-footer-two__logo-box">
                                 <div class="site-footer-two__logo">
                                     <a href="{% url 'index' %}"><img
-                                            src="{{ settings.logo.url }}" style="width: 300px;" alt=""></a>
+                                            src="{{ settings.logo.url }}" style="width: 300px;" alt="{{ settings.title }}"></a>
                                 </div>
                                 <p class="site-footer-two__text-1">{{ settings.description }}</p>
                             </div>
@@ -188,7 +188,7 @@
 
         <div class="logo-box">
             <a href="{% url 'index' %}" aria-label="logo image"><img src="{{ settings.logo.url }}" width="150"
-                    alt="" /></a>
+                    alt="{{ settings.title }}" /></a>
         </div>
         <!-- /.logo-box -->
         <div class="mobile-nav__container"></div>

@@ -27,11 +27,9 @@ services:
       context: ..
       dockerfile: docker/Dockerfile
     container_name: django_web_kiki
-    command: sh -c "/entrypoint.sh && gunicorn core.wsgi:application --bind 0.0.0.0:8000"
+    command: /entrypoint.sh gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 3 --threads 2 --timeout 60 --max-requests 500 --max-requests-jitter 50 --access-logfile -
     volumes:
       - ../app:/app
-      - ../app/static:/app/static
-      - ../app/media:/app/media
     env_file:
       - ../.env
     environment:

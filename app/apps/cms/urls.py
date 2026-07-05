@@ -1,8 +1,6 @@
-
 from django.urls import path
 from apps.cms import views as cms_views
-from apps.contacts import views as contacts_views
-from apps.extra import views as extra_views
+from apps.cms import seo
 
 urlpatterns = [
     path('', cms_views.index, name='index'),
@@ -13,4 +11,6 @@ urlpatterns = [
     path('team/', cms_views.team, name='team'),
     path('blog/', cms_views.blog, name='blog'),
     path('blog/<int:id>/', cms_views.blog_details, name='blog_details'),
+    path('sitemap.xml', seo.sitemap_xml, name='sitemap'),
+    path('robots.txt', seo.robots_txt, name='robots'),
 ]

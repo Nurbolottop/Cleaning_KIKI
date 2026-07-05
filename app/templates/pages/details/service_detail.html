@@ -1,5 +1,9 @@
 {% extends 'include/secondary/homepage.html' %}
-{% block title %}{{ service.title }}{% endblock %}
+{% block title %}{{ service.title }} — баасы {{ service.price }} сом, Ош{% endblock %}
+{% block meta_description %}{{ service.title }} Ош шаарында — {{ service.description|striptags|truncatechars:140 }}{% endblock %}
+{% block og_title %}{{ service.title }} — Cleaning KIKI{% endblock %}
+{% block og_description %}{{ service.description|striptags|truncatechars:200 }}{% endblock %}
+{% block og_image %}{% if service.image %}<meta property="og:image" content="https://cleaningkiki.kg{{ service.image.url }}" />{% endif %}{% endblock %}
 {% load static %}
 {% block content %}
 

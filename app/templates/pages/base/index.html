@@ -1,5 +1,6 @@
 {% extends 'include/secondary/homepage.html' %}
-{% block title %}Башкы бет{% endblock %}
+{% block title %}Клининг Ош — кесипкөй тазалоо кызматы (уборка квартир, домов, офисов){% endblock %}
+{% block meta_description %}Клининг кызматы Ош шаарында: квартираларды, үйлөрдү жана офистерди кесипкөй тазалоо. Профессиональная уборка в Оше — быстро, качественно, с гарантией. Заказ онлайн же телефон аркылуу.{% endblock %}
 {% load static %}
 {% block extra_head %}
 {% if slides %}
@@ -84,7 +85,7 @@
                             </div>
                             <div class="main-slider__img-box">
                                 <div class="main-slider__img">
-                                    <img src="{{slide.icon.url}}" alt="" loading="lazy" decoding="async">
+                                    <img src="{{slide.icon.url}}" alt="{{ slide.title }}" loading="lazy" decoding="async">
                                 </div>
                             </div>
                             <div class="container">

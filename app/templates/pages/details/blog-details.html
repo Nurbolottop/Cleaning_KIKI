@@ -1,5 +1,9 @@
 {% extends 'include/secondary/homepage.html' %}
-{% block title %}{{blog.title}}{% endblock %}
+{% block title %}{{ blog.title }}{% endblock %}
+{% block meta_description %}{{ blog.description|striptags|truncatechars:160 }}{% endblock %}
+{% block og_title %}{{ blog.title }}{% endblock %}
+{% block og_description %}{{ blog.description|striptags|truncatechars:200 }}{% endblock %}
+{% block og_image %}{% if blog.image %}<meta property="og:image" content="https://cleaningkiki.kg{{ blog.image.url }}" />{% endif %}{% endblock %}
 {% load static %}
 {% block content %}
 

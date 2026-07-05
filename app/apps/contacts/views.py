@@ -1,20 +1,21 @@
+from threading import Thread
+
 from django.shortcuts import render, redirect
-from apps.cms import models as cms_models
-from apps.extra.models import OurServices
-from .models import Testimonial
-from apps.telegram_bot.views import send_testimonial_message
-from .models import Booking
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.contrib import messages
 
-def process_booking(request, redirect_url=None):
-    """Обрабатывает POST с бронированием.
+from apps.extra.models import OurServices
+from apps.telegram_bot.views import send_testimonial_message, send_booking_message
+from .models import Testimonial, Booking
+
+
+def process_booking(request):
+    """Обрабатывает POST с формы бронирования (сайдбар / страница заказа).
 
     Использование в других view:
-        if request.method == "POST":
-            resp = process_booking(request)
-            if resp:
-                return resp
+        resp = process_booking(request)
+        if resp:
+            return resp
     """
     if request.method != "POST":
         return None
@@ -25,7 +26,6 @@ def process_booking(request, redirect_url=None):
     rooms = request.POST.get("rooms")
     more = request.POST.get("more", "")
 
-    # валидация
     if not (service_id and name and phone and rooms):
         return None
 
@@ -46,29 +46,19 @@ def process_booking(request, redirect_url=None):
         more=more,
     )
 
-    # Отправить в Telegram (опционально)
-    try:
-        from apps.telegram_bot.views import send_booking_message  # type: ignore
-        from threading import Thread
-        Thread(target=send_booking_message, args=(booking,), daemon=True).start()
-    except ImportError:
-        pass
+    # Уведомление в Telegram — в фоне, чтобы не блокировать ответ пользователю
+    Thread(target=send_booking_message, args=(booking,), daemon=True).start()
 
     messages.success(request, "Суранычыңыз кабыл алынды!", extra_tags="booking_sent")
 
-    # AJAX request? Return JSON
-    if request.headers.get("x-requested-with") == "XMLHttpRequest" or request.META.get("HTTP_X_REQUESTED_WITH") == "XMLHttpRequest":
+    if request.headers.get("x-requested-with") == "XMLHttpRequest":
         return JsonResponse({"success": True})
 
-    # Перенаправляем на главную страницу после успешной отправки
     return HttpResponseRedirect("/")
 
-def testimonial_form(request):
-    settings = cms_models.Settings.objects.first()
-    services = OurServices.objects.all()
 
-    # обработка формы бронирования, если она отправлена с главной страницы
-    resp = process_booking(request, redirect_url="index")
+def testimonial_form(request):
+    resp = process_booking(request)
     if resp:
         return resp
 
@@ -86,21 +76,18 @@ def testimonial_form(request):
                 description=description,
                 image=image,
             )
-            # Send to Telegram for moderation
-            send_testimonial_message(testimonial)
+            # Отправляем на модерацию в Telegram — в фоне
+            Thread(target=send_testimonial_message, args=(testimonial,), daemon=True).start()
             messages.success(request, "Пикириңиз калтырылды, чоң рахмат!", extra_tags='reviewed')
             return redirect('index')
         else:
             messages.error(request, "Бардык талааларды туура толтуруңуз!")
 
-    return render(request, 'forms/pages/testimonial_form.html', locals())
+    return render(request, 'forms/pages/testimonial_form.html')
+
 
 def booking_form(request):
-    settings = cms_models.Settings.objects.first()
-    services = OurServices.objects.all()
-
-    # обработка формы бронирования, если она отправлена с главной страницы
-    resp = process_booking(request, redirect_url="index")
+    resp = process_booking(request)
     if resp:
         return resp
-    return render(request, 'forms/pages/booking_form.html', locals())
+    return render(request, 'forms/pages/booking_form.html')

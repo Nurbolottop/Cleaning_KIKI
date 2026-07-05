@@ -1,0 +1,32 @@
+{% extends 'include/secondary/homepage.html' %}
+{% block title %}Барак табылган жок — 404{% endblock %}
+{% load static %}
+{% block extra_head %}
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="{% static 'assets/css/module-css/error-page.css' %}" />
+{% endblock %}
+{% block content %}
+<div class="page-wrapper">
+    {% include 'include/base/header.html' %}
+
+    <section class="error-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="error-page__inner">
+                        <div class="error-page__title-box">
+                            <h2 class="error-page__title">404</h2>
+                        </div>
+                        <h3 class="error-page__tagline">Мындай барак табылган жок</h3>
+                        <p class="error-page__text">Сиз издеген барак жок же жылдырылган.</p>
+                        <a href="{% url 'index' %}" class="thm-btn error-page__btn">Башкы бетке кайтуу<span><i
+                                    class="icon-diagonal-arrow"></i></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include 'include/base/footer.html' %}
+</div>
+{% endblock %}

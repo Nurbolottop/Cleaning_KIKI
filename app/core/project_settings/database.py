@@ -1,16 +1,7 @@
 from dotenv import load_dotenv
-from pathlib import Path
 import os
 
 load_dotenv()
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 DATABASES = {
     'default': {
@@ -20,5 +11,8 @@ DATABASES = {
         'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
         'HOST': os.getenv('POSTGRES_HOST'),
         'PORT': os.getenv('POSTGRES_PORT', 5432),
+        # Переиспользуем соединения вместо открытия нового на каждый запрос
+        'CONN_MAX_AGE': 60,
+        'CONN_HEALTH_CHECKS': True,
     }
 }
