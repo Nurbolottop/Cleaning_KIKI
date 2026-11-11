@@ -180,7 +180,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .site-header.is-scrolled { border-color: var(--line); box-shadow: 0 8px 30px rgba(var(--ink-rgb), .06); background: rgba(255, 255, 255, .9); }
 .site-header__bar { display: flex; align-items: center; gap: 24px; height: var(--header-h); }
 .site-header__logo { display: flex; align-items: center; flex: none; }
-.site-header__logo img { width: auto; height: 44px; }
+.site-header__logo img { width: auto; height: 60px; transform: scale(1.25); transform-origin: left center; }
 .site-header__logo-text { font-weight: 800; font-size: 20px; color: var(--ink); letter-spacing: -0.02em; }
 .nav { margin-left: auto; }
 .nav__list { display: flex; align-items: center; gap: 4px; }
