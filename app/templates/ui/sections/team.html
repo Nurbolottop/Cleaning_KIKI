@@ -1,0 +1,30 @@
+{% comment %}Параметры: members — список сотрудников, show_head — показывать ли заголовок.{% endcomment %}
+{% if members %}
+<section class="section" id="team">
+    <div class="container">
+        {% if show_head %}
+        <div class="section-head section-head--split" data-reveal>
+            <div>
+                <span class="eyebrow">Тажрыйбалуу кызматкерлер</span>
+                <h2 class="h2">Ийгилигибиздин сыры — <span class="grad-text">биздин адистер</span></h2>
+            </div>
+            <a class="btn btn--ghost" href="{% url 'team' %}">Баардык команда {% include 'ui/icon.html' with name='arrow' %}</a>
+        </div>
+        {% endif %}
+        <div class="grid grid-4">
+            {% for member in members %}
+            <article class="member" data-reveal style="--d: {% cycle '0ms' '80ms' '160ms' '240ms' %}">
+                <div class="member__photo">
+                    {% if member.image %}<img src="{{ member.image.url }}" alt="{{ member.name }}" loading="lazy" decoding="async">{% endif %}
+                    {% if member.experience %}<span class="member__exp"><b>{{ member.experience }}</b> жыл тажрыйба</span>{% endif %}
+                </div>
+                <div>
+                    <h3>{{ member.name }}</h3>
+                    <p>{{ member.position }}</p>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}

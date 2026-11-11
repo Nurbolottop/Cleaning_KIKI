@@ -6,6 +6,17 @@ register = template.Library()
 
 
 @register.filter
+def som(value):
+    """Цена услуги: '5000' -> '5 000 сом'. Если в админке уже указана валюта
+    или текст ('от 3000 сом', 'договорная') — выводим как есть."""
+    text = str(value or '').strip()
+    digits = text.replace(' ', '')
+    if digits.isdigit():
+        return f"{int(digits):,}".replace(',', ' ') + ' сом'
+    return text
+
+
+@register.filter
 def mobile_image_url(field):
     """URL мобильной версии картинки (<name>_m.<ext>), если она существует.
 

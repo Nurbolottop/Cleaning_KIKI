@@ -1,0 +1,17 @@
+<div class="drawer" id="booking" aria-hidden="true">
+    <div class="drawer__overlay" data-booking-close></div>
+    <div class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="booking-title">
+        <div class="drawer__head">
+            <div>
+                <h2 id="booking-title">Тазалыкка заказ</h2>
+                <p>Өтүнмө калтырыңыз — биз тез арада чалып, баасын тактайбыз.</p>
+            </div>
+            <button class="icon-btn" type="button" data-booking-close aria-label="Жабуу">{% include 'ui/icon.html' with name='close' %}</button>
+        </div>
+        <div class="drawer__body">
+            <form class="form" action="{% url 'index' %}" method="post">
+                {% include 'ui/booking_form_fields.html' with prefix='bd-' %}
+            </form>
+        </div>
+    </div>
+</div>

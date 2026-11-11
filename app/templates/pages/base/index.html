@@ -1,350 +1,120 @@
-{% extends 'include/secondary/homepage.html' %}
+{% extends 'base.html' %}
+{% load static media_extras %}
 {% block title %}Клининг Ош — кесипкөй тазалоо кызматы (уборка квартир, домов, офисов){% endblock %}
 {% block meta_description %}Клининг кызматы Ош шаарында: квартираларды, үйлөрдү жана офистерди кесипкөй тазалоо. Профессиональная уборка в Оше — быстро, качественно, с гарантией. Заказ онлайн же телефон аркылуу.{% endblock %}
-{% load static %}
-{% load media_extras %}
 {% block extra_head %}
-{% if slides %}
+{% if slides and slides.0.image %}
 <link rel="preload" as="image" href="{{ slides.0.image|mobile_image_url }}" media="(max-width: 767px)" fetchpriority="high">
 <link rel="preload" as="image" href="{{ slides.0.image.url }}" media="(min-width: 768px)" fetchpriority="high">
 {% endif %}
 {% endblock %}
+
 {% block content %}
 
-    <div class="custom-cursor__cursor"></div>
-    <div class="custom-cursor__cursor-two"></div>
+<!-- Hero -->
+<section class="hero">
+    <div class="container">
+        <div class="hero__frame" data-hero aria-roledescription="карусель">
+            {% for slide in slides %}
+            <div class="hero__slide{% if forloop.first %} is-active{% endif %}" aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}">
+                <div class="hero__bg" aria-hidden="true">
+                    {% if slide.image %}
+                    <picture>
+                        <source media="(max-width: 767px)" {% if forloop.first %}srcset{% else %}data-srcset{% endif %}="{{ slide.image|mobile_image_url }}">
+                        {% if forloop.first %}
+                        <img src="{{ slide.image.url }}" alt="" fetchpriority="high" decoding="async">
+                        {% else %}
+                        <img data-src="{{ slide.image.url }}" alt="" decoding="async">
+                        {% endif %}
+                    </picture>
+                    {% endif %}
+                </div>
+                <div class="hero__inner">
+                    <div class="hero__content">
+                        <span class="eyebrow eyebrow--light">{{ settings.title|default:"Cleaning KIKI" }} · Ош</span>
+                        {% if forloop.first %}
+                        <h1 class="h1 hero__title">{{ slide.title }} <span>{{ slide.title_2 }}</span></h1>
+                        {% else %}
+                        <h2 class="h1 hero__title">{{ slide.title }} <span>{{ slide.title_2 }}</span></h2>
+                        {% endif %}
+                        <p class="hero__text">{{ slide.description }}</p>
+                        <div class="hero__actions">
+                            <a class="btn btn--primary" href="{% url 'booking_form' %}" data-booking-open>Заказ берүү {% include 'ui/icon.html' with name='arrow' %}</a>
+                            <a class="btn btn--glass" href="{% url 'services' %}">Кызматтар жана баалар</a>
+                        </div>
+                    </div>
+                    {% if slide.icon %}
+                    <div class="hero__visual" aria-hidden="true">
+                        <img src="{{ slide.icon.url }}" alt="" loading="lazy" decoding="async">
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% empty %}
+            <div class="hero__slide is-active">
+                <div class="hero__inner">
+                    <div class="hero__content">
+                        <span class="eyebrow eyebrow--light">Ош шаарында клининг</span>
+                        <h1 class="h1 hero__title">{{ settings.title|default:"Cleaning KIKI" }} <span>— жаркыраган тазалык</span></h1>
+                        <p class="hero__text">{{ settings.description }}</p>
+                        <div class="hero__actions">
+                            <a class="btn btn--primary" href="{% url 'booking_form' %}" data-booking-open>Заказ берүү {% include 'ui/icon.html' with name='arrow' %}</a>
+                            <a class="btn btn--glass" href="{% url 'services' %}">Кызматтар жана баалар</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
 
-    <!-- Start sidebar widget content -->
-    {% include 'include/base/head.html' %}
-    <!-- End sidebar widget content -->
-
-
-
-    {% if messages %}
-    {% for message in messages %}
-        {% if 'reviewed' in message.tags %}
-        <div id="reviewModal">
-    <div class="modal-box">
-        <div class="checkmark"></div>
-        <h3 style="margin-bottom:20px;">{{ message }}</h3>
-        <button id="closeReviewModal" class="thm-btn">OK</button>
+            {% if slides|length > 1 %}
+            <div class="hero__controls">
+                <div class="hero__dots">
+                    {% for slide in slides %}<button class="hero__dot{% if forloop.first %} is-active{% endif %}" type="button" aria-label="Слайд {{ forloop.counter }}"></button>{% endfor %}
+                </div>
+                <button class="hero__arrow" type="button" data-hero-prev aria-label="Мурунку слайд">{% include 'ui/icon.html' with name='chev-left' %}</button>
+                <button class="hero__arrow" type="button" data-hero-next aria-label="Кийинки слайд">{% include 'ui/icon.html' with name='chev-right' %}</button>
+            </div>
+            {% endif %}
+        </div>
     </div>
+
+    <!-- Быстрые факты -->
+    <div class="container hero-stats">
+        <div class="hero-stats__card">
+            {% if about.experience %}
+            <div class="hero-stats__item">
+                <span class="hero-stats__icon">{% include 'ui/icon.html' with name='award' %}</span>
+                <div><span class="hero-stats__value">{{ about.experience }}+ жыл</span><span class="hero-stats__label">тажрыйба</span></div>
+            </div>
+            {% endif %}
+            {% if about.customers %}
+            <div class="hero-stats__item">
+                <span class="hero-stats__icon">{% include 'ui/icon.html' with name='heart' %}</span>
+                <div><span class="hero-stats__value">{{ about.customers }}%</span><span class="hero-stats__label">ыраазы кардар</span></div>
+            </div>
+            {% endif %}
+            <div class="hero-stats__item">
+                <span class="hero-stats__icon">{% include 'ui/icon.html' with name='shield' %}</span>
+                <div><span class="hero-stats__value">Кепилдик</span><span class="hero-stats__label">сапатка жоопкерчилик</span></div>
+            </div>
+            {% if settings.phone %}
+            <div class="hero-stats__item">
+                <span class="hero-stats__icon">{% include 'ui/icon.html' with name='phone' %}</span>
+                <div><a class="hero-stats__value" href="tel:{{ settings.phone }}">{{ settings.phone }}</a><span class="hero-stats__label">{{ settings.work_schedule|default:"чалыңыз" }}</span></div>
+            </div>
+            {% endif %}
+        </div>
     </div>
-        {% endif %}
-    {% endfor %}
-    {% endif %}
+</section>
 
-<div class="page-wrapper">
-        {% include 'include/base/header.html' %}
-
-        <div class="stricky-header stricked-menu main-menu main-menu-two">
-            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
-        </div><!-- /.stricky-header -->
-
-
-
-        <!-- Main Slider Start -->
-        <section class="main-slider">
-            <div class="main-slider__wrap">
-                <div class="swiper-container main-slider-style1">
-                    <div class="swiper-wrapper">
-                        <!-- Slide Item -->
-                         {% for slide in slides %}
-                        <div class="swiper-slide">
-                            <div class="main-slider__bg"
-                                style="--slide-bg: url({{slide.image.url}}); --slide-bg-m: url({{ slide.image|mobile_image_url }});">
-                            </div>
-                            <div class="main-slider__shape-bg float-bob-y"
-                                style="background-image: url({% static 'assets/images/shapes/main-slider-shape-bg.png' %});"></div>
-                            <div class="main-slider__shape-1 float-bob-y">
-                                <img src="{% static 'assets/images/shapes/main-slider-shape-1.png' %}" alt="">
-                            </div>
-                            <div class="main-slider__img-box">
-                                <div class="main-slider__img">
-                                    <img src="{{slide.icon.url}}" alt="{{ slide.title }}" loading="lazy" decoding="async">
-                                </div>
-                            </div>
-                            <div class="container">
-                                <div class="main-slider__content">
-                                    {% if forloop.first %}<h1 class="main-slider__title">{{slide.title}} <span>{{slide.title_2}}</span></h1>{% else %}<h2 class="main-slider__title">{{slide.title}} <span>{{slide.title_2}}</span></h2>{% endif %}
-                                    <p class="main-slider__text">{{slide.description}}</p>
-                                    <div class="main-slider__btn-box">
-                                        <a href="{% url 'about' %}" class="thm-btn">Кеттик!<span><i
-                                                    class="icon-diagonal-arrow"></i></span></a>
-                                    </div>  
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-                        <!-- Slide Item -->
-
-                    </div>
-                    <!-- If we need navigation buttons -->
-                    <div class="main-slider__nav">
-                        <div class="swiper-button-prev" id="main-slider__swiper-button-next">
-                            <i class="icon-diagonal-arrow"></i>
-                        </div>
-                        <div class="swiper-button-next" id="main-slider__swiper-button-prev">
-                            <i class="icon-diagonal-arrow"></i>
-                        </div>
-                    </div>
-
-
-
-                </div>
-            </div>
-        </section>
-        <!-- Main Slider End -->
-
-        {% if about %}
-        <!--About Two Start -->
-        {% include 'include/secondary/about.html' %}
-        <!--About Two End -->
-        {% endif %}
-        
-        {% if services %}
-        <!--Services Two Start -->
-        {% include 'include/secondary/services.html' %}
-        <!--Services Two End -->
-        {% endif %}
-
-        {% if before_after %}
-        <!--Before After Two Start -->
-        {% include 'include/secondary/after.html' %}
-        <!--Before After Two End -->
-        {% endif %}
-
-        {% if process %}
-        <!--Process One Start -->
-        {% include 'include/secondary/process.html' %}
-        <!--Process One End -->
-        {% endif %}
-
-        {% if services %}
-        <!--Services Two Start -->
-        {% include 'include/secondary/services_catolog.html' %}
-        <!--Services Two End -->
-        {% endif %}
-        
-        {% if projects %}
-        <!--Project Two Start -->
-        <section class="project-two">
-            <div class="project-two__bg-shape"
-                style="background-image: url({% static 'assets/images/shapes/project-two-bg-shape.png' %});"></div>
-            <div class="project-two__shape-1 float-bob-x">
-                <img src="{% static 'assets/images/shapes/project-two-shape-1.png' %}" alt="">
-            </div>
-            <div class="project-two__shape-2 float-bob-y">
-                <img src="{% static 'assets/images/shapes/project-two-shape-2.png' %}" alt="">
-            </div>
-            <div class="container">
-                <div class="project-two__top">
-                    <div class="section-title text-left sec-title-animation animation-style2">
-                        <div class="section-title__tagline-box">
-                            <div class="section-title__tagline-shape-box">
-                                <div class="section-title__tagline-shape"></div>
-                                <div class="section-title__tagline-shape-2"></div>
-                            </div>
-                            <span class="section-title__tagline">Биздин проекттер</span>
-                        </div>
-                        <h2 class="section-title__title title-animation">Идея менен инновация
-                            <span>чогулган </span><br><span>долбоорлор аренаcы.</span>
-                        </h2>
-                    </div>
-                    <div class="project-two__btn-box">
-                        <a href="{% url 'services' %}" class="thm-btn">Бардык кызматтар<span><i
-                                    class="icon-diagonal-arrow"></i></span></a>
-                    </div>
-                </div>
-                <div class="row masonary-layout">
-                    {% for project in projects %}
-                    <!--Project Two Single Start-->
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 wow fadeInUp" data-wow-delay="{{ forloop.counter|add:1 }}00ms"
-                        data-wow-duration="1500ms">
-                        <div class="project-two__single">
-                            <div class="project-two__img-box">
-                                <div class="project-two__img">
-                                    {% if project.image %}
-                                        <img src="{{ project.image.url }}" alt="{{ project.title }}" style="width: 100%; height: 350px; object-fit: cover; object-position: center;" loading="lazy" decoding="async">
-                                    {% else %}
-                                        <img src="{% static 'assets/images/project/project-2-1.jpg' %}" alt="{{ project.title }}" style="width: 100%; height: 350px; object-fit: cover; object-position: center;" loading="lazy" decoding="async">
-                                    {% endif %}
-                                </div>
-                                <div class="project-two__content-box">
-                                    <ul class="project-two__info-list list-unstyled">
-                                        <li>
-                                            <span>Клиент:</span>
-                                            <p>{{ project.title }}</p>
-                                        </li>
-                                        <li>
-                                            <span>Узактыгы :</span>
-                                            <p>{{ project.duration }}</p>
-                                        </li>
-                                        <li>
-                                            <span>Бюджет :</span>
-                                            <p>{{ project.price }}</p>
-                                        </li>
-                                    </ul>
-                                    <div class="project-two__title-box">
-                                        <span class="project-two__sub-title">🧹✨ CleaningKiki</span>
-                                        <h3 class="project-two__title"><a href="#" onclick="return false;">{{ project.service.title }}</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Project Two Single End-->
-                    {% empty %}
-                    <!--No Projects Message-->
-                    <div class="col-12">
-                        <div class="text-center">
-                            <p>Проекты пока не добавлены</p>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </section>
-        {% endif %}
-
-        <!--Testimonial Two Start -->
-        {% include 'include/secondary/testimonial.html' %}
-        <!--Testimonial One End -->
-
-        <!--Team Two Start -->
-        <section class="team-two">
-            <div class="team-two__shape-1"> 
-                <img src="{% static 'assets/images/shapes/team-two-shape-1.png' %}" alt="">
-            </div>
-            <div class="team-two__shape-2 img-bounce">
-                <img src="{% static 'assets/images/shapes/team-two-shape-2.png' %}" alt="">
-            </div>
-            <div class="team-two__shape-3"></div>
-            <div class="team-two__shape-4"></div>
-            <div class="container">
-                <div class="section-title text-center sec-title-animation animation-style1">
-                    <div class="section-title__tagline-box">
-                        <div class="section-title__tagline-shape-box">
-                            <div class="section-title__tagline-shape"></div>
-                            <div class="section-title__tagline-shape-2"></div>
-                        </div>
-                        <span class="section-title__tagline">Тажрыйбалуу кызматкерлерибиз</span>
-                    </div>
-                    <h2 class="section-title__title title-animation">Жаккан ишиңизди кылып жүрүңүз, <br>  
-                        <span> ал эми тазалоону кесипкөйлөргө тапшырыңыз</span></h2>
-                </div>
-                <div class="team-two__inner">
-                    <div class="team-two__main-tab-box tabs-box">
-                        <div class="row">
-                            <div class="col-xl-4">
-                                <div class="team-two__tab-buttons-box-one">
-                                    <ul class="tab-buttons list-unstyled">
-                                        {% for member in team_members %}
-                                            {% if forloop.counter|divisibleby:2 %}
-                                            <li data-tab="#team-left-{{ forloop.counter }}" class="tab-btn {% if forloop.first %}active-btn{% endif %}">
-                                                <div class="team-two__buttons">
-                                                    <div class="team-two__buttons-experience-years">
-                                                        <div class="team-two__buttons-experience-years-count">
-                                                            <h3>{{ member.experience }}</h3>
-                                                        </div>
-                                                        <p class="team-two__buttons-experience-years-text">Жылдык  <br>
-                                                            тажрыйба</p>
-                                                    </div>
-                                                    <div class="team-two__buttons-img-box">
-                                                        <div class="team-two__buttons-img">
-                                                            <img src="{{ member.image.url }}"
-                                                                alt="{{ member.name }}" loading="lazy" decoding="async">
-                                                        </div>
-                                                    </div>
-                                                    <div class="team-two__buttons-content">
-                                                        <div class="team-two__buttons-title-box">
-                                                            <h4 class="team-two__buttons-title"><a
-                                                                    href="{% url 'team' %}">{{ member.name }}</a></h4>
-                                                            <p class="team-two__buttons-sub-title">{{ member.position }}</p>
-                                                        </div>
-                                                        <div class="team-two__buttons-arrow">
-                                                            <a href="{% url 'team' %}" aria-label="Команда жөнүндө толугураак"><span
-                                                                    class="icon-diagonal-arrow"></span></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-xl-4">
-                                <div class="team-two__tabs-content-outer">
-                                    <div class="tabs-content">
-                                        {% for member in team_members|slice:":6" %}
-                                        <div class="tab {% if forloop.first %}active-tab{% endif %}" id="team-left-{{ forloop.counter }}">
-                                            <div class="team-two__tabs-content-box">
-                                                <div class="team-two__img-box">
-                                                    <div class="team-two__img">
-                                                        <img src="{{ member.image.url }}" alt="{{ member.name }}" loading="lazy" decoding="async">
-                                                        <div class="team-two__social">
-                                                            <span class="social-text">{{ member.name }}</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4">
-                                <div class="team-two__tab-buttons-box-one">
-                                    <ul class="tab-buttons list-unstyled">
-                                        {% for member in team_members %}
-                                            {% if not forloop.counter|divisibleby:2 %}
-                                            <li data-tab="#team-left-{{ forloop.counter }}" class="tab-btn {% if forloop.first %}active-btn{% endif %}">
-                                                <div class="team-two__buttons">
-                                                    <div class="team-two__buttons-experience-years">
-                                                        <div class="team-two__buttons-experience-years-count">
-                                                            <h3>{{ member.experience }}</h3>
-                                                        </div>
-                                                        <p class="team-two__buttons-experience-years-text">Жылдык  <br>
-                                                            тажрыйба</p>
-                                                    </div>
-                                                    <div class="team-two__buttons-img-box">
-                                                        <div class="team-two__buttons-img">
-                                                            <img src="{{ member.image.url }}"
-                                                                alt="{{ member.name }}" loading="lazy" decoding="async">
-                                                        </div>
-                                                    </div>
-                                                    <div class="team-two__buttons-content">
-                                                        <div class="team-two__buttons-title-box">
-                                                            <h4 class="team-two__buttons-title"><a
-                                                                    href="{% url 'team' %}">{{ member.name }}</a></h4>
-                                                            <p class="team-two__buttons-sub-title">{{ member.position }}</p>
-                                                        </div>
-                                                        <div class="team-two__buttons-arrow">
-                                                            <a href="{% url 'team' %}" aria-label="Команда жөнүндө толугураак"><span
-                                                                    class="icon-diagonal-arrow"></span></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Team Two End -->
-
-        <!--Pricing Two Start -->
-        
-        <!--Pricing Two End -->
-
-    </div><!-- /.page-wrapper -->
-
-    {% include 'include/base/footer.html' %}
+{% include 'ui/sections/services.html' %}
+{% include 'ui/sections/about.html' %}
+{% include 'ui/sections/before_after.html' %}
+{% include 'ui/sections/process.html' %}
+{% include 'ui/sections/pricing.html' %}
+{% include 'ui/sections/projects.html' %}
+{% include 'ui/sections/testimonials.html' %}
+{% include 'ui/sections/team.html' with members=team_members show_head=True %}
+{% include 'ui/sections/cta.html' %}
 
 {% endblock %}

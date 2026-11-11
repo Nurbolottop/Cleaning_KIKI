@@ -1,0 +1,33 @@
+{% load static %}
+{% if projects %}
+<section class="section" id="projects">
+    <div class="container">
+        <div class="section-head section-head--split" data-reveal>
+            <div>
+                <span class="eyebrow">Биздин долбоорлор</span>
+                <h2 class="h2">Идея менен сапат <span class="grad-text">чогулган долбоорлор</span></h2>
+            </div>
+            <a class="btn btn--ghost" href="{% url 'services' %}">Баардык кызматтар {% include 'ui/icon.html' with name='arrow' %}</a>
+        </div>
+        <div class="grid grid-3">
+            {% for project in projects %}
+            <article class="project" data-reveal style="--d: {% cycle '0ms' '90ms' '180ms' %}">
+                {% if project.image %}
+                <img src="{{ project.image.url }}" alt="{{ project.title }}" loading="lazy" decoding="async">
+                {% else %}
+                <img src="{% static 'assets/images/project/project-2-1.jpg' %}" alt="{{ project.title }}" loading="lazy" decoding="async">
+                {% endif %}
+                <div class="project__body">
+                    <span class="project__cat">{{ project.service.title }}</span>
+                    <h3 class="project__title">{{ project.title }}</h3>
+                    <div class="project__meta">
+                        <div>Узактыгы<b>{{ project.duration }}</b></div>
+                        <div>Бюджет<b>{{ project.price }}</b></div>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}

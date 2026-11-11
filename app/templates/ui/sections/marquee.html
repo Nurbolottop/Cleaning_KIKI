@@ -1,0 +1,9 @@
+{% if services %}
+<div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+        {% for _ in "12" %}
+        {% for service in services %}<span class="marquee__item">{{ service.title }} {% include 'ui/icon.html' with name='sparkle' %}</span>{% endfor %}
+        {% endfor %}
+    </div>
+</div>
+{% endif %}

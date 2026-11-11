@@ -1,32 +1,17 @@
-{% extends 'include/secondary/homepage.html' %}
+{% extends 'base.html' %}
 {% block title %}Барак табылган жок — 404{% endblock %}
-{% load static %}
-{% block extra_head %}
-<meta name="robots" content="noindex">
-<link rel="stylesheet" href="{% static 'assets/css/module-css/error-page.css' %}" />
-{% endblock %}
+{% block meta_robots %}noindex{% endblock %}
+
 {% block content %}
-<div class="page-wrapper">
-    {% include 'include/base/header.html' %}
-
-    <section class="error-page">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="error-page__inner">
-                        <div class="error-page__title-box">
-                            <h2 class="error-page__title">404</h2>
-                        </div>
-                        <h3 class="error-page__tagline">Мындай барак табылган жок</h3>
-                        <p class="error-page__text">Сиз издеген барак жок же жылдырылган.</p>
-                        <a href="{% url 'index' %}" class="thm-btn error-page__btn">Башкы бетке кайтуу<span><i
-                                    class="icon-diagonal-arrow"></i></span></a>
-                    </div>
-                </div>
-            </div>
+<section class="section">
+    <div class="container error">
+        <div class="error__code grad-text">404</div>
+        <h1 class="h2">Мындай барак табылган жок</h1>
+        <p class="lead">Сиз издеген барак жок же башка жерге жылдырылган.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:8px">
+            <a class="btn btn--primary" href="{% url 'index' %}">Башкы бетке кайтуу {% include 'ui/icon.html' with name='arrow' %}</a>
+            <a class="btn btn--ghost" href="{% url 'services' %}">Кызматтар</a>
         </div>
-    </section>
-
-    {% include 'include/base/footer.html' %}
-</div>
+    </div>
+</section>
 {% endblock %}

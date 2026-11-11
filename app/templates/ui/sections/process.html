@@ -1,0 +1,22 @@
+{% if process %}
+<section class="section" id="process">
+    <div class="container">
+        <div class="section-head section-head--center" data-reveal>
+            <span class="eyebrow">Кантип иштейбиз</span>
+            <h2 class="h2">Тазалоо процесси — башынан аягына чейин <span class="grad-text">таза жана тынчысыз</span></h2>
+        </div>
+        <ol class="steps">
+            {% for step in process %}
+            <li class="step" data-reveal style="--d: {% cycle '0ms' '90ms' '180ms' '270ms' %}">
+                <div class="step__top">
+                    <span class="step__icon"><span class="{{ step.icon }}"></span></span>
+                    <span class="step__num" aria-hidden="true"></span>
+                </div>
+                <h3 class="h3">{{ step.title }}</h3>
+                <p>{{ step.description|linebreaksbr }}</p>
+            </li>
+            {% endfor %}
+        </ol>
+    </div>
+</section>
+{% endif %}

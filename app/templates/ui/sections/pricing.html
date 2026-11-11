@@ -1,0 +1,30 @@
+{% load media_extras %}
+{% if services %}
+<section class="section section--soft" id="prices">
+    <div class="container">
+        <div class="section-head section-head--center" data-reveal>
+            <span class="eyebrow">Кызматтар жана баалар</span>
+            <h2 class="h2">Жаккан ишиңизди кылыңыз — <span class="grad-text">тазалоону кесипкөйлөргө тапшырыңыз</span></h2>
+        </div>
+        <div class="prices">
+            {% for service in services %}
+            <article class="price{% if forloop.counter == 2 %} price--featured{% endif %}" data-reveal style="--d: {% cycle '0ms' '90ms' '180ms' %}">
+                <div class="price__head">
+                    <span class="price__icon"><span class="{{ service.icon }}"></span></span>
+                    <h3 class="h3">{{ service.title }}</h3>
+                </div>
+                {% if service.price %}<div class="price__amount">{{ service.price|som }}</div>{% endif %}
+                <p class="price__text">{{ service.subtitle }}</p>
+                <hr class="price__divider">
+                <ul class="price__points">
+                    {% for point in service.points.all %}
+                    <li>{% include 'ui/icon.html' with name='check' %}<span>{{ point.title }}</span></li>
+                    {% endfor %}
+                </ul>
+                <a class="btn {% if forloop.counter == 2 %}btn--primary{% else %}btn--ghost{% endif %} btn--block" href="{% url 'booking_form' %}" data-booking-open data-service="{{ service.id }}">Кызматты тандоо {% include 'ui/icon.html' with name='arrow' %}</a>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}

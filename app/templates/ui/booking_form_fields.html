@@ -1,0 +1,38 @@
+{% comment %}
+  Поля формы заказа. Обрабатываются contacts.views.process_booking:
+  service (id услуги), name, phone, rooms (число), more (необязательно).
+  Параметр prefix — чтобы id полей не повторялись, если формы две на странице.
+{% endcomment %}
+{% csrf_token %}
+<div class="field">
+    <span class="field__label">Кызмат <em>*</em></span>
+    <div class="chips" role="radiogroup" aria-label="Кызматты тандаңыз">
+        {% for s in services %}
+        <label class="chip">
+            <input type="radio" name="service" value="{{ s.id }}" required{% if selected_service and selected_service.id == s.id %} checked{% endif %}>
+            <span>{{ s.title }}</span>
+        </label>
+        {% empty %}
+        <p class="muted">Кызматтар азырынча кошула элек.</p>
+        {% endfor %}
+    </div>
+</div>
+<div class="form__row">
+    <label class="field">
+        <span class="field__label">Атыңыз <em>*</em></span>
+        <input class="input" type="text" name="name" id="{{ prefix }}name" placeholder="Аты-жөнүңүз" autocomplete="name" required>
+    </label>
+    <label class="field">
+        <span class="field__label">Телефон <em>*</em></span>
+        <input class="input" type="tel" name="phone" id="{{ prefix }}phone" placeholder="0700 123 456" autocomplete="tel" inputmode="tel" required>
+    </label>
+</div>
+<div class="range">
+    <label class="range__top" for="{{ prefix }}rooms">Бөлмөлөрдүн саны <output for="{{ prefix }}rooms">1</output></label>
+    <input type="range" name="rooms" id="{{ prefix }}rooms" min="1" max="10" value="1" step="1">
+</div>
+<label class="field">
+    <span class="field__label">Кошумча маалымат</span>
+    <textarea class="input" name="more" id="{{ prefix }}more" rows="3" placeholder="Дарек, ыңгайлуу убакыт, өзгөчө каалоолор..."></textarea>
+</label>
+<button type="submit" class="btn btn--primary btn--block">Өтүнмө жөнөтүү {% include 'ui/icon.html' with name='arrow' %}</button>

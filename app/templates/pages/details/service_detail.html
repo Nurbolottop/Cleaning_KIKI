@@ -1,104 +1,56 @@
-{% extends 'include/secondary/homepage.html' %}
+{% extends 'base.html' %}
+{% load media_extras %}
 {% block title %}{{ service.title }} — баасы {{ service.price }} сом, Ош{% endblock %}
 {% block meta_description %}{{ service.title }} Ош шаарында — {{ service.description|striptags|truncatechars:140 }}{% endblock %}
 {% block og_title %}{{ service.title }} — Cleaning KIKI{% endblock %}
 {% block og_description %}{{ service.description|striptags|truncatechars:200 }}{% endblock %}
 {% block og_image %}{% if service.image %}<meta property="og:image" content="https://cleaningkiki.kg{{ service.image.url }}" />{% endif %}{% endblock %}
-{% load static %}
+
 {% block content %}
+{% url 'services' as services_url %}
+{% include 'ui/page_hero.html' with title=service.title sub=service.subtitle parent_title='Кызматтар' parent_url=services_url %}
 
-<style>
-    @media (min-width: 1200px) {
-    .col-xl-8 {
-        /* flex: 0 0 auto; */
-        width: 100%;
-    }
-}
-</style>
-    <div class="custom-cursor__cursor"></div>
-    <div class="custom-cursor__cursor-two"></div>
+<section class="section">
+    <div class="container detail">
+        <article>
+            {% if service.banner_image %}
+            <div class="detail__cover" data-reveal><img src="{{ service.banner_image.url }}" alt="{{ service.title }}" decoding="async"></div>
+            {% elif service.image %}
+            <div class="detail__cover" data-reveal><img src="{{ service.image.url }}" alt="{{ service.title }}" decoding="async"></div>
+            {% endif %}
 
-    {% include 'include/base/head.html' %}
+            <div class="prose">{{ service.description|safe }}</div>
 
-    <!-- End sidebar widget content -->
-    <div class="page-wrapper">
-        {% include 'include/base/header.html' %}
-        <div class="stricky-header stricked-menu main-menu main-menu-three">
-            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
-        </div><!-- /.stricky-header -->
-
-
-        <!--Page Header Start-->
-        <section class="page-header">
-            <div class="page-header__bg" style="background-image: url({% static 'assets/images/backgrounds/page-header-bg.jpg' %});">
+            {% if service.points.all %}
+            <div style="margin-top:40px">
+                <h2 class="h3" style="margin-bottom:18px">Кызматка эмнелер кирет</h2>
+                <ul class="checklist">
+                    {% for point in service.points.all %}
+                    <li>{% include 'ui/icon.html' with name='check' %}<span>{{ point.title }}</span></li>
+                    {% endfor %}
+                </ul>
             </div>
-            {% include 'include/secondary/social.html' %}
-            <div class="container">
-                <div class="page-header__inner">
-                    <div class="page-header__img-1">
-                        <img src="{% static 'assets/images/resources/page-header-img-1.jpg' %}" alt="">
-                    </div>
-                    <h2>{{service.title}}</h2>
-                    <div class="thm-breadcrumb__box">
-                        <ul class="thm-breadcrumb list-unstyled">
-                            <li><a href="{% url 'index' %}">Башкы бет</a></li>
-                            <li><span class="icon-arrow-right"></span></li>
-                            <li><a href="{% url 'services' %}">Кызматтар</a></li>
-                            <li><span class="icon-arrow-right"></span></li>
-                            <li>{{service.title}}</li>
-                        </ul>
-                    </div>
-                </div>
+            {% endif %}
+        </article>
+
+        <aside class="detail__aside">
+            <div class="aside-card aside-card--dark">
+                <h3>{{ service.title }}</h3>
+                {% if service.price %}<div class="price__amount" style="color:#fff;margin:6px 0 18px">{{ service.price|som }}</div>{% endif %}
+                <a class="btn btn--primary btn--block" href="{% url 'booking_form' %}" data-booking-open data-service="{{ service.id }}">Заказ берүү {% include 'ui/icon.html' with name='arrow' %}</a>
+                {% if settings.phone %}<a class="btn btn--glass btn--block" style="margin-top:10px" href="tel:{{ settings.phone }}">{% include 'ui/icon.html' with name='phone' %} {{ settings.phone }}</a>{% endif %}
             </div>
-        </section>
-        <!--Page Header End-->
-
-        <!--Service details Start-->
-        <section class="services-details">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-8 col-lg-7">
-                        <div class="services-details__left">
-                            <h3 class="services-details__title-1">{{service.title}}</h3>
-                            <p class="services-details__text-1">{{service.subtitle}}</p>
-                            <div class="services-details__img-box">
-                                <div class="services-details__img">
-                                    <img src="{{service.banner_image.url}}" alt="">
-                                </div>
-                            </div>
-                            <h3 class="services-details__title-2">{{service.title}}</h3>
-                            <p class="services-details__text-2">{{service.description|safe}}</p>
-                            <div class="services-details__points-box">
-                                {% for point in service.points.all %}
-                                    {% if forloop.counter0|divisibleby:2 %}
-                                        <ul class="services-details__points list-unstyled">
-                                            <li>
-                                                <div class="icon">
-                                                    <span class="icon-star-1"></span>
-                                                </div>
-                                                <p>{{ point.title }}</p>
-                                            </li>
-                                        </ul>
-                                    {% else %}
-                                        <ul class="services-details__points list-unstyled">
-                                            <li>
-                                                <div class="icon">
-                                                    <span class="icon-star-1"></span>
-                                                </div>
-                                                <p>{{ point.title }}</p>
-                                            </li>
-                                        </ul>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="aside-card">
+                <h3>Башка кызматтар</h3>
+                <nav class="aside-links">
+                    {% for s in services %}
+                    <a href="{% url 'services_details' s.id %}"{% if s.id == service.id %} class="is-active" aria-current="page"{% endif %}>{{ s.title }} {% include 'ui/icon.html' with name='chev-right' %}</a>
+                    {% endfor %}
+                </nav>
             </div>
-        </section>
-    </div><!-- /.page-wrapper -->
+        </aside>
+    </div>
+</section>
 
-
-{% include 'include/base/footer.html' %}
-
+{% include 'ui/sections/cta.html' %}
 {% endblock %}

@@ -1,0 +1,92 @@
+{% load static %}<!DOCTYPE html>
+<html lang="ky">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>{% block title %}{% endblock %} | {{ settings.title }}</title>
+    <meta name="description" content="{% block meta_description %}{{ settings.description }}{% endblock %}" />
+    <meta name="robots" content="{% block meta_robots %}index, follow{% endblock %}" />
+    <link rel="canonical" href="https://cleaningkiki.kg{{ request.path }}" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Open Graph / соцсети -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="{{ settings.title }}" />
+    <meta property="og:title" content="{% block og_title %}{{ settings.title }}{% endblock %}" />
+    <meta property="og:description" content="{% block og_description %}{{ settings.description }}{% endblock %}" />
+    <meta property="og:url" content="https://cleaningkiki.kg{{ request.path }}" />
+    {% block og_image %}{% if settings.logo %}<meta property="og:image" content="https://cleaningkiki.kg{{ settings.logo.url }}" />{% endif %}{% endblock %}
+    <meta property="og:locale" content="ky_KG" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    {% if settings.icon %}
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ settings.icon.url }}" />
+    <link rel="icon" type="image/webp" href="{{ settings.icon.url }}" />
+    {% endif %}
+
+    <!-- Структурированные данные для Google (локальный бизнес) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "{{ settings.title|escapejs }}",
+        "description": "{{ settings.description|escapejs }}",
+        "url": "https://cleaningkiki.kg/",
+        {% if settings.logo %}"image": "https://cleaningkiki.kg{{ settings.logo.url }}",{% endif %}
+        "telephone": "{{ settings.phone|escapejs }}",
+        "email": "{{ settings.email|escapejs }}",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "{{ settings.locate|escapejs }}",
+            "addressLocality": "Ош",
+            "addressCountry": "KG"
+        },
+        "openingHours": "{{ settings.work_schedule|escapejs }}",
+        "sameAs": [
+            {% if settings.instagram %}"{{ settings.instagram }}"{% endif %}{% if settings.instagram and settings.facebook %},{% endif %}
+            {% if settings.facebook %}"{{ settings.facebook }}"{% endif %}
+        ]
+    }
+    </script>
+
+    <!-- Шрифт Onest: полная кириллица, включая ң ө ү -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400..800&display=swap">
+
+    <link rel="stylesheet" href="{% static 'assets/css/site.css' %}" />
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Мазмунга өтүү</a>
+
+    {% include 'ui/header.html' %}
+
+    <main id="main">
+        {% block content %}{% endblock %}
+    </main>
+
+    {% include 'ui/footer.html' %}
+    {% include 'ui/booking_drawer.html' %}
+
+    {% if settings.phone %}
+    <a class="fab-call" href="tel:{{ settings.phone }}" aria-label="Чалуу {{ settings.phone }}">{% include 'ui/icon.html' with name='phone' %}<span>Чалуу</span></a>
+    {% endif %}
+
+    {% if messages %}
+    <div class="toasts" role="status" aria-live="polite">
+        {% for message in messages %}
+        <div class="toast{% if message.level_tag == 'error' %} toast--error{% endif %}">
+            <span class="toast__icon">{% if message.level_tag == 'error' %}{% include 'ui/icon.html' with name='close' %}{% else %}{% include 'ui/icon.html' with name='check' %}{% endif %}</span>
+            <p>{{ message }}</p>
+            <button type="button" aria-label="Жабуу">{% include 'ui/icon.html' with name='close' %}</button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <script defer src="{% static 'assets/js/site.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

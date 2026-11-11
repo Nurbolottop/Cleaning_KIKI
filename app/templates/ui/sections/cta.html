@@ -1,0 +1,14 @@
+<section class="section section--tight">
+    <div class="container">
+        <div class="cta" data-reveal>
+            <div>
+                <h2 class="h2">Үйүңүз жаркырап турсун — бүгүн эле заказ бериңиз</h2>
+                <p>Өтүнмө калтырыңыз же чалыңыз: баасын тактап, ыңгайлуу убакытты бирге тандайбыз.</p>
+            </div>
+            <div class="cta__actions">
+                <a class="btn btn--light" href="{% url 'booking_form' %}" data-booking-open>Заказ берүү {% include 'ui/icon.html' with name='arrow' %}</a>
+                {% if settings.phone %}<a class="btn btn--glass" href="tel:{{ settings.phone }}">{% include 'ui/icon.html' with name='phone' %} {{ settings.phone }}</a>{% endif %}
+            </div>
+        </div>
+    </div>
+</section>

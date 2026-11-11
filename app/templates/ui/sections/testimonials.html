@@ -1,0 +1,39 @@
+<section class="section section--soft" id="reviews">
+    <div class="container" data-carousel>
+        <div class="section-head section-head--split" data-reveal>
+            <div>
+                <span class="eyebrow">Кардарлардын пикирлери</span>
+                <h2 class="h2">Ыраазы болгон кардарларыбыз <span class="grad-text">эмне дейт</span></h2>
+            </div>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+                <a class="btn btn--primary" href="{% url 'testimonial_form' %}">Пикир калтыруу {% include 'ui/icon.html' with name='arrow' %}</a>
+                {% if testimonials %}
+                <div class="carousel__nav">
+                    <button class="carousel__btn" type="button" data-carousel-prev aria-label="Мурунку">{% include 'ui/icon.html' with name='chev-left' %}</button>
+                    <button class="carousel__btn" type="button" data-carousel-next aria-label="Кийинки">{% include 'ui/icon.html' with name='chev-right' %}</button>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        {% if testimonials %}
+        <div class="carousel__track" tabindex="0" aria-label="Пикирлер">
+            {% for t in testimonials %}{% if t.show %}
+            <figure class="review">
+                <div class="review__top">
+                    <span class="review__stars" aria-label="5 жылдыз">{% include 'ui/icon.html' with name='star' %}{% include 'ui/icon.html' with name='star' %}{% include 'ui/icon.html' with name='star' %}{% include 'ui/icon.html' with name='star' %}{% include 'ui/icon.html' with name='star' %}</span>
+                    {% if t.service %}<span class="review__svc">{{ t.service }}</span>{% endif %}
+                </div>
+                <blockquote class="review__text" style="margin:0">{{ t.description|linebreaksbr }}</blockquote>
+                <figcaption class="review__author">
+                    {% if t.image %}<img src="{{ t.image.url }}" alt="{{ t.name }}" width="48" height="48" loading="lazy" decoding="async">{% endif %}
+                    <div><b>{{ t.name }}</b><small>Кардарыбыз</small></div>
+                </figcaption>
+            </figure>
+            {% endif %}{% endfor %}
+        </div>
+        {% else %}
+        <p class="empty">Азырынча пикирлер жок — биринчи болуп калтырыңыз!</p>
+        {% endif %}
+    </div>
+</section>

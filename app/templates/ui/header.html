@@ -1,0 +1,56 @@
+{% url 'index' as u_index %}{% url 'about' as u_about %}{% url 'services' as u_services %}{% url 'team' as u_team %}{% url 'blog' as u_blog %}{% url 'contacts' as u_contacts %}
+<header class="site-header">
+    <div class="container site-header__bar">
+        <a class="site-header__logo" href="{{ u_index }}" aria-label="{{ settings.title }} — башкы бет">
+            {% if settings.logo %}
+            <img src="{{ settings.logo.url }}" width="{{ settings.logo.width }}" height="{{ settings.logo.height }}" alt="{{ settings.title }}">
+            {% else %}
+            <span class="site-header__logo-text">{{ settings.title|default:"Cleaning KIKI" }}</span>
+            {% endif %}
+        </a>
+
+        <nav class="nav" aria-label="Негизги меню">
+            <ul class="nav__list">
+                <li><a class="nav__link{% if request.path == u_index %} is-active{% endif %}" href="{{ u_index }}">Башкы бет</a></li>
+                <li><a class="nav__link{% if request.path == u_about %} is-active{% endif %}" href="{{ u_about }}">Биз жөнүндө</a></li>
+                <li><a class="nav__link{% if u_services in request.path %} is-active{% endif %}" href="{{ u_services }}">Кызматтар</a></li>
+                <li><a class="nav__link{% if request.path == u_team %} is-active{% endif %}" href="{{ u_team }}">Команда</a></li>
+                <li><a class="nav__link{% if u_blog in request.path %} is-active{% endif %}" href="{{ u_blog }}">Жаңылыктар</a></li>
+                <li><a class="nav__link{% if request.path == u_contacts %} is-active{% endif %}" href="{{ u_contacts }}">Байланыш</a></li>
+            </ul>
+        </nav>
+
+        <div class="site-header__actions">
+            {% if settings.phone %}
+            <a class="site-header__phone" href="tel:{{ settings.phone }}" aria-label="Чалуу {{ settings.phone }}">{% include 'ui/icon.html' with name='phone' %}<span>{{ settings.phone }}</span></a>
+            {% endif %}
+            <a class="btn btn--primary btn--sm" href="{% url 'booking_form' %}" data-booking-open>Заказ берүү</a>
+            <button class="burger" type="button" data-mnav-open aria-label="Менюну ачуу" aria-controls="mnav">{% include 'ui/icon.html' with name='menu' %}</button>
+        </div>
+    </div>
+</header>
+
+<div class="mnav" id="mnav" aria-hidden="true">
+    <div class="mnav__overlay" data-mnav-close></div>
+    <div class="mnav__panel" role="dialog" aria-modal="true" aria-label="Меню">
+        <div class="mnav__top">
+            <a href="{{ u_index }}">{% if settings.logo %}<img src="{{ settings.logo.url }}" width="{{ settings.logo.width }}" height="{{ settings.logo.height }}" alt="{{ settings.title }}">{% else %}<b>{{ settings.title }}</b>{% endif %}</a>
+            <button class="icon-btn" type="button" data-mnav-close aria-label="Жабуу">{% include 'ui/icon.html' with name='close' %}</button>
+        </div>
+        <ul class="mnav__list">
+            <li><a href="{{ u_index }}"{% if request.path == u_index %} class="is-active"{% endif %}>Башкы бет {% include 'ui/icon.html' with name='arrow' %}</a></li>
+            <li><a href="{{ u_about }}"{% if request.path == u_about %} class="is-active"{% endif %}>Биз жөнүндө {% include 'ui/icon.html' with name='arrow' %}</a></li>
+            <li><a href="{{ u_services }}"{% if u_services in request.path %} class="is-active"{% endif %}>Кызматтар {% include 'ui/icon.html' with name='arrow' %}</a></li>
+            <li><a href="{{ u_team }}"{% if request.path == u_team %} class="is-active"{% endif %}>Команда {% include 'ui/icon.html' with name='arrow' %}</a></li>
+            <li><a href="{{ u_blog }}"{% if u_blog in request.path %} class="is-active"{% endif %}>Жаңылыктар {% include 'ui/icon.html' with name='arrow' %}</a></li>
+            <li><a href="{{ u_contacts }}"{% if request.path == u_contacts %} class="is-active"{% endif %}>Байланыш {% include 'ui/icon.html' with name='arrow' %}</a></li>
+            <li><a href="{% url 'testimonial_form' %}">Пикир калтыруу {% include 'ui/icon.html' with name='arrow' %}</a></li>
+        </ul>
+        <a class="btn btn--primary btn--block" href="{% url 'booking_form' %}" data-booking-open>Заказ берүү {% include 'ui/icon.html' with name='arrow' %}</a>
+        <div class="mnav__contacts">
+            {% if settings.phone %}<a href="tel:{{ settings.phone }}">{% include 'ui/icon.html' with name='phone' %}{{ settings.phone }}</a>{% endif %}
+            {% if settings.email %}<a href="mailto:{{ settings.email }}">{% include 'ui/icon.html' with name='mail' %}{{ settings.email }}</a>{% endif %}
+            {% include 'ui/socials.html' %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+<div class="socials">
+    {% if settings.whatsapp %}<a href="{{ settings.whatsapp }}" target="_blank" rel="noopener" aria-label="WhatsApp">{% include 'ui/icon.html' with name='whatsapp' %}</a>{% endif %}
+    {% if settings.telegram %}<a href="{{ settings.telegram }}" target="_blank" rel="noopener" aria-label="Telegram">{% include 'ui/icon.html' with name='telegram' %}</a>{% endif %}
+    {% if settings.instagram %}<a href="{{ settings.instagram }}" target="_blank" rel="noopener" aria-label="Instagram">{% include 'ui/icon.html' with name='instagram' %}</a>{% endif %}
+    {% if settings.facebook %}<a href="{{ settings.facebook }}" target="_blank" rel="noopener" aria-label="Facebook">{% include 'ui/icon.html' with name='facebook' %}</a>{% endif %}
+</div>

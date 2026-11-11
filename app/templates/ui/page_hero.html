@@ -1,0 +1,16 @@
+{% comment %}Параметры: title, sub (необязательно), parent_title + parent_url (необязательно).{% endcomment %}
+<section class="page-hero">
+    <div class="container">
+        <div class="page-hero__card">
+            <div class="page-hero__bubbles" aria-hidden="true"><span></span><span></span><span></span></div>
+            <nav class="crumbs" aria-label="Навигация">
+                <a href="{% url 'index' %}">Башкы бет</a>
+                {% include 'ui/icon.html' with name='chev-right' %}
+                {% if parent_url %}<a href="{{ parent_url }}">{{ parent_title }}</a>{% include 'ui/icon.html' with name='chev-right' %}{% endif %}
+                <span aria-current="page">{{ title }}</span>
+            </nav>
+            <h1 class="page-hero__title">{{ title }}</h1>
+            {% if sub %}<p class="page-hero__sub">{{ sub }}</p>{% endif %}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,57 @@
+{% if about %}
+<section class="section" id="about">
+    <div class="container about">
+        <div class="about__gallery" data-reveal>
+            {% if about.image_1 %}<figure><img src="{{ about.image_1.url }}" alt="{{ about.title_1 }}" loading="lazy" decoding="async"></figure>{% endif %}
+            {% if about.image_2 %}<figure><img src="{{ about.image_2.url }}" alt="{{ about.title_1 }}" loading="lazy" decoding="async"></figure>{% endif %}
+            {% if about.image_3 %}<figure><img src="{{ about.image_3.url }}" alt="{{ about.title_1 }}" loading="lazy" decoding="async"></figure>{% endif %}
+            {% if about.image_4 %}<figure><img src="{{ about.image_4.url }}" alt="{{ about.title_1 }}" loading="lazy" decoding="async"></figure>{% endif %}
+            {% if about.experience %}
+            <div class="about__badge"><b class="grad-text">{{ about.experience }}+</b><span>жылдык тажрыйба</span></div>
+            {% endif %}
+        </div>
+
+        <div class="about__body" data-reveal style="--d: 120ms">
+            <span class="eyebrow">Биз жөнүндө</span>
+            <h2 class="h2">{{ about.title_1 }} <span class="grad-text">{{ about.title_2 }}</span></h2>
+            <p class="lead">{{ about.description|linebreaksbr }}</p>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat__value"><span data-count="{{ about.experience }}">{{ about.experience }}</span><span>+</span></div>
+                    <p class="stat__label">жылдык тажрыйба</p>
+                </div>
+                <div class="stat">
+                    <div class="stat__value"><span data-count="{{ about.customers }}">{{ about.customers }}</span><span>%</span></div>
+                    <p class="stat__label">бактылуу кардар</p>
+                </div>
+                <div class="stat">
+                    <div class="stat__value"><span data-count="{{ about.successfully }}">{{ about.successfully }}</span><span>+</span></div>
+                    <p class="stat__label">ийгиликтүү аткарылган иш</p>
+                </div>
+            </div>
+
+            {% if about.missions.all %}
+            <ul class="checklist">
+                {% for mission in about.missions.all %}
+                <li>{% include 'ui/icon.html' with name='check' %}<span>{{ mission.title }}</span></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <div class="about__actions">
+                <a class="btn btn--primary" href="{% url 'contacts' %}">Байланышуу {% include 'ui/icon.html' with name='arrow' %}</a>
+                {% if about.number %}
+                <div class="call-box">
+                    <span class="call-box__icon">{% include 'ui/icon.html' with name='phone' %}</span>
+                    <div>
+                        <small>{{ about.time }}</small>
+                        <a href="tel:{{ about.number }}">{{ about.number }}</a>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}

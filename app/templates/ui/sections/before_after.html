@@ -1,0 +1,30 @@
+{% if before_after %}
+<section class="section section--soft" id="before-after">
+    <div class="container">
+        <div class="section-head section-head--center" data-reveal>
+            <span class="eyebrow">Тазалоого чейин / кийин</span>
+            <h2 class="h2">Тазалык — жөн гана кызмат эмес, <span class="grad-text">бул жашоого болгон мамиле</span></h2>
+            <p class="lead">Сызгычты жылдырып, натыйжаны өзүңүз салыштырыңыз.</p>
+        </div>
+        <div class="ba-grid">
+            {% for item in before_after %}
+            <article class="ba" data-reveal style="--d: {% cycle '0ms' '120ms' %}">
+                <div class="ba__frame">
+                    {% if item.before_image %}<img src="{{ item.before_image.url }}" alt="{{ item.title }} — тазалоого чейин" loading="lazy" decoding="async">{% endif %}
+                    {% if item.after_image %}<img class="ba__after" src="{{ item.after_image.url }}" alt="{{ item.title }} — тазалоодон кийин" loading="lazy" decoding="async">{% endif %}
+                    <span class="ba__tag ba__tag--before">Чейин</span>
+                    <span class="ba__tag ba__tag--after">Кийин</span>
+                    <span class="ba__line" aria-hidden="true"></span>
+                    <span class="ba__knob" aria-hidden="true">{% include 'ui/icon.html' with name='drag' %}</span>
+                    <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="{{ item.title }}: чейин жана кийин салыштыруу">
+                </div>
+                <div class="ba__caption">
+                    <h3>{{ item.title }}</h3>
+                    {% if item.description %}<p>{{ item.description }}</p>{% endif %}
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}

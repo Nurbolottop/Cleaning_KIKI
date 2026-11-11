@@ -1,0 +1,32 @@
+{% if metric %}
+<section class="section section--dark" id="metrics">
+    <div class="container">
+        <div class="section-head" data-reveal>
+            <span class="eyebrow eyebrow--light">Биз сандарда</span>
+            <h2 class="h2">Ар бир тазалоонун артында — <span class="grad-text">чыныгы натыйжа</span></h2>
+        </div>
+        <div class="metrics">
+            <div class="metric" data-reveal>
+                <span class="metric__icon">{% include 'ui/icon.html' with name='briefcase' %}</span>
+                <div class="metric__value"><span data-count="{{ metric.projects_per_month }}">{{ metric.projects_per_month }}</span><span>+</span></div>
+                <p>Ай сайын ийгиликтүү бүткөн иштер</p>
+            </div>
+            <div class="metric" data-reveal style="--d: 90ms">
+                <span class="metric__icon">{% include 'ui/icon.html' with name='heart' %}</span>
+                <div class="metric__value"><span data-count="{{ metric.happy_customers }}">{{ metric.happy_customers }}</span><span>%</span></div>
+                <p>Кардарларыбыздын ишенимине ээ болдук</p>
+            </div>
+            <div class="metric" data-reveal style="--d: 180ms">
+                <span class="metric__icon">{% include 'ui/icon.html' with name='star' %}</span>
+                <div class="metric__value"><span data-count="{{ metric.positive_reviews }}">{{ metric.positive_reviews }}</span><span>+</span></div>
+                <p>Оң пикирлер</p>
+            </div>
+            <div class="metric" data-reveal style="--d: 270ms">
+                <span class="metric__icon">{% include 'ui/icon.html' with name='area' %}</span>
+                <div class="metric__value"><span data-count="{{ metric.cleaned_area_m2 }}">{{ metric.cleaned_area_m2 }}</span><span> м²</span></div>
+                <p>Тазаланган аянт</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
