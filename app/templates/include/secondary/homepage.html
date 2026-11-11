@@ -57,17 +57,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"></noscript>
-
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"></noscript>
+    <!-- Оба семейства одним запросом, только нужные начертания -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Sans:opsz,wght@9..40,400..700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Sans:opsz,wght@9..40,400..700&display=swap"></noscript>
 
     <!-- Иконочный шрифт нужен сразу (кнопки слайдера) — грузим заранее -->
     <link rel="preload" as="font" type="font/ttf" href="{% static 'assets/fonts/icomoon.ttf' %}" crossorigin>
 
+    <meta name="theme-color" content="#1d6cf2" />
+
     <!-- Все стили темы (включая custom и responsive) в одном бандле — scripts/build_css_bundle.py -->
     <link rel="stylesheet" href="{% static 'assets/css/bundle.css' %}" />
+    <!-- Обновлённый дизайн поверх темы -->
+    <link rel="stylesheet" href="{% static 'assets/css/fresh.css' %}" />
 </head>
 
 <body class="custom-cursor">
@@ -75,31 +77,31 @@
     {% block content %}
     {% endblock %}
     </main>
-    <script src="{% static 'assets/js/jquery-latest.js' %}"></script>
-    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'assets/js/jquery.appear.min.js' %}"></script>
-    <script src="{% static 'assets/js/swiper.min.js' %}"></script>
-    <script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
-    <script src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
-    <script src="{% static 'assets/js/odometer.min.js' %}"></script>
-    <script src="{% static 'assets/js/wow.js' %}"></script>
-    <script src="{% static 'assets/js/isotope.js' %}"></script>
-    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
-    <script src="{% static 'assets/js/twentytwenty.js' %}"></script>
-    <script src="{% static 'assets/js/jquery.event.move.js' %}"></script>
-    <script src="{% static 'assets/js/marquee.min.js' %}"></script>
-    <script src="{% static 'assets/js/jquery-sidebar-content.js' %}"></script>
-    <script src="{% static 'assets/js/aos.js' %}"></script>
+    <!-- defer: скрипты не блокируют отрисовку, порядок выполнения сохраняется -->
+    <script defer src="{% static 'assets/js/jquery-latest.js' %}"></script>
+    <script defer src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script defer src="{% static 'assets/js/jquery.appear.min.js' %}"></script>
+    <script defer src="{% static 'assets/js/swiper.min.js' %}"></script>
+    <script defer src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+    <script defer src="{% static 'assets/js/jquery.validate.min.js' %}"></script>
+    <script defer src="{% static 'assets/js/odometer.min.js' %}"></script>
+    <script defer src="{% static 'assets/js/wow.js' %}"></script>
+    <script defer src="{% static 'assets/js/isotope.js' %}"></script>
+    <script defer src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+    <script defer src="{% static 'assets/js/jquery.nice-select.min.js' %}"></script>
+    <script defer src="{% static 'assets/js/twentytwenty.js' %}"></script>
+    <script defer src="{% static 'assets/js/jquery.event.move.js' %}"></script>
+    <script defer src="{% static 'assets/js/marquee.min.js' %}"></script>
+    <script defer src="{% static 'assets/js/jquery-sidebar-content.js' %}"></script>
 
-    <script src="{% static 'assets/js/gsap/gsap.js' %}"></script>
-    <script src="{% static 'assets/js/gsap/ScrollTrigger.js' %}"></script>
-    <script src="{% static 'assets/js/gsap/SplitText.js' %}"></script>
+    <script defer src="{% static 'assets/js/gsap/gsap.js' %}"></script>
+    <script defer src="{% static 'assets/js/gsap/ScrollTrigger.js' %}"></script>
+    <script defer src="{% static 'assets/js/gsap/SplitText.js' %}"></script>
 
     <!-- custom js -->
-    <script src="{% static 'assets/js/custom.js' %}"></script>
+    <script defer src="{% static 'assets/js/custom.js' %}"></script>
     <!-- template js -->
-    <script src="{% static 'assets/js/script.js' %}"></script>
+    <script defer src="{% static 'assets/js/script.js' %}"></script>
 </body>
 
 </html>

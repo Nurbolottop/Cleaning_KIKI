@@ -9,24 +9,6 @@
 <link rel="preload" as="image" href="{{ slides.0.image.url }}" media="(min-width: 768px)" fetchpriority="high">
 {% endif %}
 {% endblock %}
-<style>
-.member-name {
-    font-weight: 600;
-    color: #3c5b6f;
-    margin-right: 8px;
-    font-size: 16px;
-    letter-spacing: 0.5px;
-    transition: color 0.2s;
-}
-.team-two__social a:hover .member-name {
-    color: #2b8ae2;
-}
-.scroll-row{flex-wrap:nowrap;overflow-x:auto;scroll-behavior:smooth;gap:24px;}
-.scroll-row::-webkit-scrollbar{height:8px;}
-.scroll-row::-webkit-scrollbar-track{background:#e0e0e0;border-radius:4px;}
-.scroll-row::-webkit-scrollbar-thumb{background:#4caf50;border-radius:4px;}
-/* animation indicator (optional)*/
-</style>
 {% block content %}
 
     <div class="custom-cursor__cursor"></div>
@@ -113,20 +95,6 @@
             </div>
         </section>
         <!-- Main Slider End -->
-
-        <style>
-          .scroll-row{flex-wrap:nowrap;overflow-x:auto;scroll-behavior:smooth;gap:24px;}
-          .scroll-row::-webkit-scrollbar{height:8px;}
-          .scroll-row::-webkit-scrollbar-track{background:#e0e0e0;border-radius:4px;}
-          .scroll-row::-webkit-scrollbar-thumb{background:#4caf50;border-radius:4px;}
-          /* animation indicator (optional)*/
-        </style>
-        <script>
-          document.addEventListener('DOMContentLoaded',()=>{
-            const row=document.querySelector('.pricing-two__tab-content-box .row');
-            if(row){row.classList.add('scroll-row');}
-          });
-        </script>
 
         {% if about %}
         <!--About Two Start -->
@@ -285,7 +253,7 @@
                                                     <div class="team-two__buttons-img-box">
                                                         <div class="team-two__buttons-img">
                                                             <img src="{{ member.image.url }}"
-                                                                alt="{{ member.name }}">
+                                                                alt="{{ member.name }}" loading="lazy" decoding="async">
                                                         </div>
                                                     </div>
                                                     <div class="team-two__buttons-content">
@@ -314,21 +282,10 @@
                                             <div class="team-two__tabs-content-box">
                                                 <div class="team-two__img-box">
                                                     <div class="team-two__img">
-                                                        <img src="{{ member.image.url }}" alt="{{ member.name }}">
+                                                        <img src="{{ member.image.url }}" alt="{{ member.name }}" loading="lazy" decoding="async">
                                                         <div class="team-two__social">
                                                             <span class="social-text">{{ member.name }}</span>
                                                         </div>
-                                                        <style>
-                                                            .social-text {
-                                                                color: #fff;
-                                                                font-weight: 600;
-                                                                font-size: 16px;
-                                                                margin-right: 12px;
-                                                                text-shadow: 0 1px 5px rgba(0,0,0,0.15);
-                                                                letter-spacing: 0.2px;
-                                                                transition: color 0.2s;
-                                                            }
-                                                        </style>
                                                     </div>
                                                 </div>
                                             </div>
@@ -354,7 +311,7 @@
                                                     <div class="team-two__buttons-img-box">
                                                         <div class="team-two__buttons-img">
                                                             <img src="{{ member.image.url }}"
-                                                                alt="{{ member.name }}">
+                                                                alt="{{ member.name }}" loading="lazy" decoding="async">
                                                         </div>
                                                     </div>
                                                     <div class="team-two__buttons-content">
