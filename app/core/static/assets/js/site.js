@@ -198,4 +198,19 @@
     if (btn) btn.addEventListener('click', hide);
     setTimeout(hide, 5000 + i * 600);
   });
+
+  /* ---------- Длинные отзывы: «Толук окуу» ---------- */
+  $$('.review').forEach(function (r) {
+    var text = $('.review__text', r);
+    if (!text || text.scrollHeight <= text.clientHeight + 2) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'review__more';
+    btn.textContent = 'Толук окуу';
+    btn.addEventListener('click', function () {
+      var open = r.classList.toggle('is-open');
+      btn.textContent = open ? 'Жыйноо' : 'Толук окуу';
+    });
+    text.insertAdjacentElement('afterend', btn);
+  });
 })();

@@ -470,7 +470,15 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .review__stars { display: flex; gap: 2px; color: var(--sun); }
 .review__stars svg { width: 18px; height: 18px; }
 .review__svc { font-size: 13px; font-weight: 600; color: var(--brand); background: var(--tint); padding: 5px 12px; border-radius: 999px; }
-.review__text { color: var(--text); flex: 1; position: relative; }
+.review__text { color: var(--text); font-size: 15px; line-height: 1.6; position: relative; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 7; line-clamp: 7; overflow: hidden; overflow-wrap: anywhere; }
+.review.is-open .review__text { -webkit-line-clamp: unset; line-clamp: none; display: block; }
+.review__more { align-self: flex-start; margin-top: -8px; font-size: 14px; font-weight: 600; color: var(--brand); background: none; padding: 0; cursor: pointer; }
+.review__more:hover { color: var(--pop); }
+.review__author { margin-top: auto; }
+.carousel__track > .review { flex-basis: calc((100% - 3 * clamp(16px, 2vw, 24px)) / 4); padding: 24px; }
+@media (max-width: 1200px) { .carousel__track > .review { flex-basis: calc((100% - 2 * clamp(16px, 2vw, 24px)) / 3); } }
+@media (max-width: 860px) { .carousel__track > .review { flex-basis: calc((100% - 16px) / 2); } }
+@media (max-width: 560px) { .carousel__track > .review { flex-basis: 84%; } }
 .review__author { display: flex; align-items: center; gap: 12px; padding-top: 18px; border-top: 1px solid var(--line); }
 .review__author img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
 .review__author b { color: var(--ink); }
